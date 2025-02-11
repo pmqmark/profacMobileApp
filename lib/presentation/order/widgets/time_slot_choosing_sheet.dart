@@ -92,8 +92,11 @@ class TimeSlotChoosingSheet extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child:
-                BottomSaveButton(onPressed: () {}, text: "Save and continue"),
+            child: BottomSaveButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                text: "Save and continue"),
           ),
         ],
       ),

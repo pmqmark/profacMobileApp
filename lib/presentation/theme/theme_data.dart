@@ -100,18 +100,31 @@ ThemeData themeData = ThemeData(
   // Input decoration theme
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: Colors.grey[100],
+     fillColor: Colors.white,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        width: 1,
+        color: Colors.grey[300]!,
+      ),
+    ),
+    hintStyle: TextStyle(
+      color: Colors.grey[500],
+      fontSize: 14,
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        width: 1,
+        color: Colors.grey[300]!,
+      ),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: Colors.blue, width: 2),
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        width: 1,
+        color: Colors.black87,
+      ),
     ),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
   ),
@@ -182,5 +195,7 @@ ThemeData themeData = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(16)),
     ),
   ),
-  // Button bar theme
+  // Text form field theme
+  
+
 );

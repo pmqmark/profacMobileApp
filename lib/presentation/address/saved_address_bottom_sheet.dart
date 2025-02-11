@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profac/presentation/address/search_location.dart';
 import 'package:profac/presentation/common_widgets/bottom_save_botton.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
@@ -31,7 +32,16 @@ class _SavedAddressBottomSheetState extends State<SavedAddressBottomSheet> {
           ),
           TextButton(
             onPressed: () {
-              // Add logic to add a new address
+              Navigator.pop(context);
+
+              showModalBottomSheet(
+                scrollControlDisabledMaxHeightRatio: 0.8,
+                backgroundColor: Colors.white,
+                context: context,
+                builder: (context) {
+                  return SearchLocationBottomSheet();
+                },
+              );
             },
             child: Text(
               "+ Add new address",

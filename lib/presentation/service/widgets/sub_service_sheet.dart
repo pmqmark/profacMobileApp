@@ -11,7 +11,7 @@ class SubServiceSheet extends StatelessWidget {
       constraints: BoxConstraints(
         maxHeight: 250,
       ),
-      child: Padding( 
+      child: Padding(
         padding:
             const EdgeInsets.only(left: 25, right: 25, top: 30, bottom: 10),
         child: Column(
@@ -97,7 +97,9 @@ class SubServiceSheet extends StatelessWidget {
             ),
             Spacer(),
             BottomSaveButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               text: "Done",
             )
           ],

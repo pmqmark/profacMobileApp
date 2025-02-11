@@ -77,47 +77,46 @@ class ServiceListItem extends StatelessWidget {
         HorizontalSpace(35),
         Column(
           children: [
-            VerticalSpace(20),
+            VerticalSpace(40),
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                Image.network(
-                  "https://metropha.com/wp-content/uploads/2018/09/Metro-Plumbing-_-6-Characteristics-That-An-Emergency-Plumber-In-Chattanooga-TN-Must-Have.jpg",
-                  width: 90,
-                  height: 60,
-                  fit: BoxFit.cover,
-                ),
                 Transform.translate(
-                  offset: Offset(0, 20),
-                  child: SizedBox(
+                  offset: Offset(0, -20),
+                  child: Image.network(
+                    "https://metropha.com/wp-content/uploads/2018/09/Metro-Plumbing-_-6-Characteristics-That-An-Emergency-Plumber-In-Chattanooga-TN-Must-Have.jpg",
                     width: 90,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) => SubServiceSheet(),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(
+                  width: 90,
+                  height: 40,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => SubServiceSheet(),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
                       ),
-                      child: Text(
-                        "Add",
-                        style:
-                            Theme.of(context).textTheme.labelMedium?.copyWith(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                      ),
+                    ),
+                    child: Text(
+                      "Add",
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            color: Theme.of(context).primaryColor,
+                          ),
                     ),
                   ),
                 )
               ],
             ),
-            VerticalSpace(25),
+            VerticalSpace(5),
             Text('2 options', style: Theme.of(context).textTheme.labelSmall),
           ],
         )

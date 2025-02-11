@@ -11,6 +11,7 @@ class SearchBox extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
         prefixIcon: Icon(Icons.search, color: Colors.grey),
         filled: true,
         fillColor: Colors.white,

@@ -43,7 +43,7 @@ class MainmenuBody extends StatelessWidget {
           ),
           StoriesList(),
           ApplianceRepairList(),
-          VerticalSpace(30)
+          VerticalSpace(60)
         ],
       ),
     );

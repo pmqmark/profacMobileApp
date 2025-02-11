@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:profac/presentation/order/order_summary_screen.dart';
 
 class CartItemCard extends StatelessWidget {
   const CartItemCard({
@@ -124,7 +125,13 @@ class CartItemCard extends StatelessWidget {
                                   Theme.of(context).primaryColor),
                               padding: WidgetStateProperty.all(EdgeInsets.zero),
                             ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => OrderSummaryScreen(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Checkout",
                       style: TextStyle(

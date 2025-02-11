@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:profac/presentation/cart/cart_screen.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/common_widgets/saved_address_bottom_sheet.dart';
+import 'package:profac/presentation/address/saved_address_bottom_sheet.dart';
 
 class MainmenuAppbar extends StatelessWidget {
   const MainmenuAppbar({super.key});
@@ -13,12 +14,13 @@ class MainmenuAppbar extends StatelessWidget {
         GestureDetector(
           onTap: () {
             showModalBottomSheet(
-                showDragHandle: true,
-                backgroundColor: Colors.white,
-                context: context,
-                builder: (context) {
-                  return SavedAddressBottomSheet();
-                });
+              showDragHandle: true,
+              backgroundColor: Colors.white,
+              context: context,
+              builder: (context) {
+                return SavedAddressBottomSheet();
+              },
+            );
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -59,9 +61,15 @@ class MainmenuAppbar extends StatelessWidget {
         ),
         Badge(
           isLabelVisible: true,
-          child: Icon(
-            Icons.shopping_cart_outlined,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartScreen()));
+            },
+            child: Icon(
+              Icons.shopping_cart_outlined,
+              color: Colors.black,
+            ),
           ),
         ),
       ],

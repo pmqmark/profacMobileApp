@@ -11,7 +11,9 @@ class CartScreen extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(Icons.arrow_back),
         ),
         title: Row(
