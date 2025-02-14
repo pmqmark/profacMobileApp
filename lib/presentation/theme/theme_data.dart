@@ -97,10 +97,14 @@ ThemeData themeData = ThemeData(
   ),
   splashColor: const Color.fromARGB(255, 236, 255, 236),
   iconTheme: const IconThemeData(color: Color(0xFF379F53), size: 24),
+  // linear progress indicator theme
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: const Color(0xFF379F53),
+  ),
   // Input decoration theme
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-     fillColor: Colors.white,
+    fillColor: Colors.white,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(
@@ -196,6 +200,4 @@ ThemeData themeData = ThemeData(
     ),
   ),
   // Text form field theme
-  
-
 );

@@ -3,11 +3,16 @@ import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/search_box.dart';
 import 'package:profac/presentation/order/widgets/coupon_tile.dart';
 
-class CouponsBottomSheet extends StatelessWidget {
+class CouponsBottomSheet extends StatefulWidget {
   const CouponsBottomSheet({
     super.key,
   });
 
+  @override
+  State<CouponsBottomSheet> createState() => _CouponsBottomSheetState();
+}
+
+class _CouponsBottomSheetState extends State<CouponsBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
@@ -35,6 +40,7 @@ class CouponsBottomSheet extends StatelessWidget {
               children: [
                 SearchBox(
                   hintText: "Search for coupons",
+                  controller: TextEditingController(),
                 ),
                 VerticalSpace(16),
                 Text("Applied coupon",

@@ -4,8 +4,8 @@ import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/address/saved_address_bottom_sheet.dart';
 
 class MainmenuAppbar extends StatelessWidget {
-  const MainmenuAppbar({super.key});
-
+  const MainmenuAppbar({super.key, required this.textFieldFocusNode});
+  final FocusNode textFieldFocusNode;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,6 +13,7 @@ class MainmenuAppbar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
+            textFieldFocusNode.unfocus();
             showModalBottomSheet(
               showDragHandle: true,
               backgroundColor: Colors.white,
@@ -20,7 +21,9 @@ class MainmenuAppbar extends StatelessWidget {
               builder: (context) {
                 return SavedAddressBottomSheet();
               },
-            );
+            ).then((_) {
+              textFieldFocusNode.unfocus();
+            });
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,

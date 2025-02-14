@@ -8,10 +8,11 @@ import 'package:profac/presentation/mainmenu/widgets/services_grid.dart';
 import 'package:profac/presentation/mainmenu/widgets/stories_list.dart';
 
 class MainmenuBody extends StatelessWidget {
-  const MainmenuBody({
-    super.key,
+   MainmenuBody({
+    super.key, required this.textFieldFocusNode,
   });
-
+  final TextEditingController searchController = TextEditingController();
+  final FocusNode textFieldFocusNode ;
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -22,6 +23,9 @@ class MainmenuBody extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
+                  controller: searchController,
+                  focusNode: textFieldFocusNode,
+                  autofocus: false,
                   decoration: InputDecoration(
                     prefixIcon: Icon(CupertinoIcons.search, size: 18),
                     hintText: 'Search for services',

@@ -65,7 +65,9 @@ class ServicesListScreen extends StatelessWidget {
               ],
             ),
             VerticalSpace(24),
-            SearchBox(hintText: "Search for services"),
+            SearchBox(
+                hintText: "Search for services",
+                controller: TextEditingController()),
             VerticalSpace(24),
             ...List.generate(
               5,

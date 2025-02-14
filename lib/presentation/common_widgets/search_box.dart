@@ -4,11 +4,17 @@ class SearchBox extends StatelessWidget {
   const SearchBox({
     super.key,
     required this.hintText,
+    required this.controller,
+    this.onChanged,
   });
   final String hintText;
+  final Function(String query)? onChanged;
+  final TextEditingController controller ;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey, fontSize: 13),

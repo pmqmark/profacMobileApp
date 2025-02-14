@@ -1,17 +1,25 @@
 import 'dart:developer';
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:profac/presentation/address/new_address_form.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:profac/application/search_location/search_location_bloc.dart';
+import 'package:profac/domain/address/model/g_map_location_address_model.dart';
 import 'package:profac/presentation/address/select_loction.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/search_box.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
-class SearchLocationBottomSheet extends StatelessWidget {
+class SearchLocationBottomSheet extends StatefulWidget {
   const SearchLocationBottomSheet({super.key});
 
+  @override
+  State<SearchLocationBottomSheet> createState() =>
+      _SearchLocationBottomSheetState();
+}
+
+class _SearchLocationBottomSheetState extends State<SearchLocationBottomSheet> {
+  final TextEditingController searchController = TextEditingController();
+  Timer? debounce;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,8 +34,17 @@ class SearchLocationBottomSheet extends StatelessWidget {
         VerticalSpace(10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
-          child:
-              SearchBox(hintText: "Search for your locality/society/apartment"),
+          child: SearchBox(
+            hintText: "Search for your locality/society/apartment",
+            controller: searchController,
+            onChanged: (query) {
+              if (debounce?.isActive ?? false) debounce?.cancel();
+              debounce = Timer(const Duration(milliseconds: 500), () {
+                BlocProvider.of<SearchLocationBloc>(context)
+                    .add(SearchLocationEvent.searchLocation(query));
+              });
+            },
+          ),
         ),
         VerticalSpace(10),
         ListTile(
@@ -43,7 +60,10 @@ class SearchLocationBottomSheet extends StatelessWidget {
                   .titleMedium
                   ?.copyWith(color: Theme.of(context).primaryColor)),
           onTap: () {
-            Navigator.pop(context);
+            BlocProvider.of<SearchLocationBloc>(context).add(
+              SearchLocationEvent.started(),
+            );
+            FocusScope.of(context).unfocus();
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return SelectLoction();
             }));
@@ -51,163 +71,99 @@ class SearchLocationBottomSheet extends StatelessWidget {
         ),
         Divider(),
         Expanded(
-          child: ListView.separated(
-              itemBuilder: (context, index) {
-                return ListTile(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 25),
-                  leading: Icon(Icons.place_outlined, size: 24),
-                  title: Text("Kolkata, West Bengal",
-                      style: Theme.of(context).textTheme.titleMedium),
-                  subtitle: Text(
-                    "Nearby: Salt Lake City",
-                    style: Theme.of(context).textTheme.labelSmall,
-                    maxLines: 2,
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return SelectLoction();
-                    }));
-                  },
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Divider();
-              },
-              itemCount: 3),
+          child: BlocBuilder<SearchLocationBloc, SearchLocationState>(
+            builder: (context, state) {
+              return state.when(
+                initial: () => SizedBox(),
+                loading: () {
+                  return Skeletonizer(
+                    child: _buildSuccess(
+                      List.generate(
+                        5,
+                        (index) => GMapAddress(
+                            name: "Loadinggggggggg",
+                            formattedAddress:
+                                "Loadinggggggg.......................",
+                            lat: 0.0,
+                            lng: 0.0),
+                      ),
+                    ),
+                  );
+                },
+                loaded: (data) {
+                  if (data.results.isEmpty &&
+                      searchController.text.isNotEmpty) {
+                    return ListView(
+                      children: [
+                        ListTile(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                          title: Text("No results found",
+                              style: Theme.of(context).textTheme.titleMedium),
+                        ),
+                      ],
+                    );
+                  }
+                  return _buildSuccess(data.results);
+                },
+                error: (message) => _buildError(context),
+                loadedLatLng: (address) {
+                  return SizedBox();
+                },
+              );
+            },
+          ),
         )
       ],
     );
   }
+
+  Center _buildError(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Something went wrong",
+              style: Theme.of(context).textTheme.labelMedium),
+          TextButton(
+            onPressed: () {
+              BlocProvider.of<SearchLocationBloc>(context).add(
+                SearchLocationEvent.searchLocation(searchController.text),
+              );
+            },
+            child: Text(
+              "Try Again",
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  ListView _buildSuccess(List<GMapAddress> data) {
+    return ListView.separated(
+        itemBuilder: (context, index) {
+          return ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 25),
+            leading: Icon(Icons.place_outlined, size: 24),
+            title: Text(data[index].name,
+                style: Theme.of(context).textTheme.titleMedium),
+            subtitle: Text(
+              data[index].formattedAddress,
+              style: Theme.of(context).textTheme.labelSmall,
+              maxLines: 2,
+            ),
+            onTap: () {
+              FocusScope.of(context).unfocus();
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SelectLoction(address: data[index]);
+              }));
+            },
+          );
+        },
+        separatorBuilder: (context, index) {
+          return Divider();
+        },
+        itemCount: data.length);
+  }
 }
-
-// class PlaceSearchPage extends StatefulWidget {
-//   @override
-//   _PlaceSearchPageState createState() => _PlaceSearchPageState();
-// }
-
-// class _PlaceSearchPageState extends State<PlaceSearchPage> {
-//   final TextEditingController _searchController = TextEditingController();
-//   List<Map<String, dynamic>> _searchResults = [];
-//   Timer? _debounce;
-//   @override
-//   void dispose() {
-//     _debounce?.cancel();
-//     super.dispose();
-//   }
-
-//   void _performSearch(String query) async {
-//     final apiKey = '';
-//     final url =
-//         'https://maps.googleapis.com/maps/api/place/textsearch/json?query=$query&key=$apiKey';
-
-//     final response = await http.get(Uri.parse(url));
-//     if (response.statusCode == 200) {
-//       final data = json.decode(response.body);
-//       log('Search results: ${data['results']}');
-//       setState(() {
-//         _searchResults = (data['results'] as List<dynamic>).map((place) {
-//           return {
-//             'name': place['name'] as String,
-//             'address': place['formatted_address'] as String,
-//             'latitude': place['geometry']['location']['lat'],
-//             'longitude': place['geometry']['location']['lng'],
-//           };
-//         }).toList();
-//       });
-//     } else {
-//       log('Failed to load search results: ${response}');
-//       setState(() {
-//         _searchResults = [];
-//       });
-//     }
-//   }
-
-//   void _onPlaceTap(Map<String, dynamic> place) {
-//     final name = place['name'];
-//     final address = place['address'];
-//     final latitude = place['latitude'];
-//     final longitude = place['longitude'];
-//     print(
-//         'Place: $name, Address: $address, Latitude: $latitude, Longitude: $longitude');
-
-//     // Show a dialog with place details
-//     showDialog(
-//       context: context,
-//       builder: (context) {
-//         return AlertDialog(
-//           title: Text('Place Details'),
-//           content: Column(
-//             mainAxisSize: MainAxisSize.min,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text('Name: $name'),
-//               Text('Address: $address'),
-//               Text('Latitude: $latitude'),
-//               Text('Longitude: $longitude'),
-//             ],
-//           ),
-//           actions: [
-//             TextButton(
-//               onPressed: () {
-//                 Navigator.pop(context);
-//               },
-//               child: Text('OK'),
-//             ),
-//           ],
-//         );
-//       },
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Search Places'),
-//       ),
-//       body: Column(
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: TextField(
-//               controller: _searchController,
-//               decoration: InputDecoration(
-//                 hintText: 'Search for places...',
-//                 border: OutlineInputBorder(),
-//                 suffixIcon: IconButton(
-//                   icon: Icon(Icons.search),
-//                   onPressed: () {
-//                     _performSearch(_searchController.text);
-//                   },
-//                 ),
-//               ),
-//               onChanged: (query) {
-//                 if (_debounce?.isActive ?? false) _debounce?.cancel();
-//                 _debounce = Timer(const Duration(milliseconds: 500), () {
-//                   _performSearch(query);
-//                 });
-//               },
-//             ),
-//           ),
-//           Expanded(
-//             child: ListView.builder(
-//               itemCount: _searchResults.length,
-//               itemBuilder: (context, index) {
-//                 final place = _searchResults[index];
-//                 return ListTile(
-//                   title: Text(place['name']),
-//                   subtitle: Text(place['address']),
-//                   onTap: () {
-//                     _onPlaceTap(place);
-//                   },
-//                 );
-//               },
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

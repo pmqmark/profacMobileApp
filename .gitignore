@@ -46,3 +46,4 @@ app.*.map.json
 
 # Scret keys
 android/key.properties
+lib/core/base_url.dart

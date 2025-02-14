@@ -45,14 +45,6 @@ class HomeScreen extends StatelessWidget {
                     icon: Icon(Icons.person),
                     label: 'Profile',
                   ),
-                  // BottomNavigationBarItem(
-                  //   icon: Icon(Icons.notifications),
-                  //   label: 'Notification',
-                  // ),
-                  // BottomNavigationBarItem(
-                  //   icon: Icon(Icons.settings),
-                  //   label: 'Settings',
-                  // ),
                 ],
                 currentIndex: index,
                 onTap: (value) {

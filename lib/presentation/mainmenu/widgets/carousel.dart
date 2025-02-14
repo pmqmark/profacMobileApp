@@ -42,7 +42,7 @@ class _CarouselState extends State<Carousel> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzrQ734S8ljh4PsptcUJQPKIuQq5JSd7Iwgw&s"),
+                            "https://www.cdc.gov/natural-disasters/media/images/cleaningsuppliesinbucket.jpg"),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(20),
                   ),

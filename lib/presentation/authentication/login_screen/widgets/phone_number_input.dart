@@ -45,9 +45,9 @@ class _PhoneNumberInputState extends State<PhoneNumberInput> {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Theme.of(context).inputDecorationTheme.fillColor,
-        borderRadius: BorderRadius.circular(12),
-      ),
+          color: Colors.grey[100],
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey[300]!, width: 1)),
       child: Row(
         children: [
           CountrySelector(
@@ -58,12 +58,17 @@ class _PhoneNumberInputState extends State<PhoneNumberInput> {
               focusNode: _focusNode,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
+                fillColor: Colors.transparent,
                 hintText: 'Phone Number',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
                 focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),

@@ -28,6 +28,7 @@ class ServicesGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView(
       shrinkWrap: true,
+      padding: EdgeInsets.only(top: 20),
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
