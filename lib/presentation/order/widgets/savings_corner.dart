@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/order/order_summary_screen.dart';
-import 'package:profac/presentation/order/widgets/coupon_tile.dart';
 import 'package:profac/presentation/order/widgets/coupons_bottom_sheet.dart';
 
 class SavingsCornerCard extends StatelessWidget {

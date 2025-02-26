@@ -1,14 +1,17 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pinput/pinput.dart';
-import 'package:profac/presentation/authentication/auth_success_screen.dart/auth_success_screen.dart';
+import 'package:profac/application/authentication/authentication_bloc.dart';
+import 'package:profac/presentation/authentication/otp_screen/widgets/bottom_button_area.dart';
+import 'package:profac/presentation/authentication/otp_screen/widgets/otp_field.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class OtpScreen extends StatelessWidget {
-  OtpScreen({super.key});
+  OtpScreen({super.key, required this.mobileNumber});
+  final int mobileNumber;
   final ValueNotifier<int> timerNotifier = ValueNotifier<int>(30);
+  final TextEditingController otpController = TextEditingController();
   Timer? timer;
   @override
   Widget build(BuildContext context) {
@@ -42,37 +45,13 @@ class OtpScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
                 Text(
-                  '+91 9876543210',
+                  '+91 $mobileNumber',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             VerticalSpace(20),
-            Pinput(
-              length: 4,
-              defaultPinTheme: PinTheme(
-                textStyle: Theme.of(context).textTheme.titleLarge,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                height: 45,
-                width: 52,
-              ),
-              focusedPinTheme: PinTheme(
-                textStyle: Theme.of(context).textTheme.titleLarge,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 2,
-                  ),
-                ),
-                height: 45,
-                width: 52,
-              ),
-            ),
+            OtpField(otpController: otpController),
             VerticalSpace(30),
             ValueListenableBuilder(
               valueListenable: timerNotifier,
@@ -90,6 +69,11 @@ class OtpScreen extends StatelessWidget {
                         }
                       });
                     }
+                    if (timer != null && timer!.isActive) {
+                      return;
+                    }
+                    BlocProvider.of<AuthenticationBloc>(context)
+                        .add(AuthenticationEvent.sendOTP(mobileNumber));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: secs == 0
@@ -112,47 +96,8 @@ class OtpScreen extends StatelessWidget {
               },
             ),
             Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(),
-                    padding: const EdgeInsets.all(0),
-                    backgroundColor: Colors.grey[200],
-                  ),
-                  child: Icon(
-                    Icons.arrow_back_sharp,
-                    size: 20,
-                  ),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AuthSuccessScreen()));
-                  },
-                  icon: Icon(
-                    Icons.arrow_forward_sharp,
-                    size: 20,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  label: Text(
-                    "Next",
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(120),
-                    ),
-                  ),
-                  iconAlignment: IconAlignment.end,
-                ),
-              ],
-            ),
+            BottomButtonArea(
+                otpController: otpController, mobileNumber: mobileNumber),
             VerticalSpace(40.h),
           ],
         ),

@@ -105,9 +105,7 @@ class TimeSlotChoosingSheet extends StatelessWidget {
 }
 
 class _TimeCard extends StatelessWidget {
-  const _TimeCard({
-    super.key,
-  });
+  const _TimeCard();
 
   @override
   Widget build(BuildContext context) {
@@ -132,9 +130,7 @@ class _TimeCard extends StatelessWidget {
 }
 
 class _DateCard extends StatelessWidget {
-  const _DateCard({
-    super.key,
-  });
+  const _DateCard();
 
   @override
   Widget build(BuildContext context) {

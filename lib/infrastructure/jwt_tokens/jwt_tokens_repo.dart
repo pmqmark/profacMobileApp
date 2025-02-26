@@ -14,7 +14,7 @@ import 'package:profac/domain/request/request.dart';
 class JwtTokensRepo extends IJwtTokensRepo {
   @override
   Future<Either<MainFailure, void>> fetchNewAccessToken() async {
-    getIt<JwtTokens>().clearAccessToken();
+    log("trying to fetch new access token");
     final data = {
       "refreshToken": getIt<JwtTokens>().refreshToken,
     };
@@ -28,10 +28,12 @@ class JwtTokensRepo extends IJwtTokensRepo {
             ),
           );
       if (response.statusCode == 200) {
-        final accessToken = AccessTokenModel.fromJson(response.data);
-        getIt<JwtTokens>()
-            .updateAccesstoken(accessToken: accessToken.accessToken);
-
+        final accessToken = response.data['data']['accessToken'];
+        final refreshToken = response.data['data']['refreshToken'];
+        getIt<JwtTokens>().clearTokens();
+        await getIt<JwtTokens>().updateAccesstoken(
+            accessToken: accessToken, refreshToken: refreshToken);
+        getIt<Request>().updateAccessToken();
         return right(null);
       } else {
         return left(const MainFailure.clientFailure());
@@ -42,14 +44,21 @@ class JwtTokensRepo extends IJwtTokensRepo {
       return left(const MainFailure.otherFailure());
     }
   }
-}
 
-class AccessTokenModel {
-  final String accessToken;
-
-  AccessTokenModel({required this.accessToken});
-
-  factory AccessTokenModel.fromJson(Map<String, dynamic> json) {
-    return AccessTokenModel(accessToken: json['accessToken']);
+  @override
+  Future<Either<MainFailure, void>> authFailureHandler(
+      MainFailure failure) async {
+    final response = await fetchNewAccessToken();
+    log("auth failure handler: $response");
+    return response.fold((l) {
+      if (l is AuthFailure) {
+        log("auth failure");
+        return left(l);
+      }
+      return left(const MainFailure.clientFailure());
+    }, (r) {
+      log("access token fetched successfully");
+      return right(null);
+    });
   }
 }

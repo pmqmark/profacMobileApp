@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/mainmenu/widgets/appliance_repair_list.dart';
 import 'package:profac/presentation/mainmenu/widgets/carousel.dart';
+import 'package:profac/presentation/mainmenu/widgets/categories_lists.dart';
 import 'package:profac/presentation/mainmenu/widgets/services_grid.dart';
-import 'package:profac/presentation/mainmenu/widgets/stories_list.dart';
 
 class MainmenuBody extends StatelessWidget {
-   MainmenuBody({
-    super.key, required this.textFieldFocusNode,
+  MainmenuBody({
+    super.key,
+    required this.textFieldFocusNode,
   });
   final TextEditingController searchController = TextEditingController();
-  final FocusNode textFieldFocusNode ;
+  final FocusNode textFieldFocusNode;
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -45,8 +45,8 @@ class MainmenuBody extends StatelessWidget {
               ],
             ),
           ),
-          StoriesList(),
-          ApplianceRepairList(),
+          // StoriesList(),
+          CategoriesLists(),
           VerticalSpace(60)
         ],
       ),

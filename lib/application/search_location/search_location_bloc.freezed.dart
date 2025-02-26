@@ -826,7 +826,7 @@ mixin _$SearchLocationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(GMapLocationAddressModel address) loaded,
-    required TResult Function(GMapAddress? address) loadedLatLng,
+    required TResult Function(GMapAddress address) loadedLatLng,
     required TResult Function(MainFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -835,7 +835,7 @@ mixin _$SearchLocationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(GMapLocationAddressModel address)? loaded,
-    TResult? Function(GMapAddress? address)? loadedLatLng,
+    TResult? Function(GMapAddress address)? loadedLatLng,
     TResult? Function(MainFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -844,7 +844,7 @@ mixin _$SearchLocationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(GMapLocationAddressModel address)? loaded,
-    TResult Function(GMapAddress? address)? loadedLatLng,
+    TResult Function(GMapAddress address)? loadedLatLng,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) =>
@@ -854,7 +854,7 @@ mixin _$SearchLocationState {
     required TResult Function(_Initial value) initial,
     required TResult Function(SearchLocationLoading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoadedLatLng value) loadedLatLng,
+    required TResult Function(LoadedLatLng value) loadedLatLng,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -863,7 +863,7 @@ mixin _$SearchLocationState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(SearchLocationLoading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoadedLatLng value)? loadedLatLng,
+    TResult? Function(LoadedLatLng value)? loadedLatLng,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -872,7 +872,7 @@ mixin _$SearchLocationState {
     TResult Function(_Initial value)? initial,
     TResult Function(SearchLocationLoading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoadedLatLng value)? loadedLatLng,
+    TResult Function(LoadedLatLng value)? loadedLatLng,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -944,7 +944,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(GMapLocationAddressModel address) loaded,
-    required TResult Function(GMapAddress? address) loadedLatLng,
+    required TResult Function(GMapAddress address) loadedLatLng,
     required TResult Function(MainFailure failure) error,
   }) {
     return initial();
@@ -956,7 +956,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(GMapLocationAddressModel address)? loaded,
-    TResult? Function(GMapAddress? address)? loadedLatLng,
+    TResult? Function(GMapAddress address)? loadedLatLng,
     TResult? Function(MainFailure failure)? error,
   }) {
     return initial?.call();
@@ -968,7 +968,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(GMapLocationAddressModel address)? loaded,
-    TResult Function(GMapAddress? address)? loadedLatLng,
+    TResult Function(GMapAddress address)? loadedLatLng,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -984,7 +984,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(SearchLocationLoading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoadedLatLng value) loadedLatLng,
+    required TResult Function(LoadedLatLng value) loadedLatLng,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -996,7 +996,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(SearchLocationLoading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoadedLatLng value)? loadedLatLng,
+    TResult? Function(LoadedLatLng value)? loadedLatLng,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -1008,7 +1008,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(SearchLocationLoading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoadedLatLng value)? loadedLatLng,
+    TResult Function(LoadedLatLng value)? loadedLatLng,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1069,7 +1069,7 @@ class _$SearchLocationLoadingImpl implements SearchLocationLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(GMapLocationAddressModel address) loaded,
-    required TResult Function(GMapAddress? address) loadedLatLng,
+    required TResult Function(GMapAddress address) loadedLatLng,
     required TResult Function(MainFailure failure) error,
   }) {
     return loading();
@@ -1081,7 +1081,7 @@ class _$SearchLocationLoadingImpl implements SearchLocationLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(GMapLocationAddressModel address)? loaded,
-    TResult? Function(GMapAddress? address)? loadedLatLng,
+    TResult? Function(GMapAddress address)? loadedLatLng,
     TResult? Function(MainFailure failure)? error,
   }) {
     return loading?.call();
@@ -1093,7 +1093,7 @@ class _$SearchLocationLoadingImpl implements SearchLocationLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(GMapLocationAddressModel address)? loaded,
-    TResult Function(GMapAddress? address)? loadedLatLng,
+    TResult Function(GMapAddress address)? loadedLatLng,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -1109,7 +1109,7 @@ class _$SearchLocationLoadingImpl implements SearchLocationLoading {
     required TResult Function(_Initial value) initial,
     required TResult Function(SearchLocationLoading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoadedLatLng value) loadedLatLng,
+    required TResult Function(LoadedLatLng value) loadedLatLng,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -1121,7 +1121,7 @@ class _$SearchLocationLoadingImpl implements SearchLocationLoading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(SearchLocationLoading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoadedLatLng value)? loadedLatLng,
+    TResult? Function(LoadedLatLng value)? loadedLatLng,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -1133,7 +1133,7 @@ class _$SearchLocationLoadingImpl implements SearchLocationLoading {
     TResult Function(_Initial value)? initial,
     TResult Function(SearchLocationLoading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoadedLatLng value)? loadedLatLng,
+    TResult Function(LoadedLatLng value)? loadedLatLng,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1219,7 +1219,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(GMapLocationAddressModel address) loaded,
-    required TResult Function(GMapAddress? address) loadedLatLng,
+    required TResult Function(GMapAddress address) loadedLatLng,
     required TResult Function(MainFailure failure) error,
   }) {
     return loaded(address);
@@ -1231,7 +1231,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(GMapLocationAddressModel address)? loaded,
-    TResult? Function(GMapAddress? address)? loadedLatLng,
+    TResult? Function(GMapAddress address)? loadedLatLng,
     TResult? Function(MainFailure failure)? error,
   }) {
     return loaded?.call(address);
@@ -1243,7 +1243,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(GMapLocationAddressModel address)? loaded,
-    TResult Function(GMapAddress? address)? loadedLatLng,
+    TResult Function(GMapAddress address)? loadedLatLng,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -1259,7 +1259,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(SearchLocationLoading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoadedLatLng value) loadedLatLng,
+    required TResult Function(LoadedLatLng value) loadedLatLng,
     required TResult Function(_Error value) error,
   }) {
     return loaded(this);
@@ -1271,7 +1271,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(SearchLocationLoading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoadedLatLng value)? loadedLatLng,
+    TResult? Function(LoadedLatLng value)? loadedLatLng,
     TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
@@ -1283,7 +1283,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(SearchLocationLoading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoadedLatLng value)? loadedLatLng,
+    TResult Function(LoadedLatLng value)? loadedLatLng,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1312,7 +1312,7 @@ abstract class _$$LoadedLatLngImplCopyWith<$Res> {
           _$LoadedLatLngImpl value, $Res Function(_$LoadedLatLngImpl) then) =
       __$$LoadedLatLngImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({GMapAddress? address});
+  $Res call({GMapAddress address});
 }
 
 /// @nodoc
@@ -1328,24 +1328,24 @@ class __$$LoadedLatLngImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
+    Object? address = null,
   }) {
     return _then(_$LoadedLatLngImpl(
-      freezed == address
+      null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as GMapAddress?,
+              as GMapAddress,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoadedLatLngImpl implements _LoadedLatLng {
+class _$LoadedLatLngImpl implements LoadedLatLng {
   const _$LoadedLatLngImpl(this.address);
 
   @override
-  final GMapAddress? address;
+  final GMapAddress address;
 
   @override
   String toString() {
@@ -1377,7 +1377,7 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(GMapLocationAddressModel address) loaded,
-    required TResult Function(GMapAddress? address) loadedLatLng,
+    required TResult Function(GMapAddress address) loadedLatLng,
     required TResult Function(MainFailure failure) error,
   }) {
     return loadedLatLng(address);
@@ -1389,7 +1389,7 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(GMapLocationAddressModel address)? loaded,
-    TResult? Function(GMapAddress? address)? loadedLatLng,
+    TResult? Function(GMapAddress address)? loadedLatLng,
     TResult? Function(MainFailure failure)? error,
   }) {
     return loadedLatLng?.call(address);
@@ -1401,7 +1401,7 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(GMapLocationAddressModel address)? loaded,
-    TResult Function(GMapAddress? address)? loadedLatLng,
+    TResult Function(GMapAddress address)? loadedLatLng,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -1417,7 +1417,7 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
     required TResult Function(_Initial value) initial,
     required TResult Function(SearchLocationLoading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoadedLatLng value) loadedLatLng,
+    required TResult Function(LoadedLatLng value) loadedLatLng,
     required TResult Function(_Error value) error,
   }) {
     return loadedLatLng(this);
@@ -1429,7 +1429,7 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
     TResult? Function(_Initial value)? initial,
     TResult? Function(SearchLocationLoading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoadedLatLng value)? loadedLatLng,
+    TResult? Function(LoadedLatLng value)? loadedLatLng,
     TResult? Function(_Error value)? error,
   }) {
     return loadedLatLng?.call(this);
@@ -1441,7 +1441,7 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
     TResult Function(_Initial value)? initial,
     TResult Function(SearchLocationLoading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoadedLatLng value)? loadedLatLng,
+    TResult Function(LoadedLatLng value)? loadedLatLng,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1452,10 +1452,10 @@ class _$LoadedLatLngImpl implements _LoadedLatLng {
   }
 }
 
-abstract class _LoadedLatLng implements SearchLocationState {
-  const factory _LoadedLatLng(final GMapAddress? address) = _$LoadedLatLngImpl;
+abstract class LoadedLatLng implements SearchLocationState {
+  const factory LoadedLatLng(final GMapAddress address) = _$LoadedLatLngImpl;
 
-  GMapAddress? get address;
+  GMapAddress get address;
 
   /// Create a copy of SearchLocationState
   /// with the given fields replaced by the non-null parameter values.
@@ -1547,7 +1547,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(GMapLocationAddressModel address) loaded,
-    required TResult Function(GMapAddress? address) loadedLatLng,
+    required TResult Function(GMapAddress address) loadedLatLng,
     required TResult Function(MainFailure failure) error,
   }) {
     return error(failure);
@@ -1559,7 +1559,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(GMapLocationAddressModel address)? loaded,
-    TResult? Function(GMapAddress? address)? loadedLatLng,
+    TResult? Function(GMapAddress address)? loadedLatLng,
     TResult? Function(MainFailure failure)? error,
   }) {
     return error?.call(failure);
@@ -1571,7 +1571,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(GMapLocationAddressModel address)? loaded,
-    TResult Function(GMapAddress? address)? loadedLatLng,
+    TResult Function(GMapAddress address)? loadedLatLng,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -1587,7 +1587,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(SearchLocationLoading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoadedLatLng value) loadedLatLng,
+    required TResult Function(LoadedLatLng value) loadedLatLng,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1599,7 +1599,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(SearchLocationLoading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoadedLatLng value)? loadedLatLng,
+    TResult? Function(LoadedLatLng value)? loadedLatLng,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1611,7 +1611,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(SearchLocationLoading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoadedLatLng value)? loadedLatLng,
+    TResult Function(LoadedLatLng value)? loadedLatLng,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

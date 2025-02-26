@@ -9,7 +9,7 @@ class SearchBox extends StatelessWidget {
   });
   final String hintText;
   final Function(String query)? onChanged;
-  final TextEditingController controller ;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(

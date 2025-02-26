@@ -23,7 +23,7 @@ class StoriesCarousel extends StatefulWidget {
 }
 
 class _StoriesCarouselState extends State<StoriesCarousel> {
-  ValueNotifier<int> _currentPage = ValueNotifier(0);
+  final ValueNotifier<int> _currentPage = ValueNotifier(0);
 
   @override
   void dispose() {

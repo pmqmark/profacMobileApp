@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:profac/presentation/authentication/otp_screen/otp_screen.dart';
+import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/authentication/login_screen/widgets/phone_number_input.dart';
 
@@ -10,11 +11,13 @@ class LoginForm extends StatelessWidget {
       required this.isExpanded,
       required this.shrink,
       required this.expand,
-      required this.countryCodeController});
+      required this.countryCodeController,
+      required this.mobileNumberController});
   final bool isExpanded;
   final VoidCallback shrink;
   final VoidCallback expand;
   final TextEditingController countryCodeController;
+  final TextEditingController mobileNumberController;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,6 +42,7 @@ class LoginForm extends StatelessWidget {
           ),
           VerticalSpace(20),
           PhoneNumberInput(
+              controller: mobileNumberController,
               countryCodeController: countryCodeController,
               isExpanded: isExpanded,
               shrink: shrink,
@@ -53,8 +57,19 @@ class LoginForm extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => OtpScreen()));
+                            FocusNode().unfocus();
+                            final int mobile =
+                                int.tryParse(mobileNumberController.text) ?? 0;
+                            if (mobile == 0) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Invalid mobile number'),
+                                ),
+                              );
+                              return;
+                            }
+                            BlocProvider.of<AuthenticationBloc>(context)
+                                .add(AuthenticationEvent.sendOTP(mobile));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,

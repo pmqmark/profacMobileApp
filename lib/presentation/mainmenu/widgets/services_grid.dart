@@ -1,6 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:profac/application/categories_group/catrogies_group_bloc.dart';
+import 'package:profac/domain/categories/model/category_group_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class ServicesGrid extends StatelessWidget {
   ServicesGrid({
@@ -26,6 +29,41 @@ class ServicesGrid extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      BlocProvider.of<CategoriesGroupBloc>(context).add(
+        const CategoriesGroupEvent.getCategoryGroups(),
+      );
+    });
+    return BlocBuilder<CategoriesGroupBloc, CategoriesGroupState>(
+      builder: (context, state) {
+        return state.whenOrNull(
+              loading: () => _buildLoadingGrid(context),
+              loaded: (categoryModel) {
+                return _buildSuccessGrid(categoryModel, context);
+              },
+            ) ??
+            SizedBox();
+      },
+    );
+  }
+
+  Widget _buildLoadingGrid(context) {
+    return Skeletonizer(
+      child: _buildSuccessGrid(
+          List.generate(
+            4,
+            (index) => CategoryGroupModel(
+              name: "Demo name",
+              id: "sdfd",
+              categories: [],
+            ),
+          ),
+          context),
+    );
+  }
+
+  GridView _buildSuccessGrid(
+      List<CategoryGroupModel> categoryModel, BuildContext context) {
     return GridView(
       shrinkWrap: true,
       padding: EdgeInsets.only(top: 20),
@@ -37,7 +75,7 @@ class ServicesGrid extends StatelessWidget {
         childAspectRatio: 157 / 47,
       ),
       children: List.generate(
-        services.length,
+        categoryModel.length > 44 ? 4 : categoryModel.length,
         (index) {
           return InkWell(
             onTap: () {
@@ -71,7 +109,7 @@ class ServicesGrid extends StatelessWidget {
                       HorizontalSpace(10),
                       Expanded(
                         child: Text(
-                          services[index]["title"] as String,
+                          categoryModel[index].name,
                           style: Theme.of(context)
                               .textTheme
                               .labelMedium!

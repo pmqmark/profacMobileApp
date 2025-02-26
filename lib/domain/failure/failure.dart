@@ -9,5 +9,6 @@ class MainFailure with _$MainFailure {
   const factory MainFailure.authFailure(String message) = AuthFailure;
   const factory MainFailure.otherFailure({String? message}) = OtherFailure;
   const factory MainFailure.permissionFailure() = PermissionFailure;
+  const factory MainFailure.locationOff() = LocationOff;
   const factory MainFailure.noInternetConnection() = NoInternetConnection;
 }

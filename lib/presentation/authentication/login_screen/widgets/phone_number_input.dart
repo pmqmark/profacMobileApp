@@ -8,13 +8,14 @@ class PhoneNumberInput extends StatefulWidget {
     required this.isExpanded,
     required this.shrink,
     required this.expand,
+    required this.controller,
   });
 
   final TextEditingController countryCodeController;
   final bool isExpanded;
   final VoidCallback shrink;
   final VoidCallback expand;
-
+  final TextEditingController controller;
   @override
   _PhoneNumberInputState createState() => _PhoneNumberInputState();
 }
@@ -55,6 +56,7 @@ class _PhoneNumberInputState extends State<PhoneNumberInput> {
           ),
           Expanded(
             child: TextFormField(
+              controller: widget.controller,
               focusNode: _focusNode,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(

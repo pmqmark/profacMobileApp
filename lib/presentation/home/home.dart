@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:profac/presentation/bookings/bookings_screen.dart';
 import 'package:profac/presentation/mainmenu/mainmenu_screen.dart';
 import 'package:profac/presentation/profile/profile_screen.dart';
 
@@ -7,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   final ValueNotifier<int> currentIndexNotifier = ValueNotifier<int>(0);
   final pages = [
     MainmenuScreen(),
+    BookingsScreen(),
     ProfileScreen(),
   ];
   @override
@@ -38,11 +41,16 @@ class HomeScreen extends StatelessWidget {
                 elevation: 10,
                 items: [
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
+                    icon: Icon(Icons.home, size: 20),
                     label: 'Home',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.person),
+                    icon: Icon(CupertinoIcons.list_bullet_below_rectangle,
+                        size: 20),
+                    label: 'Bookings',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person, size: 20),
                     label: 'Profile',
                   ),
                 ],

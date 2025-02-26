@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:profac/presentation/common_widgets/success_check.dart';
 import 'package:profac/presentation/home/home.dart';
 
-class AuthSuccessScreen extends StatelessWidget {
+class AuthSuccessScreen extends StatefulWidget {
   const AuthSuccessScreen({super.key});
 
   @override
+  State<AuthSuccessScreen> createState() => _AuthSuccessScreenState();
+}
+
+class _AuthSuccessScreenState extends State<AuthSuccessScreen> {
+  bool checked = false;
+
+  @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      setState(() {
+        checked = true;
+      });
+    });
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -17,24 +30,8 @@ class AuthSuccessScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               VerticalSpace(100),
-              Container(
-                width: 72.w,
-                height: 72.h,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(100),
-                  color: Theme.of(context)
-                      .elevatedButtonTheme
-                      .style
-                      ?.backgroundColor
-                      ?.resolve({WidgetState.selected}),
-                ),
-                child: Center(
-                  child: Icon(Icons.check),
-                ),
+              SuccessCheck(
+                isChecked: checked,
               ),
               VerticalSpace(30),
               Text(

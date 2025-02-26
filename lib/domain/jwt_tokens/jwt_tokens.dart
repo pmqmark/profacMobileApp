@@ -7,22 +7,39 @@ import 'package:profac/infrastructure/localstorage/localstorage_repo.dart';
 class JwtTokens {
   String refreshToken = '';
   String accessToken = '';
-  saveTokens({required String refreshToken, required String accessToken}) {
+  String userId = '';
+  saveTokens(
+      {required String refreshToken,
+      required String accessToken,
+      required String userId}) {
     this.refreshToken = refreshToken;
     this.accessToken = accessToken;
+    this.userId = userId;
   }
 
-  updateAccesstoken({required String accessToken}) {
+  updateAccesstoken(
+      {required String accessToken, required String refreshToken}) async {
     this.accessToken = accessToken;
-    LocalstorageRepo().saveData();
+    this.refreshToken = refreshToken;
+    await LocalstorageRepo().saveData();
   }
 
-  clearAccessToken() {
+  clearTokens() {
     accessToken = '';
+    refreshToken = '';
     getIt<Request>().clearAccessToken();
+  }
+
+  clearAll() async {
+    accessToken = '';
+    refreshToken = '';
+    userId = '';
+    getIt<Request>().clearAccessToken();
+    return await LocalstorageRepo().clearData();
   }
 }
 
 abstract class IJwtTokensRepo {
   Future<Either<MainFailure, void>> fetchNewAccessToken();
+  Future<Either<MainFailure, void>> authFailureHandler(MainFailure failure);
 }

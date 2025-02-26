@@ -1,9 +1,17 @@
 //Authentication
 
 class ApiEndpoints {
-  static const otp = '/api/login.php';
-  static const updateAccessToken = '/api/auth_control.php';
+  //Authentication
+  static const otp = '/api/auth/send-otp';
+  static const verifyOtp = '/api/auth/verify-otp';
 
-  //profile
-  static const fetchUserProfile = '/api/profile_control.php?fetch_user_profile=true';
+  //Authorization
+  static const updateAccessToken = '/api/auth/refresh-token';
+
+  //Profile
+  static const profile = '/api/users';
+
+  //categories
+  static const getAllCategoryGroups = '/api/categories/groups';
+  static const getAllCategories = '/api/categories';
 }

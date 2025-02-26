@@ -33,20 +33,20 @@ class SearchLocationBloc
       final result = await addressRepo.getAddressByLatLng(event.address);
       result.fold(
         (failure) => emit(_Error(failure)),
-        (address) => emit(_LoadedLatLng(address)),
+        (address) => emit(LoadedLatLng(address)),
       );
     });
     on<_GetCurrentLocation>((event, emit) async {
       emit(SearchLocationLoading());
-      final result = await addressRepo.getCurrentAddress();
+      final result = await addressRepo.getCurrentLocation();
       log("current address is $result");
       result.fold(
         (failure) => emit(_Error(failure)),
-        (address) => emit(_LoadedLatLng(address)),
+        (address) => emit(LoadedLatLng(address)),
       );
     });
     on<_SetLocation>((event, emit) {
-      emit(_LoadedLatLng(event.address));
+      emit(LoadedLatLng(event.address));
     });
   }
   @override

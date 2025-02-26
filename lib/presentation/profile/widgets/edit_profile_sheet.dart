@@ -5,7 +5,7 @@ import 'package:profac/presentation/common_widgets/bottom_save_botton.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class EditProfileSheet extends StatefulWidget {
-  EditProfileSheet({super.key});
+  const EditProfileSheet({super.key});
 
   @override
   State<EditProfileSheet> createState() => _EditProfileSheetState();
@@ -58,15 +58,15 @@ class _EditProfileSheetState extends State<EditProfileSheet> {
                 isOTPSent = true;
               });
             },
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+            ),
             child: Text(
               "verify number",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 16,
               ),
-            ),
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
             ),
           ),
           VerticalSpace(16),

@@ -1,6 +1,5 @@
 import 'package:expansion_widget/expansion_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:profac/presentation/service/services_list_screen.dart';
 import 'package:profac/presentation/service/widgets/service_list_item.dart';
 
 class ServiceCategoryListItem extends StatelessWidget {

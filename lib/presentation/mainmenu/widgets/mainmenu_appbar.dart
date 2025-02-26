@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:profac/application/address/address_bloc.dart';
+import 'package:profac/application/profile/profile_bloc.dart';
+import 'package:profac/presentation/address/search_location.dart';
 import 'package:profac/presentation/cart/cart_screen.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/address/saved_address_bottom_sheet.dart';
+import 'package:profac/presentation/address/widgets/saved_address_bottom_sheet.dart';
 
 class MainmenuAppbar extends StatelessWidget {
   const MainmenuAppbar({super.key, required this.textFieldFocusNode});
@@ -14,16 +18,33 @@ class MainmenuAppbar extends StatelessWidget {
         GestureDetector(
           onTap: () {
             textFieldFocusNode.unfocus();
-            showModalBottomSheet(
-              showDragHandle: true,
-              backgroundColor: Colors.white,
-              context: context,
-              builder: (context) {
-                return SavedAddressBottomSheet();
+            BlocProvider.of<ProfileBloc>(context).state.mapOrNull(
+              profileLoaded: (state) {
+                if (state.model.addressList.isEmpty) {
+                  showModalBottomSheet(
+                    scrollControlDisabledMaxHeightRatio: 0.8,
+                    backgroundColor: Colors.white,
+                    context: context,
+                    builder: (context) {
+                      return SearchLocationBottomSheet();
+                    },
+                  );
+                } else {
+                  showModalBottomSheet(
+                    showDragHandle: true,
+                    backgroundColor: Colors.white,
+                    context: context,
+                    builder: (context) {
+                      return SavedAddressBottomSheet();
+                    },
+                  ).then(
+                    (_) {
+                      textFieldFocusNode.unfocus();
+                    },
+                  );
+                }
               },
-            ).then((_) {
-              textFieldFocusNode.unfocus();
-            });
+            );
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -45,37 +66,68 @@ class MainmenuAppbar extends StatelessWidget {
                 ),
               ),
               HorizontalSpace(10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Current location ▼',
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  Text(
-                    'Kolkata, West Bengal',
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                ],
-              ),
+              _selectedAddress(),
             ],
           ),
         ),
-        Badge(
-          isLabelVisible: true,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CartScreen()));
-            },
-            child: Icon(
-              Icons.shopping_cart_outlined,
-              color: Colors.black,
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => CartScreen()));
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Badge(
+              isLabelVisible: true,
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.black,
+              ),
             ),
           ),
         ),
       ],
+    );
+  }
+
+  BlocBuilder<AddressBloc, AddressState> _selectedAddress() {
+    return BlocBuilder<AddressBloc, AddressState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          orElse: () {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Current location ▼',
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+                Text(
+                  'Kolkata, West Bengal',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ],
+            );
+          },
+          loadedLocation: (state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Current location ▼',
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+                Text(
+                  state.address.name,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 }

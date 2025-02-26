@@ -1,8 +1,4 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:expansion_widget/expansion_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/search_box.dart';
 import 'package:profac/presentation/service/widgets/service_category_list_item.dart';

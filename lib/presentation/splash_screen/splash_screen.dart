@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
         listener: (context, state) {
           state.maybeWhen(
             authenticated: () {
-              Navigator.of(context).pushReplacementNamed('/home');
+              Navigator.of(context).pushReplacementNamed('/find_location');
             },
             unauthenticated: () {
               Navigator.of(context).pushReplacementNamed('/login');

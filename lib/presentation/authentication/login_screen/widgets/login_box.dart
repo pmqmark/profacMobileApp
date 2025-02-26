@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/presentation/authentication/login_screen/widgets/login_form.dart';
 
 class LoginBox extends StatelessWidget {
-   const LoginBox({super.key, required this.isExpanded, required this.shrink, required this.countryCodeController, required this.expand});
+   const LoginBox({super.key, required this.isExpanded, required this.shrink, required this.countryCodeController, required this.expand, required this.mobileNumberController});
   final bool isExpanded;
   final VoidCallback shrink;
   final VoidCallback expand;
   final TextEditingController countryCodeController;
+  final TextEditingController mobileNumberController ;
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -24,6 +25,7 @@ class LoginBox extends StatelessWidget {
           ),
         ),
         child: LoginForm(
+          mobileNumberController: mobileNumberController,
           isExpanded: isExpanded,
           shrink: shrink,
           expand: expand,

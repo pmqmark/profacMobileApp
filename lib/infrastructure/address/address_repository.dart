@@ -35,7 +35,7 @@ class AddressRepository extends IAddressRepo {
   }
 
   @override
-  Future<Either<MainFailure, GMapAddress?>> getAddressByLatLng(
+  Future<Either<MainFailure, GMapAddress>> getAddressByLatLng(
       LatLng latLng) async {
     try {
       final response = await Dio().get(
@@ -56,13 +56,22 @@ class AddressRepository extends IAddressRepo {
   }
 
   @override
-  Future<Either<MainFailure, GMapAddress?>> getCurrentAddress() async {
+  Future<Either<MainFailure, GMapAddress>> getCurrentLocation() async {
     final hasPermission = await _handleLocationPermission();
     if (!hasPermission) {
       return left(const MainFailure.permissionFailure());
     }
-    final position = await Geolocator.getCurrentPosition();
-    return getAddressByLatLng(LatLng(position.latitude, position.longitude));
+    try {
+      final position = await Geolocator.getCurrentPosition();
+      return getAddressByLatLng(LatLng(position.latitude, position.longitude));
+    } catch (e) {
+      final isLocationServiceEnabled =
+          await Geolocator.isLocationServiceEnabled();
+      if (!isLocationServiceEnabled) {
+        return left(const MainFailure.locationOff());
+      }
+      return left(const MainFailure.otherFailure());
+    }
   }
 
   Future<bool> _handleLocationPermission() async {

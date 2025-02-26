@@ -1,6 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/domain/address/model/g_map_location_address_model.dart';
+import 'package:profac/presentation/address/widgets/edit_reciever_sheet.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:profac/presentation/profile/widgets/edit_profile_sheet.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class NewAddressForm extends StatefulWidget {
@@ -18,6 +24,18 @@ class NewAddressForm extends StatefulWidget {
 class _NewAddressFormState extends State<NewAddressForm> {
   AddressType _selectedAddressType = AddressType.home;
   final TextEditingController _otherController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  @override
+  void initState() {
+    BlocProvider.of<ProfileBloc>(context).state.mapOrNull(
+      profileLoaded: (state) {
+        _nameController.text = state.model.name;
+        _phoneController.text = state.model.mobile;
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,40 +43,8 @@ class _NewAddressFormState extends State<NewAddressForm> {
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       children: [
-        if (widget.hasError)
-          Column(
-            children: [
-              Text("Something went wrong",
-                  style: Theme.of(context).textTheme.titleMedium),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  "Try again",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        if (!widget.hasError)
-          Skeletonizer(
-            enabled: widget.address == null,
-            ignoreContainers: true,
-            child: _CurrentAddrss(
-              address: widget.address ??
-                  GMapAddress(
-                    formattedAddress:
-                        "formatted address,formatted address,formatted address",
-                    lat: 0.0,
-                    lng: 0.0,
-                    name: "name,name,name,name",
-                  ),
-            ),
-          ),
+        if (widget.hasError) _errorWidget(context),
+        if (!widget.hasError) _loadingWidget(),
         Divider(),
         VerticalSpace(16),
         TextFormField(
@@ -120,32 +106,87 @@ class _NewAddressFormState extends State<NewAddressForm> {
             size: 22,
           ),
           title: Text(
-            "Reo, +91 8921066518",
+            "${_nameController.text}, ${_phoneController.text}",
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Colors.black,
                 ),
           ),
           trailing: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.white,
+                context: context,
+                builder: (context) {
+                  return EditRecieverSheet(
+                    name: _nameController.text,
+                    phone: _phoneController.text,
+                    onSave: (name, phone) {
+                      setState(() {
+                        _nameController.text = name;
+                        _phoneController.text = phone;
+                      });
+                    },
+                  );
+                },
+              );
+            },
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+            ),
             child: Text("Change",
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontSize: 14,
                 )),
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-            ),
           ),
           contentPadding: EdgeInsets.only(left: 10),
         ),
       ],
     );
   }
+
+  Column _errorWidget(BuildContext context) {
+    return Column(
+      children: [
+        Text("Something went wrong",
+            style: Theme.of(context).textTheme.titleMedium),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            "Try again",
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Skeletonizer _loadingWidget() {
+    return Skeletonizer(
+      enabled: widget.address == null,
+      ignoreContainers: true,
+      child: _CurrentAddrss(
+        address: widget.address ??
+            GMapAddress(
+              formattedAddress:
+                  "formatted address,formatted address,formatted address",
+              lat: 0.0,
+              lng: 0.0,
+              name: "name,name,name,name",
+            ),
+      ),
+    );
+  }
 }
 
 class _AddressTypeChip extends StatelessWidget {
   _AddressTypeChip({
-    super.key,
     required this.selectedAddressType,
     required this.onSelected,
     required this.addressType,
@@ -182,7 +223,6 @@ class _AddressTypeChip extends StatelessWidget {
 
 class _CurrentAddrss extends StatelessWidget {
   const _CurrentAddrss({
-    super.key,
     required this.address,
   });
   final GMapAddress address;

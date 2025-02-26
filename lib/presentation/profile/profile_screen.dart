@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/common_widgets/search_box.dart';
 import 'package:profac/presentation/profile/widgets/edit_profile_sheet.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -24,33 +25,47 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Reo George",
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.white,
-                        context: context,
-                        builder: (context) {
-                          return EditProfileSheet();
-                        },
-                      );
-                    },
-                    icon: Icon(
-                      Icons.edit_outlined,
-                      color: Colors.black45,
-                    ),
-                  )
-                ],
-              ),
-              Text('+91 73065 61022'),
+              BlocConsumer<ProfileBloc, ProfileState>(
+                  listener: (context, state) {
+                // TODO: implement listener
+              }, builder: (context, state) {
+                return state.maybeMap(orElse: () {
+                  return VerticalSpace(60);
+                }, profileLoaded: (state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.model.name,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.white,
+                                context: context,
+                                builder: (context) {
+                                  return EditProfileSheet();
+                                },
+                              );
+                            },
+                            icon: Icon(
+                              Icons.edit_outlined,
+                              color: Colors.black45,
+                            ),
+                          )
+                        ],
+                      ),
+                      Text(state.model.mobile),
+                    ],
+                  );
+                });
+              }),
               VerticalSpace(25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

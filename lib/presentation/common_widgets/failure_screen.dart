@@ -15,6 +15,11 @@ class FailureScreen extends StatelessWidget {
       image = 'assets/failure/no_internet_failure.png';
       title = "You're Offline !";
       buttonText = "Try again";
+    } else if (failure is LocationOff) {
+      message = 'Please enable location to continue';
+      image = 'assets/failure/location_failure.png';
+      title = 'Help Us Locate You!';
+      buttonText = "Try again";
     } else {
       message =
           "Our system's pipes are a bit clogged right now. Our repair crew is on it - please check back shortly!";

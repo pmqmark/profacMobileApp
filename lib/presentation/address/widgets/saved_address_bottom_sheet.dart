@@ -43,15 +43,15 @@ class _SavedAddressBottomSheetState extends State<SavedAddressBottomSheet> {
                 },
               );
             },
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+            ),
             child: Text(
               "+ Add new address",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 16,
               ),
-            ),
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
             ),
           ),
           Divider(),
@@ -94,13 +94,6 @@ class _SavedAddressBottomSheetState extends State<SavedAddressBottomSheet> {
                     width: 45,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text(
-                        "Edit",
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize: 14,
-                        ),
-                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         padding: EdgeInsets.zero,
@@ -109,6 +102,13 @@ class _SavedAddressBottomSheetState extends State<SavedAddressBottomSheet> {
                           side: BorderSide(
                             color: Theme.of(context).primaryColor,
                           ),
+                        ),
+                      ),
+                      child: Text(
+                        "Edit",
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 14,
                         ),
                       ),
                     ),
