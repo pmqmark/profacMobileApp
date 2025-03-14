@@ -95,8 +95,8 @@ ThemeData themeData = ThemeData(
       color: Colors.black,
     ),
   ),
-  splashColor: const Color.fromARGB(255, 236, 255, 236),
-  iconTheme: const IconThemeData(color: Color(0xFF379F53), size: 24),
+  splashColor: Colors.grey[300],
+  iconTheme: IconThemeData(color: Color(0xFF379F53), size: 24),
   // linear progress indicator theme
   progressIndicatorTheme: ProgressIndicatorThemeData(
     color: const Color(0xFF379F53),
@@ -164,7 +164,7 @@ ThemeData themeData = ThemeData(
   ),
 
   // Card theme
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     elevation: 0,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
@@ -194,7 +194,7 @@ ThemeData themeData = ThemeData(
     space: 0,
   ),
   // Dialog theme
-  dialogTheme: const DialogTheme(
+  dialogTheme: const DialogThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(16)),
     ),

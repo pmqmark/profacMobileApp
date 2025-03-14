@@ -55,7 +55,7 @@ class GMapAddress {
 }
 
 class GMapLocationAddressLatLngModel {
-  final GMapAddress result;
+  final GMapAddress? result;
 
   const GMapLocationAddressLatLngModel({
     required this.result,
@@ -65,7 +65,7 @@ class GMapLocationAddressLatLngModel {
     final GMapAddress? firstResult = (json['results'] as List?)
         ?.map((x) => GMapAddress.fromJson(x))
         .firstOrNull;
-    return GMapLocationAddressLatLngModel(result: firstResult!);
+    return GMapLocationAddressLatLngModel(result: firstResult);
   }
 
   @override

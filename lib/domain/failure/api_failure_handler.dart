@@ -8,7 +8,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 class ApiFailureHandler {
   Future<Either<MainFailure, T>> handleDioError<T>(DioException e) async {
-    log("DioException: ${e.message} ${T.toString()}");
+    log("DioException: ${e.message} ${T.toString()}", name: T.toString());
     final connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult.contains(ConnectivityResult.none)) {
       log("no Internet conneciton");
@@ -18,6 +18,8 @@ class ApiFailureHandler {
       return left(const MainFailure.otherFailure());
     } else if (e.response?.statusCode == 401) {
       return left(const MainFailure.authFailure("Unauthorized"));
+    } else if (e.response?.statusCode == 409) {
+      return left(const MainFailure.conflict());
     } else if (e.response?.statusCode == 500 ||
         e.response?.statusCode == 501 ||
         e.response?.statusCode == 502) {

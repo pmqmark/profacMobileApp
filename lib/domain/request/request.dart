@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:profac/core/base_url.dart';
 import 'package:profac/domain/di/injectable.dart';
 
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 
 class Request {
   final Dio dio = Dio(
@@ -21,7 +21,7 @@ class Request {
   }
 
   void updateAccessToken() {
-    final accessToken = getIt<JwtTokens>().accessToken;
+    final accessToken = getIt<TokensNKeys>().accessToken;
     dio.options.headers['Authorization'] = 'Bearer $accessToken';
     log(getIt<Request>().dio.options.headers['Authorization']);
   }

@@ -7,7 +7,7 @@ import 'package:profac/core/api_endpoints.dart';
 import 'package:profac/domain/di/injectable.dart';
 import 'package:profac/domain/failure/api_failure_handler.dart';
 import 'package:profac/domain/failure/failure.dart';
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 import 'package:profac/domain/profile/i_profile_repo.dart';
 import 'package:profac/domain/profile/model/profile_model.dart';
 import 'package:profac/domain/request/request.dart';
@@ -15,37 +15,35 @@ import 'package:profac/domain/request/request.dart';
 @LazySingleton(as: IProfileRepo)
 class ProfileRepo extends IProfileRepo {
   @override
-  Future<Either<MainFailure, void>> updateProfile({
+  Future<Either<MainFailure, ProfileModel>> updateProfile({
     String? name,
     String? mobile,
+    String? email,
   }) async {
     try {
-      Object? data;
-      if (name != null && mobile != null) {
-        data = {
-          'name': name,
-          'mobile': mobile,
-        };
-      } else if (name != null) {
-        data = {
-          'name': name,
-        };
-      } else if (mobile != null) {
-        data = {
-          'mobile': mobile,
-        };
+      Map data = {};
+      if (name != null) {
+        data['name'] = name;
       }
+      if (mobile != null) {
+        data['mobile'] = mobile;
+      }
+      if (email != null) {
+        data['email'] = email;
+      }
+      log(data.toString(), name: "update-rofile");
       final response = await getIt<Request>().dio.put(
-            "${ApiEndpoints.profile}/${getIt<JwtTokens>().userId}",
-            data: data,
+            "${ApiEndpoints.profile}/${getIt<TokensNKeys>().userId}",
+            data: data as Object,
           );
       if (response.statusCode == 200) {
-        return right(null);
+        final ProfileModel profileModel = ProfileModel.fromJson(response.data);
+        return right(profileModel);
       } else {
         return left(const MainFailure.clientFailure());
       }
     } catch (e) {
-      log(e.toString());
+      log(e.toString(), name: "update profile");
       if (e is DioException) {
         return ApiFailureHandler().handleDioError(e);
       } else {
@@ -59,7 +57,7 @@ class ProfileRepo extends IProfileRepo {
     try {
       final response = await getIt<Request>()
           .dio
-          .get("${ApiEndpoints.profile}/${getIt<JwtTokens>().userId}");
+          .get("${ApiEndpoints.profile}/${getIt<TokensNKeys>().userId}");
       if (response.statusCode == 200) {
         final ProfileModel profileModel = ProfileModel.fromJson(response.data);
         return right(profileModel);
@@ -67,7 +65,7 @@ class ProfileRepo extends IProfileRepo {
         return left(const MainFailure.clientFailure());
       }
     } catch (e) {
-      log(e.toString());
+      log(e.toString(), name: "get profile");
       if (e is DioException) {
         return ApiFailureHandler().handleDioError<ProfileModel>(e);
       } else {

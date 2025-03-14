@@ -22,9 +22,11 @@ mixin _$MainFailure {
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,9 +35,11 @@ mixin _$MainFailure {
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,9 +48,11 @@ mixin _$MainFailure {
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,9 +62,11 @@ mixin _$MainFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,9 +75,11 @@ mixin _$MainFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,9 +88,11 @@ mixin _$MainFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,9 +172,11 @@ class _$ClientFailureImpl
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return clientFailure();
   }
@@ -174,9 +188,11 @@ class _$ClientFailureImpl
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return clientFailure?.call();
   }
@@ -188,9 +204,11 @@ class _$ClientFailureImpl
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -206,9 +224,11 @@ class _$ClientFailureImpl
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return clientFailure(this);
   }
@@ -220,9 +240,11 @@ class _$ClientFailureImpl
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return clientFailure?.call(this);
   }
@@ -234,9 +256,11 @@ class _$ClientFailureImpl
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -303,9 +327,11 @@ class _$ServerFailureImpl
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return serverFailure();
   }
@@ -317,9 +343,11 @@ class _$ServerFailureImpl
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return serverFailure?.call();
   }
@@ -331,9 +359,11 @@ class _$ServerFailureImpl
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -349,9 +379,11 @@ class _$ServerFailureImpl
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return serverFailure(this);
   }
@@ -363,9 +395,11 @@ class _$ServerFailureImpl
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return serverFailure?.call(this);
   }
@@ -377,9 +411,11 @@ class _$ServerFailureImpl
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -473,9 +509,11 @@ class _$AuthFailureImpl with DiagnosticableTreeMixin implements AuthFailure {
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return authFailure(message);
   }
@@ -487,9 +525,11 @@ class _$AuthFailureImpl with DiagnosticableTreeMixin implements AuthFailure {
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return authFailure?.call(message);
   }
@@ -501,9 +541,11 @@ class _$AuthFailureImpl with DiagnosticableTreeMixin implements AuthFailure {
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (authFailure != null) {
@@ -519,9 +561,11 @@ class _$AuthFailureImpl with DiagnosticableTreeMixin implements AuthFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return authFailure(this);
   }
@@ -533,9 +577,11 @@ class _$AuthFailureImpl with DiagnosticableTreeMixin implements AuthFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return authFailure?.call(this);
   }
@@ -547,9 +593,11 @@ class _$AuthFailureImpl with DiagnosticableTreeMixin implements AuthFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (authFailure != null) {
@@ -651,9 +699,11 @@ class _$OtherFailureImpl with DiagnosticableTreeMixin implements OtherFailure {
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return otherFailure(message);
   }
@@ -665,9 +715,11 @@ class _$OtherFailureImpl with DiagnosticableTreeMixin implements OtherFailure {
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return otherFailure?.call(message);
   }
@@ -679,9 +731,11 @@ class _$OtherFailureImpl with DiagnosticableTreeMixin implements OtherFailure {
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (otherFailure != null) {
@@ -697,9 +751,11 @@ class _$OtherFailureImpl with DiagnosticableTreeMixin implements OtherFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return otherFailure(this);
   }
@@ -711,9 +767,11 @@ class _$OtherFailureImpl with DiagnosticableTreeMixin implements OtherFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return otherFailure?.call(this);
   }
@@ -725,9 +783,11 @@ class _$OtherFailureImpl with DiagnosticableTreeMixin implements OtherFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (otherFailure != null) {
@@ -747,6 +807,159 @@ abstract class OtherFailure implements MainFailure {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OtherFailureImplCopyWith<_$OtherFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConflictImplCopyWith<$Res> {
+  factory _$$ConflictImplCopyWith(
+          _$ConflictImpl value, $Res Function(_$ConflictImpl) then) =
+      __$$ConflictImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ConflictImplCopyWithImpl<$Res>
+    extends _$MainFailureCopyWithImpl<$Res, _$ConflictImpl>
+    implements _$$ConflictImplCopyWith<$Res> {
+  __$$ConflictImplCopyWithImpl(
+      _$ConflictImpl _value, $Res Function(_$ConflictImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
+  const _$ConflictImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MainFailure.conflict()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'MainFailure.conflict'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ConflictImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
+    required TResult Function(String message) authFailure,
+    required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
+    required TResult Function() permissionFailure,
+    required TResult Function() locationOff,
+    required TResult Function() noInternetConnection,
+    required TResult Function() noData,
+  }) {
+    return conflict();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
+    TResult? Function(String message)? authFailure,
+    TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
+    TResult? Function()? permissionFailure,
+    TResult? Function()? locationOff,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
+  }) {
+    return conflict?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
+    TResult Function(String message)? authFailure,
+    TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
+    TResult Function()? permissionFailure,
+    TResult Function()? locationOff,
+    TResult Function()? noInternetConnection,
+    TResult Function()? noData,
+    required TResult orElse(),
+  }) {
+    if (conflict != null) {
+      return conflict();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClientFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
+    required TResult Function(PermissionFailure value) permissionFailure,
+    required TResult Function(LocationOff value) locationOff,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
+  }) {
+    return conflict(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ClientFailure value)? clientFailure,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
+    TResult? Function(PermissionFailure value)? permissionFailure,
+    TResult? Function(LocationOff value)? locationOff,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
+  }) {
+    return conflict?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClientFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
+    TResult Function(PermissionFailure value)? permissionFailure,
+    TResult Function(LocationOff value)? locationOff,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
+    required TResult orElse(),
+  }) {
+    if (conflict != null) {
+      return conflict(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Conflict implements MainFailure {
+  const factory Conflict() = _$ConflictImpl;
 }
 
 /// @nodoc
@@ -803,9 +1016,11 @@ class _$PermissionFailureImpl
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return permissionFailure();
   }
@@ -817,9 +1032,11 @@ class _$PermissionFailureImpl
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return permissionFailure?.call();
   }
@@ -831,9 +1048,11 @@ class _$PermissionFailureImpl
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (permissionFailure != null) {
@@ -849,9 +1068,11 @@ class _$PermissionFailureImpl
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return permissionFailure(this);
   }
@@ -863,9 +1084,11 @@ class _$PermissionFailureImpl
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return permissionFailure?.call(this);
   }
@@ -877,9 +1100,11 @@ class _$PermissionFailureImpl
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (permissionFailure != null) {
@@ -944,9 +1169,11 @@ class _$LocationOffImpl with DiagnosticableTreeMixin implements LocationOff {
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return locationOff();
   }
@@ -958,9 +1185,11 @@ class _$LocationOffImpl with DiagnosticableTreeMixin implements LocationOff {
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return locationOff?.call();
   }
@@ -972,9 +1201,11 @@ class _$LocationOffImpl with DiagnosticableTreeMixin implements LocationOff {
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (locationOff != null) {
@@ -990,9 +1221,11 @@ class _$LocationOffImpl with DiagnosticableTreeMixin implements LocationOff {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return locationOff(this);
   }
@@ -1004,9 +1237,11 @@ class _$LocationOffImpl with DiagnosticableTreeMixin implements LocationOff {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return locationOff?.call(this);
   }
@@ -1018,9 +1253,11 @@ class _$LocationOffImpl with DiagnosticableTreeMixin implements LocationOff {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (locationOff != null) {
@@ -1089,9 +1326,11 @@ class _$NoInternetConnectionImpl
     required TResult Function() serverFailure,
     required TResult Function(String message) authFailure,
     required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
     required TResult Function() permissionFailure,
     required TResult Function() locationOff,
     required TResult Function() noInternetConnection,
+    required TResult Function() noData,
   }) {
     return noInternetConnection();
   }
@@ -1103,9 +1342,11 @@ class _$NoInternetConnectionImpl
     TResult? Function()? serverFailure,
     TResult? Function(String message)? authFailure,
     TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
     TResult? Function()? permissionFailure,
     TResult? Function()? locationOff,
     TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
   }) {
     return noInternetConnection?.call();
   }
@@ -1117,9 +1358,11 @@ class _$NoInternetConnectionImpl
     TResult Function()? serverFailure,
     TResult Function(String message)? authFailure,
     TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
     TResult Function()? permissionFailure,
     TResult Function()? locationOff,
     TResult Function()? noInternetConnection,
+    TResult Function()? noData,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -1135,9 +1378,11 @@ class _$NoInternetConnectionImpl
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(AuthFailure value) authFailure,
     required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
     required TResult Function(PermissionFailure value) permissionFailure,
     required TResult Function(LocationOff value) locationOff,
     required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
   }) {
     return noInternetConnection(this);
   }
@@ -1149,9 +1394,11 @@ class _$NoInternetConnectionImpl
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(AuthFailure value)? authFailure,
     TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
     TResult? Function(PermissionFailure value)? permissionFailure,
     TResult? Function(LocationOff value)? locationOff,
     TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
   }) {
     return noInternetConnection?.call(this);
   }
@@ -1163,9 +1410,11 @@ class _$NoInternetConnectionImpl
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(AuthFailure value)? authFailure,
     TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
     TResult Function(PermissionFailure value)? permissionFailure,
     TResult Function(LocationOff value)? locationOff,
     TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -1177,4 +1426,157 @@ class _$NoInternetConnectionImpl
 
 abstract class NoInternetConnection implements MainFailure {
   const factory NoInternetConnection() = _$NoInternetConnectionImpl;
+}
+
+/// @nodoc
+abstract class _$$NoDataImplCopyWith<$Res> {
+  factory _$$NoDataImplCopyWith(
+          _$NoDataImpl value, $Res Function(_$NoDataImpl) then) =
+      __$$NoDataImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoDataImplCopyWithImpl<$Res>
+    extends _$MainFailureCopyWithImpl<$Res, _$NoDataImpl>
+    implements _$$NoDataImplCopyWith<$Res> {
+  __$$NoDataImplCopyWithImpl(
+      _$NoDataImpl _value, $Res Function(_$NoDataImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoDataImpl with DiagnosticableTreeMixin implements NoData {
+  const _$NoDataImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MainFailure.noData()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'MainFailure.noData'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoDataImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
+    required TResult Function(String message) authFailure,
+    required TResult Function(String? message) otherFailure,
+    required TResult Function() conflict,
+    required TResult Function() permissionFailure,
+    required TResult Function() locationOff,
+    required TResult Function() noInternetConnection,
+    required TResult Function() noData,
+  }) {
+    return noData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
+    TResult? Function(String message)? authFailure,
+    TResult? Function(String? message)? otherFailure,
+    TResult? Function()? conflict,
+    TResult? Function()? permissionFailure,
+    TResult? Function()? locationOff,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? noData,
+  }) {
+    return noData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
+    TResult Function(String message)? authFailure,
+    TResult Function(String? message)? otherFailure,
+    TResult Function()? conflict,
+    TResult Function()? permissionFailure,
+    TResult Function()? locationOff,
+    TResult Function()? noInternetConnection,
+    TResult Function()? noData,
+    required TResult orElse(),
+  }) {
+    if (noData != null) {
+      return noData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClientFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(OtherFailure value) otherFailure,
+    required TResult Function(Conflict value) conflict,
+    required TResult Function(PermissionFailure value) permissionFailure,
+    required TResult Function(LocationOff value) locationOff,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(NoData value) noData,
+  }) {
+    return noData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ClientFailure value)? clientFailure,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(OtherFailure value)? otherFailure,
+    TResult? Function(Conflict value)? conflict,
+    TResult? Function(PermissionFailure value)? permissionFailure,
+    TResult? Function(LocationOff value)? locationOff,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(NoData value)? noData,
+  }) {
+    return noData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClientFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(OtherFailure value)? otherFailure,
+    TResult Function(Conflict value)? conflict,
+    TResult Function(PermissionFailure value)? permissionFailure,
+    TResult Function(LocationOff value)? locationOff,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(NoData value)? noData,
+    required TResult orElse(),
+  }) {
+    if (noData != null) {
+      return noData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoData implements MainFailure {
+  const factory NoData() = _$NoDataImpl;
 }

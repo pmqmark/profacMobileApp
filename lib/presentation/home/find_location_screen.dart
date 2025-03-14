@@ -5,9 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/address/address_bloc.dart';
 import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/application/search_location/search_location_bloc.dart';
+import 'package:profac/domain/address/model/address_modal.dart';
 import 'package:profac/domain/address/model/g_map_location_address_model.dart';
-import 'package:profac/domain/failure/failure.dart';
-import 'package:profac/domain/profile/model/profile_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/failure_screen.dart';
 import 'package:profac/presentation/common_widgets/success_check.dart';
@@ -27,6 +26,7 @@ class _FindLocationScreenState extends State<FindLocationScreen>
 
   @override
   void initState() {
+    log("FindLocationScreen initState");
     BlocProvider.of<ProfileBloc>(context).state.maybeMap(
           orElse: () {
             BlocProvider.of<ProfileBloc>(context).add(
@@ -60,21 +60,40 @@ class _FindLocationScreenState extends State<FindLocationScreen>
             listener: (context, profileState) {
               profileState.maybeMap(
                 orElse: () {},
-                error: (failure) {},
+                error: (failure) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => FailureScreen(
+                        failure: failure.failure,
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const FindLocationScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
                 profileLoaded: (state) {
-                  BlocProvider.of<SearchLocationBloc>(context).add(
-                    const SearchLocationEvent.getCurrentLocation(),
+                  BlocProvider.of<AddressBloc>(context).add(
+                    const AddressEvent.manageInitialLocation(),
                   );
                 },
               );
             },
             builder: (context, profileState) {
-              return BlocConsumer<SearchLocationBloc, SearchLocationState>(
+              return BlocConsumer<AddressBloc, AddressState>(
                 listener: (context, locationState) {
                   locationState.maybeMap(
                     orElse: () {},
-                    loadedLatLng: (latlong) {
-                      BlocProvider.of<AddressBloc>(context).add(AddressEvent.setLocation(latlong.address));
+                    loadedAddress: (latlong) {
+                      Future.delayed(const Duration(seconds: 1)).then((value) {
+                        Navigator.of(context).pushReplacementNamed('/home');
+                      });
+                    },
+                    loadedLocation: (value) {
                       Future.delayed(const Duration(seconds: 1)).then((value) {
                         Navigator.of(context).pushReplacementNamed('/home');
                       });
@@ -83,7 +102,7 @@ class _FindLocationScreenState extends State<FindLocationScreen>
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => FailureScreen(
-                            failure: failure.failure,
+                            failure: failure.error,
                             onPressed: () {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
@@ -101,13 +120,14 @@ class _FindLocationScreenState extends State<FindLocationScreen>
                 builder: (context, locationState) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     if (profileState is ProfileLoaded &&
-                        locationState is LoadedLatLng) {
+                        (locationState is LoadedAddress ||
+                            locationState is LoadedLocation)) {
                       setState(() {
                         isChecked = true;
                       });
                     }
                   });
-                  if (locationState is SearchLocationLoading ||
+                  if (locationState is AddressLoading ||
                       profileState is ProfileLoading) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -115,10 +135,17 @@ class _FindLocationScreenState extends State<FindLocationScreen>
                     );
                   }
                   if (profileState is ProfileLoaded &&
-                      locationState is LoadedLatLng) {
+                      locationState is LoadedAddress) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: _foundLocation(locationState.address!),
+                      children: _foundAddress(locationState.address),
+                    );
+                  }
+                  if (profileState is ProfileLoaded &&
+                      locationState is LoadedLocation) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: _foundLocation(locationState.address),
                     );
                   }
                   return VerticalSpace(1);
@@ -130,10 +157,29 @@ class _FindLocationScreenState extends State<FindLocationScreen>
       ),
     );
   }
+
   _foundLocation(GMapAddress address) {
     return [
       SuccessCheck(isChecked: isChecked),
       VerticalSpace(10),
+      Text(
+        address.formattedAddress,
+        style: Theme.of(context)
+            .textTheme
+            .labelMedium
+            ?.copyWith(fontWeight: FontWeight.w400),
+        textAlign: TextAlign.center,
+      ),
+    ];
+  }
+
+  _foundAddress(AddressModel address) {
+    return [
+      SuccessCheck(isChecked: isChecked),
+      VerticalSpace(10),
+      Text(address.type,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center),
       Text(
         address.formattedAddress,
         style: Theme.of(context)

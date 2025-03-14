@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/address/address_bloc.dart';
@@ -8,8 +10,7 @@ import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/address/widgets/saved_address_bottom_sheet.dart';
 
 class MainmenuAppbar extends StatelessWidget {
-  const MainmenuAppbar({super.key, required this.textFieldFocusNode});
-  final FocusNode textFieldFocusNode;
+  const MainmenuAppbar({super.key});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,7 +18,6 @@ class MainmenuAppbar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            textFieldFocusNode.unfocus();
             BlocProvider.of<ProfileBloc>(context).state.mapOrNull(
               profileLoaded: (state) {
                 if (state.model.addressList.isEmpty) {
@@ -36,10 +36,6 @@ class MainmenuAppbar extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return SavedAddressBottomSheet();
-                    },
-                  ).then(
-                    (_) {
-                      textFieldFocusNode.unfocus();
                     },
                   );
                 }
@@ -95,20 +91,40 @@ class MainmenuAppbar extends StatelessWidget {
       builder: (context, state) {
         return state.maybeMap(
           orElse: () {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Current location ▼',
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-                Text(
-                  'Kolkata, West Bengal',
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ],
-            );
+            return BlocProvider.of<AddressBloc>(context).state.maybeMap(
+                loadedLocation: (value) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Current location ▼',
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                  Text(
+                    value.address.name,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                ],
+              );
+            }, orElse: () {
+              return VerticalSpace(10);
+            }, loadedAddress: (state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    state.address.type.toUpperCase(),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  Text(
+                    "${state.address.houseNumber}, ${state.address.shortName}",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ],
+              );
+            });
           },
           loadedLocation: (state) {
             return Column(

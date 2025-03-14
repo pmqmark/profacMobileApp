@@ -6,4 +6,5 @@ import 'package:profac/domain/failure/failure.dart';
 abstract class ICategoryRepo {
   Future<Either<MainFailure,List<CategoryGroupModel>>> getCategoryGroups();
   Future<Either<MainFailure,List<CategoryModel>>> getAllCategoris();
+  Future<Either<MainFailure,CategoryModel>> getCategoruById(String categoryId);
 }

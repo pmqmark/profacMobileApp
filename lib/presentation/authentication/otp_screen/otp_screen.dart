@@ -8,8 +8,8 @@ import 'package:profac/presentation/authentication/otp_screen/widgets/otp_field.
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class OtpScreen extends StatelessWidget {
-  OtpScreen({super.key, required this.mobileNumber});
-  final int mobileNumber;
+  OtpScreen({super.key, required this.email});
+  final String email;
   final ValueNotifier<int> timerNotifier = ValueNotifier<int>(30);
   final TextEditingController otpController = TextEditingController();
   Timer? timer;
@@ -45,7 +45,7 @@ class OtpScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
                 Text(
-                  '+91 $mobileNumber',
+                  email,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
@@ -73,7 +73,7 @@ class OtpScreen extends StatelessWidget {
                       return;
                     }
                     BlocProvider.of<AuthenticationBloc>(context)
-                        .add(AuthenticationEvent.sendOTP(mobileNumber));
+                        .add(AuthenticationEvent.sendOTP(email));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: secs == 0
@@ -97,7 +97,7 @@ class OtpScreen extends StatelessWidget {
             ),
             Spacer(),
             BottomButtonArea(
-                otpController: otpController, mobileNumber: mobileNumber),
+                otpController: otpController, email: email),
             VerticalSpace(40.h),
           ],
         ),

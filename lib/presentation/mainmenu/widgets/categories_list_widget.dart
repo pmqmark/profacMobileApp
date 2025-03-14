@@ -1,6 +1,8 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/category_detailed/category_detailed_bloc.dart';
 import 'package:profac/domain/categories/model/category_group_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/service/services_list_screen.dart';
@@ -47,7 +49,7 @@ class CategoriesListWidget extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              categories.length,
+              categories.length+1,
               (index) {
                 if (index == 0) {
                   return HorizontalSpace(24);
@@ -59,10 +61,14 @@ class CategoriesListWidget extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ServicesListScreen(),
+                          builder: (context) => ServicesListScreen(
+                            categoryID: category.id,
+                            categoryName: category.name,
+                          ),
                         ),
                       );
                     },
+
                     child: Container(
                       width: 199,
                       padding: EdgeInsets.only(right: 40),

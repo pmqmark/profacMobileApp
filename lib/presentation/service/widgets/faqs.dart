@@ -1,10 +1,12 @@
 import 'package:expansion_widget/expansion_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:profac/domain/services/model/subservice_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class Faqs extends StatelessWidget {
-  const Faqs({super.key, required this.itemCount});
+  const Faqs({super.key, required this.itemCount, required this.faqmodels});
   final int itemCount;
+  final List<FAQModel> faqmodels;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -12,6 +14,7 @@ class Faqs extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
+        final faq = faqmodels[index];
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: ExpansionWidget(
@@ -25,7 +28,7 @@ class Faqs extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'What does a full cleaning service include?',
+                        faq.ques,
                         style:
                             Theme.of(context).textTheme.labelMedium!.copyWith(
                                   color: isExpaned
@@ -46,8 +49,7 @@ class Faqs extends StatelessWidget {
             },
             content: SizedBox(
               width: double.infinity,
-              child: Text(
-                  'Arrange furniture, disinfect, and add finishing touches like fresh linens or air fresheners.'),
+              child: Text(faq.ans),
             ),
           ),
         );
@@ -55,7 +57,7 @@ class Faqs extends StatelessWidget {
       separatorBuilder: (context, index) {
         return HorizontalSpace(10);
       },
-      itemCount: itemCount,
+      itemCount: faqmodels.length,
     );
   }
 }

@@ -1,34 +1,37 @@
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/domain/services/model/service_mode.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class ServiceOptionsFloatingButton extends StatelessWidget {
   const ServiceOptionsFloatingButton({
     super.key,
-    required this.items,
+    required this.scrollController,
+    required this.services,
+    required this.serviceKeys,
   });
-
-  final List<String> items;
+  final ScrollController scrollController;
+  final List<ServiceModel> services;
+  final Map<String, GlobalKey> serviceKeys;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
-      child: DropdownButton2<String>(
+      child: DropdownButton2<ServiceModel>(
         isDense: true,
         alignment: Alignment.center,
         isExpanded: true,
         barrierDismissible: true,
         barrierColor: Colors.black26,
-        items: items
-            .map((String item) => DropdownMenuItem<String>(
+        items: services
+            .map((ServiceModel item) => DropdownMenuItem<ServiceModel>(
                   value: item,
                   child: Row(
                     children: [
                       Expanded(
                         child: Text(
-                          item,
+                          item.name,
                           style:
                               Theme.of(context).textTheme.labelMedium?.copyWith(
                                     color: Colors.white,
@@ -49,7 +52,11 @@ class ServiceOptionsFloatingButton extends StatelessWidget {
                   ),
                 ))
             .toList(),
-        onChanged: (String? value) {},
+        onChanged: (ServiceModel? value) {
+          if (value != null) {
+            _scrollToService(value);
+          }
+        },
         buttonStyleData: ButtonStyleData(
           height: 50,
           width: 50,
@@ -80,13 +87,27 @@ class ServiceOptionsFloatingButton extends StatelessWidget {
             color: Colors.black,
           ),
           padding: const EdgeInsets.all(10),
-          offset: Offset(
-              -10, (items.length * 50) > 500 ? 560 : (items.length * 60) + 80),
+          offset: Offset(-10,
+              (services.length * 50) > 500 ? 560 : (services.length * 60) + 80),
         ),
         menuItemStyleData: const MenuItemStyleData(
           height: 60,
         ),
       ),
     );
+  }
+
+  void _scrollToService(ServiceModel service) {
+    final key = serviceKeys[service.id];
+    if (key != null) {
+      final context = key.currentContext;
+      if (context != null) {
+        Scrollable.ensureVisible(
+          context,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    }
   }
 }

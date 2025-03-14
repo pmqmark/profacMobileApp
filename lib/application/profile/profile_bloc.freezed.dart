@@ -20,21 +20,27 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadProfile,
-    required TResult Function(String? name, String? phoneNumber) updateProfile,
+    required TResult Function(String? name, String? phoneNumber, String? email)
+        updateProfileFields,
+    required TResult Function(ProfileModel profile) updateProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadProfile,
-    TResult? Function(String? name, String? phoneNumber)? updateProfile,
+    TResult? Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult? Function(ProfileModel profile)? updateProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadProfile,
-    TResult Function(String? name, String? phoneNumber)? updateProfile,
+    TResult Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult Function(ProfileModel profile)? updateProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,6 +48,7 @@ mixin _$ProfileEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadProfile value) loadProfile,
+    required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +56,7 @@ mixin _$ProfileEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadProfile value)? loadProfile,
+    TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +64,7 @@ mixin _$ProfileEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadProfile value)? loadProfile,
+    TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
     required TResult orElse(),
   }) =>
@@ -126,7 +135,9 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadProfile,
-    required TResult Function(String? name, String? phoneNumber) updateProfile,
+    required TResult Function(String? name, String? phoneNumber, String? email)
+        updateProfileFields,
+    required TResult Function(ProfileModel profile) updateProfile,
   }) {
     return started();
   }
@@ -136,7 +147,9 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadProfile,
-    TResult? Function(String? name, String? phoneNumber)? updateProfile,
+    TResult? Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult? Function(ProfileModel profile)? updateProfile,
   }) {
     return started?.call();
   }
@@ -146,7 +159,9 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadProfile,
-    TResult Function(String? name, String? phoneNumber)? updateProfile,
+    TResult Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult Function(ProfileModel profile)? updateProfile,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -160,6 +175,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadProfile value) loadProfile,
+    required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
   }) {
     return started(this);
@@ -170,6 +186,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadProfile value)? loadProfile,
+    TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
   }) {
     return started?.call(this);
@@ -180,6 +197,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadProfile value)? loadProfile,
+    TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
     required TResult orElse(),
   }) {
@@ -237,7 +255,9 @@ class _$LoadProfileImpl implements _LoadProfile {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadProfile,
-    required TResult Function(String? name, String? phoneNumber) updateProfile,
+    required TResult Function(String? name, String? phoneNumber, String? email)
+        updateProfileFields,
+    required TResult Function(ProfileModel profile) updateProfile,
   }) {
     return loadProfile();
   }
@@ -247,7 +267,9 @@ class _$LoadProfileImpl implements _LoadProfile {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadProfile,
-    TResult? Function(String? name, String? phoneNumber)? updateProfile,
+    TResult? Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult? Function(ProfileModel profile)? updateProfile,
   }) {
     return loadProfile?.call();
   }
@@ -257,7 +279,9 @@ class _$LoadProfileImpl implements _LoadProfile {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadProfile,
-    TResult Function(String? name, String? phoneNumber)? updateProfile,
+    TResult Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult Function(ProfileModel profile)? updateProfile,
     required TResult orElse(),
   }) {
     if (loadProfile != null) {
@@ -271,6 +295,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadProfile value) loadProfile,
+    required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
   }) {
     return loadProfile(this);
@@ -281,6 +306,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadProfile value)? loadProfile,
+    TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
   }) {
     return loadProfile?.call(this);
@@ -291,6 +317,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadProfile value)? loadProfile,
+    TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
     required TResult orElse(),
   }) {
@@ -306,12 +333,190 @@ abstract class _LoadProfile implements ProfileEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdateProfileFieldsImplCopyWith<$Res> {
+  factory _$$UpdateProfileFieldsImplCopyWith(_$UpdateProfileFieldsImpl value,
+          $Res Function(_$UpdateProfileFieldsImpl) then) =
+      __$$UpdateProfileFieldsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? name, String? phoneNumber, String? email});
+}
+
+/// @nodoc
+class __$$UpdateProfileFieldsImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UpdateProfileFieldsImpl>
+    implements _$$UpdateProfileFieldsImplCopyWith<$Res> {
+  __$$UpdateProfileFieldsImplCopyWithImpl(_$UpdateProfileFieldsImpl _value,
+      $Res Function(_$UpdateProfileFieldsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? phoneNumber = freezed,
+    Object? email = freezed,
+  }) {
+    return _then(_$UpdateProfileFieldsImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
+  const _$UpdateProfileFieldsImpl({this.name, this.phoneNumber, this.email});
+
+  @override
+  final String? name;
+  @override
+  final String? phoneNumber;
+  @override
+  final String? email;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateProfileFields(name: $name, phoneNumber: $phoneNumber, email: $email)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateProfileFieldsImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, phoneNumber, email);
+
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateProfileFieldsImplCopyWith<_$UpdateProfileFieldsImpl> get copyWith =>
+      __$$UpdateProfileFieldsImplCopyWithImpl<_$UpdateProfileFieldsImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() loadProfile,
+    required TResult Function(String? name, String? phoneNumber, String? email)
+        updateProfileFields,
+    required TResult Function(ProfileModel profile) updateProfile,
+  }) {
+    return updateProfileFields(name, phoneNumber, email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? loadProfile,
+    TResult? Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult? Function(ProfileModel profile)? updateProfile,
+  }) {
+    return updateProfileFields?.call(name, phoneNumber, email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? loadProfile,
+    TResult Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult Function(ProfileModel profile)? updateProfile,
+    required TResult orElse(),
+  }) {
+    if (updateProfileFields != null) {
+      return updateProfileFields(name, phoneNumber, email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_LoadProfile value) loadProfile,
+    required TResult Function(_UpdateProfileFields value) updateProfileFields,
+    required TResult Function(_UpdateProfile value) updateProfile,
+  }) {
+    return updateProfileFields(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_LoadProfile value)? loadProfile,
+    TResult? Function(_UpdateProfileFields value)? updateProfileFields,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+  }) {
+    return updateProfileFields?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_LoadProfile value)? loadProfile,
+    TResult Function(_UpdateProfileFields value)? updateProfileFields,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    required TResult orElse(),
+  }) {
+    if (updateProfileFields != null) {
+      return updateProfileFields(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateProfileFields implements ProfileEvent {
+  const factory _UpdateProfileFields(
+      {final String? name,
+      final String? phoneNumber,
+      final String? email}) = _$UpdateProfileFieldsImpl;
+
+  String? get name;
+  String? get phoneNumber;
+  String? get email;
+
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateProfileFieldsImplCopyWith<_$UpdateProfileFieldsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$UpdateProfileImplCopyWith<$Res> {
   factory _$$UpdateProfileImplCopyWith(
           _$UpdateProfileImpl value, $Res Function(_$UpdateProfileImpl) then) =
       __$$UpdateProfileImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? name, String? phoneNumber});
+  $Res call({ProfileModel profile});
 }
 
 /// @nodoc
@@ -327,18 +532,13 @@ class __$$UpdateProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? phoneNumber = freezed,
+    Object? profile = null,
   }) {
     return _then(_$UpdateProfileImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+      null == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as ProfileModel,
     ));
   }
 }
@@ -346,16 +546,14 @@ class __$$UpdateProfileImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateProfileImpl implements _UpdateProfile {
-  const _$UpdateProfileImpl({this.name, this.phoneNumber});
+  const _$UpdateProfileImpl(this.profile);
 
   @override
-  final String? name;
-  @override
-  final String? phoneNumber;
+  final ProfileModel profile;
 
   @override
   String toString() {
-    return 'ProfileEvent.updateProfile(name: $name, phoneNumber: $phoneNumber)';
+    return 'ProfileEvent.updateProfile(profile: $profile)';
   }
 
   @override
@@ -363,13 +561,11 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateProfileImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            (identical(other.profile, profile) || other.profile == profile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, profile);
 
   /// Create a copy of ProfileEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -384,9 +580,11 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadProfile,
-    required TResult Function(String? name, String? phoneNumber) updateProfile,
+    required TResult Function(String? name, String? phoneNumber, String? email)
+        updateProfileFields,
+    required TResult Function(ProfileModel profile) updateProfile,
   }) {
-    return updateProfile(name, phoneNumber);
+    return updateProfile(profile);
   }
 
   @override
@@ -394,9 +592,11 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadProfile,
-    TResult? Function(String? name, String? phoneNumber)? updateProfile,
+    TResult? Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult? Function(ProfileModel profile)? updateProfile,
   }) {
-    return updateProfile?.call(name, phoneNumber);
+    return updateProfile?.call(profile);
   }
 
   @override
@@ -404,11 +604,13 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadProfile,
-    TResult Function(String? name, String? phoneNumber)? updateProfile,
+    TResult Function(String? name, String? phoneNumber, String? email)?
+        updateProfileFields,
+    TResult Function(ProfileModel profile)? updateProfile,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
-      return updateProfile(name, phoneNumber);
+      return updateProfile(profile);
     }
     return orElse();
   }
@@ -418,6 +620,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadProfile value) loadProfile,
+    required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
   }) {
     return updateProfile(this);
@@ -428,6 +631,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadProfile value)? loadProfile,
+    TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
   }) {
     return updateProfile?.call(this);
@@ -438,6 +642,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadProfile value)? loadProfile,
+    TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
     required TResult orElse(),
   }) {
@@ -449,11 +654,10 @@ class _$UpdateProfileImpl implements _UpdateProfile {
 }
 
 abstract class _UpdateProfile implements ProfileEvent {
-  const factory _UpdateProfile(
-      {final String? name, final String? phoneNumber}) = _$UpdateProfileImpl;
+  const factory _UpdateProfile(final ProfileModel profile) =
+      _$UpdateProfileImpl;
 
-  String? get name;
-  String? get phoneNumber;
+  ProfileModel get profile;
 
   /// Create a copy of ProfileEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -469,7 +673,7 @@ mixin _$ProfileState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileModel model) profileLoaded,
-    required TResult Function() profileUpdated,
+    required TResult Function(ProfileModel model) profileUpdated,
     required TResult Function(MainFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -478,7 +682,7 @@ mixin _$ProfileState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileModel model)? profileLoaded,
-    TResult? Function()? profileUpdated,
+    TResult? Function(ProfileModel model)? profileUpdated,
     TResult? Function(MainFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -487,7 +691,7 @@ mixin _$ProfileState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileModel model)? profileLoaded,
-    TResult Function()? profileUpdated,
+    TResult Function(ProfileModel model)? profileUpdated,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) =>
@@ -587,7 +791,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileModel model) profileLoaded,
-    required TResult Function() profileUpdated,
+    required TResult Function(ProfileModel model) profileUpdated,
     required TResult Function(MainFailure failure) error,
   }) {
     return initial();
@@ -599,7 +803,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileModel model)? profileLoaded,
-    TResult? Function()? profileUpdated,
+    TResult? Function(ProfileModel model)? profileUpdated,
     TResult? Function(MainFailure failure)? error,
   }) {
     return initial?.call();
@@ -611,7 +815,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileModel model)? profileLoaded,
-    TResult Function()? profileUpdated,
+    TResult Function(ProfileModel model)? profileUpdated,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -710,7 +914,7 @@ class _$ProfileLoadingImpl implements ProfileLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileModel model) profileLoaded,
-    required TResult Function() profileUpdated,
+    required TResult Function(ProfileModel model) profileUpdated,
     required TResult Function(MainFailure failure) error,
   }) {
     return loading();
@@ -722,7 +926,7 @@ class _$ProfileLoadingImpl implements ProfileLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileModel model)? profileLoaded,
-    TResult? Function()? profileUpdated,
+    TResult? Function(ProfileModel model)? profileUpdated,
     TResult? Function(MainFailure failure)? error,
   }) {
     return loading?.call();
@@ -734,7 +938,7 @@ class _$ProfileLoadingImpl implements ProfileLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileModel model)? profileLoaded,
-    TResult Function()? profileUpdated,
+    TResult Function(ProfileModel model)? profileUpdated,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -860,7 +1064,7 @@ class _$ProfileLoadedImpl implements ProfileLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileModel model) profileLoaded,
-    required TResult Function() profileUpdated,
+    required TResult Function(ProfileModel model) profileUpdated,
     required TResult Function(MainFailure failure) error,
   }) {
     return profileLoaded(model);
@@ -872,7 +1076,7 @@ class _$ProfileLoadedImpl implements ProfileLoaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileModel model)? profileLoaded,
-    TResult? Function()? profileUpdated,
+    TResult? Function(ProfileModel model)? profileUpdated,
     TResult? Function(MainFailure failure)? error,
   }) {
     return profileLoaded?.call(model);
@@ -884,7 +1088,7 @@ class _$ProfileLoadedImpl implements ProfileLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileModel model)? profileLoaded,
-    TResult Function()? profileUpdated,
+    TResult Function(ProfileModel model)? profileUpdated,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -952,6 +1156,8 @@ abstract class _$$ProfileUpdatedImplCopyWith<$Res> {
   factory _$$ProfileUpdatedImplCopyWith(_$ProfileUpdatedImpl value,
           $Res Function(_$ProfileUpdatedImpl) then) =
       __$$ProfileUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProfileModel model});
 }
 
 /// @nodoc
@@ -964,26 +1170,52 @@ class __$$ProfileUpdatedImplCopyWithImpl<$Res>
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$ProfileUpdatedImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ProfileModel,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ProfileUpdatedImpl implements _ProfileUpdated {
-  const _$ProfileUpdatedImpl();
+  const _$ProfileUpdatedImpl(this.model);
+
+  @override
+  final ProfileModel model;
 
   @override
   String toString() {
-    return 'ProfileState.profileUpdated()';
+    return 'ProfileState.profileUpdated(model: $model)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ProfileUpdatedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileUpdatedImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, model);
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProfileUpdatedImplCopyWith<_$ProfileUpdatedImpl> get copyWith =>
+      __$$ProfileUpdatedImplCopyWithImpl<_$ProfileUpdatedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -991,10 +1223,10 @@ class _$ProfileUpdatedImpl implements _ProfileUpdated {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileModel model) profileLoaded,
-    required TResult Function() profileUpdated,
+    required TResult Function(ProfileModel model) profileUpdated,
     required TResult Function(MainFailure failure) error,
   }) {
-    return profileUpdated();
+    return profileUpdated(model);
   }
 
   @override
@@ -1003,10 +1235,10 @@ class _$ProfileUpdatedImpl implements _ProfileUpdated {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileModel model)? profileLoaded,
-    TResult? Function()? profileUpdated,
+    TResult? Function(ProfileModel model)? profileUpdated,
     TResult? Function(MainFailure failure)? error,
   }) {
-    return profileUpdated?.call();
+    return profileUpdated?.call(model);
   }
 
   @override
@@ -1015,12 +1247,12 @@ class _$ProfileUpdatedImpl implements _ProfileUpdated {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileModel model)? profileLoaded,
-    TResult Function()? profileUpdated,
+    TResult Function(ProfileModel model)? profileUpdated,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {
     if (profileUpdated != null) {
-      return profileUpdated();
+      return profileUpdated(model);
     }
     return orElse();
   }
@@ -1067,7 +1299,16 @@ class _$ProfileUpdatedImpl implements _ProfileUpdated {
 }
 
 abstract class _ProfileUpdated implements ProfileState {
-  const factory _ProfileUpdated() = _$ProfileUpdatedImpl;
+  const factory _ProfileUpdated(final ProfileModel model) =
+      _$ProfileUpdatedImpl;
+
+  ProfileModel get model;
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProfileUpdatedImplCopyWith<_$ProfileUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1153,7 +1394,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileModel model) profileLoaded,
-    required TResult Function() profileUpdated,
+    required TResult Function(ProfileModel model) profileUpdated,
     required TResult Function(MainFailure failure) error,
   }) {
     return error(failure);
@@ -1165,7 +1406,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileModel model)? profileLoaded,
-    TResult? Function()? profileUpdated,
+    TResult? Function(ProfileModel model)? profileUpdated,
     TResult? Function(MainFailure failure)? error,
   }) {
     return error?.call(failure);
@@ -1177,7 +1418,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileModel model)? profileLoaded,
-    TResult Function()? profileUpdated,
+    TResult Function(ProfileModel model)? profileUpdated,
     TResult Function(MainFailure failure)? error,
     required TResult orElse(),
   }) {

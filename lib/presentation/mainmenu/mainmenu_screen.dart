@@ -4,8 +4,7 @@ import 'package:profac/presentation/mainmenu/widgets/mainmenu_appbar.dart';
 import 'package:profac/presentation/mainmenu/widgets/mainmenu_body.dart';
 
 class MainmenuScreen extends StatelessWidget {
-  MainmenuScreen({super.key});
-  final FocusNode textFieldFocusNode = FocusNode();
+  const MainmenuScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollNotification>(
@@ -22,17 +21,13 @@ class MainmenuScreen extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
               expandedTitleScale: 1,
-              title: MainmenuAppbar(
-                textFieldFocusNode: textFieldFocusNode,
-              ),
+              title: MainmenuAppbar(),
               background: Container(
                 color: Colors.white,
               ),
             ),
           ),
-          MainmenuBody(
-            textFieldFocusNode: textFieldFocusNode,
-          ),
+          MainmenuBody(),
         ],
       ),
     );

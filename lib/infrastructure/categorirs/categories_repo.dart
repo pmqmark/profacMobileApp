@@ -40,12 +40,11 @@ class CategoriesRepo extends ICategoryRepo {
   @override
   Future<Either<MainFailure, List<CategoryModel>>> getAllCategoris() async {
     try {
-      final response =
-          await getIt<Request>().dio.get(ApiEndpoints.getAllCategories);
+      final response = await getIt<Request>().dio.get(ApiEndpoints.getCategory);
       if (response.statusCode == 200) {
         final CategoryModelResponse categoryModelResponse =
             CategoryModelResponse.fromJson(response.data);
-        return Right(categoryModelResponse.categories);
+        return Right(categoryModelResponse.data.result);
       } else {
         return Left(MainFailure.clientFailure());
       }
@@ -53,6 +52,31 @@ class CategoriesRepo extends ICategoryRepo {
       log(e.toString());
       if (e is DioException) {
         return ApiFailureHandler().handleDioError<List<CategoryModel>>(e);
+      } else {
+        return Left(MainFailure.otherFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<MainFailure, CategoryModel>> getCategoruById(
+      String categoryId) async {
+    try {
+      log("category id:$categoryId", name: 'get category by id');
+      final response = await getIt<Request>()
+          .dio
+          .get('${ApiEndpoints.getCategory}/$categoryId');
+      if (response.statusCode == 200) {
+        final CategoryModel categoryModel =
+            CategoryModel.fromJson(response.data);
+        return Right(categoryModel);
+      } else {
+        return Left(MainFailure.clientFailure());
+      }
+    } catch (e) {
+      log(e.toString());
+      if (e is DioException) {
+        return ApiFailureHandler().handleDioError<CategoryModel>(e);
       } else {
         return Left(MainFailure.otherFailure());
       }

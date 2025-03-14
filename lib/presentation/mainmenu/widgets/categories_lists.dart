@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:profac/application/categories/categories_bloc.dart';
+
 import 'package:profac/application/categories_group/catrogies_group_bloc.dart';
 import 'package:profac/domain/categories/model/category_group_model.dart';
 import 'package:profac/domain/categories/model/category_model.dart';
@@ -15,11 +15,6 @@ class CategoriesLists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      BlocProvider.of<CategoriesBloc>(context).add(
-        const CategoriesEvent.getAllCategories(),
-      );
-    });
     return BlocBuilder<CategoriesGroupBloc, CategoriesGroupState>(
       builder: (context, state) {
         return state.whenOrNull(
@@ -38,7 +33,10 @@ class CategoriesLists extends StatelessWidget {
       child: _buildSuccess(
         List.generate(
           2,
-          (index) => CategoryGroupModel(id: 'id', name: 'name', categories: []),
+          (index) => CategoryGroupModel(id: 'id', name: 'nameeee', categories: [
+            CompactCategoryModel(id: "id", name: "nameeeee"),
+            CompactCategoryModel(id: "id", name: "nameeeee"),
+          ]),
         ),
       ),
     );

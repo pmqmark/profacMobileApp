@@ -7,7 +7,7 @@ import 'package:profac/core/api_endpoints.dart';
 import 'package:profac/domain/di/injectable.dart';
 import 'package:profac/domain/failure/api_failure_handler.dart';
 import 'package:profac/domain/failure/failure.dart';
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 import 'package:profac/domain/request/request.dart';
 
 @LazySingleton(as: IJwtTokensRepo)
@@ -16,7 +16,7 @@ class JwtTokensRepo extends IJwtTokensRepo {
   Future<Either<MainFailure, void>> fetchNewAccessToken() async {
     log("trying to fetch new access token");
     final data = {
-      "refreshToken": getIt<JwtTokens>().refreshToken,
+      "refreshToken": getIt<TokensNKeys>().refreshToken,
     };
     try {
       final response = await getIt<Request>().dio.post(
@@ -30,8 +30,8 @@ class JwtTokensRepo extends IJwtTokensRepo {
       if (response.statusCode == 200) {
         final accessToken = response.data['data']['accessToken'];
         final refreshToken = response.data['data']['refreshToken'];
-        getIt<JwtTokens>().clearTokens();
-        await getIt<JwtTokens>().updateAccesstoken(
+        getIt<TokensNKeys>().clearTokens();
+        await getIt<TokensNKeys>().updateAccesstoken(
             accessToken: accessToken, refreshToken: refreshToken);
         getIt<Request>().updateAccessToken();
         return right(null);

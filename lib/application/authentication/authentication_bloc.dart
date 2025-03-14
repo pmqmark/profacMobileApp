@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:profac/domain/authentication/i_authentication_repo.dart';
 import 'package:profac/domain/di/injectable.dart';
 import 'package:profac/domain/failure/failure.dart';
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 import 'package:profac/domain/localstorage/i_localstorage_repo.dart';
 import 'package:profac/domain/request/request.dart';
 import 'package:profac/main.dart';
@@ -24,26 +24,29 @@ class AuthenticationBloc
   final ILocalstorageRepo _localstorageRepo;
   AuthenticationBloc(this._authenticationRepo, this._localstorageRepo)
       : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const AuthenticationState.initial());
+    });
     on<_SendOTP>((event, emit) async {
       emit(const AuthenticationState.loading());
-      final response = await _authenticationRepo.sendOTP(event.phoneNumber);
+      final response = await _authenticationRepo.sendOTP(event.email);
       log('send otp api completed$response');
       response.fold(
         (l) => emit(AuthenticationState.error(l)),
-        (r) => emit(AuthenticationState.otpSent(event.phoneNumber)),
+        (r) => emit(AuthenticationState.otpSent(event.email)),
       );
     });
     on<_VerifyOTP>((event, emit) async {
       emit(const AuthenticationState.loading());
       final response = await _authenticationRepo.verifyOtp(
-          otp: event.otp, mobileNumber: event.mobileNumber);
+          otp: event.otp, email: event.email);
       log('verify otp api completed$response');
       await response.fold(
         (l) {
           emit(AuthenticationState.verificationError(l));
         },
         (r) async {
-          getIt<JwtTokens>().saveTokens(
+          getIt<TokensNKeys>().saveTokens(
               accessToken: r.accessToken,
               refreshToken: r.refreshToken,
               userId: r.userId);
@@ -51,13 +54,13 @@ class AuthenticationBloc
           if (r.authenticationType == AuthenticationType.signIn) {
             await _localstorageRepo.saveData();
           }
-          emit(AuthenticationState.otpVerified(r.authenticationType));
+          emit(AuthenticationState.otpVerified(type: r.authenticationType));
         },
       );
     });
     on<_Logout>((event, emit) async {
       log('logout event');
-      emit(const AuthenticationState.loading());
+      emit(const AuthenticationState.logingOut());
       final response = _authenticationRepo.logout();
       await response.then((value) {
         value.fold(
@@ -65,7 +68,6 @@ class AuthenticationBloc
             emit(AuthenticationState.error(l));
           },
           (r) {
-            
             Navigator.pushAndRemoveUntil(
               navigatorKey.currentContext!,
               MaterialPageRoute(
@@ -77,6 +79,29 @@ class AuthenticationBloc
           },
         );
       });
+    });
+    on<_GoogleSignIn>((event, emit) async {
+      emit(const AuthenticationState.loading());
+      final response = await _authenticationRepo.googleSignIn();
+      await response.fold(
+        (l) {
+          emit(AuthenticationState.error(l));
+        },
+        (r) async {
+          getIt<TokensNKeys>().saveTokens(
+              accessToken: r.accessToken,
+              refreshToken: r.refreshToken,
+              userId: r.userId);
+          getIt<Request>().updateAccessToken();
+          if (r.authenticationType == AuthenticationType.signIn) {
+            await _localstorageRepo.saveData();
+          }
+          emit(
+            AuthenticationState.otpVerified(
+                type: r.authenticationType, name: r.name),
+          );
+        },
+      );
     });
   }
 }

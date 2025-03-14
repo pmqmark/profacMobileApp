@@ -4,14 +4,12 @@ import 'package:profac/presentation/authentication/login_screen/widgets/country_
 class PhoneNumberInput extends StatefulWidget {
   const PhoneNumberInput({
     super.key,
-    required this.countryCodeController,
     required this.isExpanded,
     required this.shrink,
     required this.expand,
     required this.controller,
   });
 
-  final TextEditingController countryCodeController;
   final bool isExpanded;
   final VoidCallback shrink;
   final VoidCallback expand;
@@ -51,17 +49,14 @@ class _PhoneNumberInputState extends State<PhoneNumberInput> {
           border: Border.all(color: Colors.grey[300]!, width: 1)),
       child: Row(
         children: [
-          CountrySelector(
-            countryCodeController: widget.countryCodeController,
-          ),
           Expanded(
             child: TextFormField(
               controller: widget.controller,
               focusNode: _focusNode,
-              keyboardType: TextInputType.phone,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 fillColor: Colors.transparent,
-                hintText: 'Phone Number',
+                hintText: 'Email address',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,

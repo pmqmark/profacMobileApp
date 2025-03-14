@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/splash_screen/splash_screen_bloc.dart';
+import 'package:profac/infrastructure/fcm/fcm_repo.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -10,6 +11,7 @@ class SplashScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<SplashScreenBloc>(context)
           .add(const SplashScreenEvent.checkIfAuthenticated());
+      
     });
     return Scaffold(
       body: BlocConsumer<SplashScreenBloc, SplashScreenState>(
@@ -17,6 +19,7 @@ class SplashScreen extends StatelessWidget {
           state.maybeWhen(
             authenticated: () {
               Navigator.of(context).pushReplacementNamed('/find_location');
+              FCMRepo().updateFCMToken();
             },
             unauthenticated: () {
               Navigator.of(context).pushReplacementNamed('/login');

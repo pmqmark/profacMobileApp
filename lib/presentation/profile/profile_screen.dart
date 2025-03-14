@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/profile/widgets/edit_profile_sheet.dart';
@@ -10,8 +11,11 @@ class ProfileScreen extends StatelessWidget {
   List<Map<String, dynamic>> myPlansList = [
     {'icon': Icons.assignment_outlined, 'text': 'My Plans'},
     {'icon': Icons.account_balance_wallet_outlined, 'text': 'Wallet'},
-    {'icon': Icons.star_border_outlined, 'text': 'Plus Membership'},
-    {'icon': Icons.location_on_outlined, 'text': 'Manage Address'},
+    {
+      'icon': Icons.location_on_outlined,
+      'text': 'Manage Address',
+      'route': '/manage_address'
+    },
     {'icon': Icons.payment_outlined, 'text': 'Payment methods'},
     {'icon': Icons.settings_outlined, 'text': 'Settings'},
     {'icon': Icons.info_outline, 'text': 'About'},
@@ -45,14 +49,12 @@ class ProfileScreen extends StatelessWidget {
                           IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () {
-                              showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.white,
-                                context: context,
-                                builder: (context) {
-                                  return EditProfileSheet();
-                                },
-                              );
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => EditProfileScreen(
+                                        name: state.model.name,
+                                        phoneNumber: state.model.mobile,
+                                        email: state.model.email,
+                                      )));
                             },
                             icon: Icon(
                               Icons.edit_outlined,
@@ -62,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                       Text(state.model.mobile),
+                      Text(state.model.email)
                     ],
                   );
                 });
@@ -114,7 +117,12 @@ class ProfileScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      if (myPlansList[index]['route'] != null) {
+                        Navigator.of(context)
+                            .pushNamed(myPlansList[index]['route']);
+                      }
+                    },
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                     leading: Icon(
@@ -137,7 +145,10 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    BlocProvider.of<AuthenticationBloc>(context)
+                        .add(AuthenticationEvent.logout());
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

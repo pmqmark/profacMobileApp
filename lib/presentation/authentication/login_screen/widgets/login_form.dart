@@ -1,6 +1,10 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/authentication/login_screen/widgets/phone_number_input.dart';
@@ -11,13 +15,11 @@ class LoginForm extends StatelessWidget {
       required this.isExpanded,
       required this.shrink,
       required this.expand,
-      required this.countryCodeController,
-      required this.mobileNumberController});
+      required this.emailAdressController});
   final bool isExpanded;
   final VoidCallback shrink;
   final VoidCallback expand;
-  final TextEditingController countryCodeController;
-  final TextEditingController mobileNumberController;
+  final TextEditingController emailAdressController;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,13 +39,12 @@ class LoginForm extends StatelessWidget {
           ),
           VerticalSpace(20.h),
           Text(
-            'Enter your mobile number',
+            'Enter your email',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           VerticalSpace(20),
           PhoneNumberInput(
-              controller: mobileNumberController,
-              countryCodeController: countryCodeController,
+              controller: emailAdressController,
               isExpanded: isExpanded,
               shrink: shrink,
               expand: expand),
@@ -57,19 +58,9 @@ class LoginForm extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            FocusNode().unfocus();
-                            final int mobile =
-                                int.tryParse(mobileNumberController.text) ?? 0;
-                            if (mobile == 0) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Invalid mobile number'),
-                                ),
-                              );
-                              return;
-                            }
+                            final email = emailAdressController.text;
                             BlocProvider.of<AuthenticationBloc>(context)
-                                .add(AuthenticationEvent.sendOTP(mobile));
+                                .add(AuthenticationEvent.sendOTP(email));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,
@@ -111,7 +102,10 @@ class LoginForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                BlocProvider.of<AuthenticationBloc>(context)
+                    .add(AuthenticationEvent.googleSignIn());
+              },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 11.h),

@@ -4,8 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:profac/application/authentication/authentication_bloc.dart';
+import 'package:profac/domain/authentication/i_authentication_repo.dart';
+import 'package:profac/presentation/authentication/auth_success_screen/auth_success_screen.dart';
 import 'package:profac/presentation/authentication/login_screen/widgets/login_box.dart';
 import 'package:profac/presentation/authentication/otp_screen/otp_screen.dart';
+import 'package:profac/presentation/authentication/user_info_screen/user_info_screen.dart';
+import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,9 +20,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isExpanded = false;
-  final TextEditingController countryCodeController =
-      TextEditingController(text: '+91');
-  final TextEditingController mobileNumberController = TextEditingController();
+  final TextEditingController emailAdressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -44,19 +46,35 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => OtpScreen(
-                      mobileNumber: value.mobileNumber,
+                      email: value.email,
                     ),
                   ),
                 );
               },
               orElse: () {},
+              otpVerified: (value) {
+                value.type == AuthenticationType.signUp
+                    ? Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => UserInfoScreen(
+                            name: value.name,
+                          ),
+                        ),
+                      )
+                    : Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AuthSuccessScreen(),
+                        ),
+                      );
+              },
               error: (e) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(e.failure.maybeMap(
-                      clientFailure: (_) => 'Something went wrong 1',
+                      clientFailure: (_) => 'Something went wrong',
                       serverFailure: (_) => 'Server error',
-                      otherFailure: (_) => 'Something went wrong 2',
+                      otherFailure: (f) =>
+                          f.message ?? "Something went wrong 1",
                       authFailure: (_) => 'Invalid mobile number',
                       noInternetConnection: (value) => 'No internet connection',
                       orElse: () => 'Something went wrong 3',
@@ -86,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Positioned(
                     bottom: 0,
                     child: LoginBox(
-                      mobileNumberController: mobileNumberController,
+                      emailAdressController: emailAdressController,
                       isExpanded: isExpanded,
                       shrink: () {
                         setState(() {
@@ -98,7 +116,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           isExpanded = true;
                         });
                       },
-                      countryCodeController: countryCodeController,
                     ),
                   ),
                   state.mapOrNull(
@@ -109,10 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Colors.black54,
                                 ),
                                 child: Center(
-                                  child: LoadingAnimationWidget.dotsTriangle(
-                                    color: Color(0xFFE2F6E2),
-                                    size: 50,
-                                  ),
+                                  child: ProfacLoadingIndicator(),
                                 ),
                               )) ??
                       SizedBox()

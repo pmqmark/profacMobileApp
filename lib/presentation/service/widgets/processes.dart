@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:profac/domain/services/model/subservice_model.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 
 class Processes extends StatelessWidget {
   const Processes({
     super.key,
+    required this.aboutProcesses,
   });
-
+  final List<AboutProcess> aboutProcesses;
   @override
   Widget build(BuildContext context) {
     return Timeline.tileBuilder(
@@ -32,12 +34,12 @@ class Processes extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Timeline Event $index',
+                aboutProcesses[index].title,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).primaryColor,
                     ),
               ),
-              Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              Text(aboutProcesses[index].description,
                   style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
@@ -75,7 +77,7 @@ class Processes extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        itemCount: 3,
+        itemCount: aboutProcesses.length,
       ),
     );
   }

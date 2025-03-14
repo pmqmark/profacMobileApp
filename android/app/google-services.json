@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "498023119261",
+    "project_id": "profac-7da5d",
+    "storage_bucket": "profac-7da5d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498023119261:android:361ff658b00d0f1f675774",
+        "android_client_info": {
+          "package_name": "com.qmark.profac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498023119261-1qv7kvb0dkfb2il7ssdrg7jufco6l1mb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qmark.profac",
+            "certificate_hash": "e0781d75d547bd79561e58ac17d565aead25c076"
+          }
+        },
+        {
+          "client_id": "498023119261-njdl4sa3h5d0okjed7776gkios66krlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtxEFol_CJIEeRwVYWyZhUJU95V4sMvk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498023119261-njdl4sa3h5d0okjed7776gkios66krlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

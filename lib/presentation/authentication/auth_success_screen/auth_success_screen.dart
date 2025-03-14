@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/success_check.dart';
+import 'package:profac/presentation/home/find_location_screen.dart';
 import 'package:profac/presentation/home/home.dart';
 
 class AuthSuccessScreen extends StatefulWidget {
@@ -51,8 +54,11 @@ class _AuthSuccessScreenState extends State<AuthSuccessScreen> {
                   alignment: Alignment.centerRight,
                   child: ElevatedButton.icon(
                     onPressed: () {
+                      BlocProvider.of<AuthenticationBloc>(context)
+                          .add(AuthenticationEvent.reset());
                       Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => FindLocationScreen()),
                           (route) => false);
                     },
                     icon: Icon(

@@ -4,8 +4,10 @@ part of 'profile_bloc.dart';
 class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.started() = _Started;
   const factory ProfileEvent.loadProfile() = _LoadProfile;
-  const factory ProfileEvent.updateProfile({
+  const factory ProfileEvent.updateProfileFields({
      String? name,
      String? phoneNumber,
-  }) = _UpdateProfile;
+     String? email,
+  }) = _UpdateProfileFields;
+  const factory ProfileEvent.updateProfile(ProfileModel profile) = _UpdateProfile;
 }

@@ -7,4 +7,5 @@ class SearchLocationEvent with _$SearchLocationEvent {
   const factory SearchLocationEvent.selectLocationLatLng(LatLng address) = _SelectLocationLatLng;
   const factory SearchLocationEvent.getCurrentLocation() = _GetCurrentLocation;
   const factory SearchLocationEvent.setLocation(GMapAddress address) = _SetLocation;
+
 }

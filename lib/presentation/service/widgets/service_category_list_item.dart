@@ -1,12 +1,15 @@
 import 'package:expansion_widget/expansion_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:profac/domain/services/model/service_mode.dart';
 import 'package:profac/presentation/service/widgets/service_list_item.dart';
 
 class ServiceCategoryListItem extends StatelessWidget {
   const ServiceCategoryListItem({
     super.key,
+    required this.serviceModel, required this.categoryId,
   });
-
+  final ServiceModel serviceModel;
+  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -26,7 +29,7 @@ class ServiceCategoryListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Text('Bath fittings(2)',
+                    child: Text(serviceModel.name,
                         style: Theme.of(context).textTheme.titleLarge),
                   ),
                   Icon(
@@ -40,15 +43,19 @@ class ServiceCategoryListItem extends StatelessWidget {
             );
           },
           content: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return ServiceListItem();
-              },
-              separatorBuilder: (context, index) {
-                return Divider();
-              },
-              itemCount: 2),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return ServiceListItem(
+                subServiceModel: serviceModel.subservices[index],
+                categoryId: categoryId,
+              );
+            },
+            separatorBuilder: (context, index) {
+              return Divider();
+            },
+            itemCount: serviceModel.subservices.length,
+          ),
         ),
       ),
     );

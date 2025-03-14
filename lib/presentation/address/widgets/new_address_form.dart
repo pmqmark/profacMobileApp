@@ -10,139 +10,173 @@ import 'package:profac/presentation/profile/widgets/edit_profile_sheet.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class NewAddressForm extends StatefulWidget {
-  const NewAddressForm({
+  NewAddressForm({
     super.key,
     this.address,
     this.hasError = false,
+    required this.otherController,
+    required this.nameController,
+    required this.phoneController,
+    required this.selectedAddressType,
+    required this.houseNumberController,
+    required this.landmarkController,
+    required this.onAddressTypeSelected,
+    required this.formKey,
   });
   final GMapAddress? address;
   final bool hasError;
+  AddressType selectedAddressType;
+  final TextEditingController otherController;
+  final TextEditingController nameController;
+  final TextEditingController phoneController;
+  final TextEditingController houseNumberController;
+  final TextEditingController landmarkController;
+  final Function(AddressType) onAddressTypeSelected;
+  final GlobalKey<FormState> formKey;
   @override
   _NewAddressFormState createState() => _NewAddressFormState();
 }
 
 class _NewAddressFormState extends State<NewAddressForm> {
-  AddressType _selectedAddressType = AddressType.home;
-  final TextEditingController _otherController = TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
   @override
   void initState() {
     BlocProvider.of<ProfileBloc>(context).state.mapOrNull(
       profileLoaded: (state) {
-        _nameController.text = state.model.name;
-        _phoneController.text = state.model.mobile;
+        widget.nameController.text = state.model.name;
+        widget.phoneController.text = state.model.mobile;
       },
     );
     super.initState();
   }
 
+  String? _validateHouseNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'House number cannot be empty';
+    }
+    return null;
+  }
+
+  String? _validateOther(String? value) {
+    if (widget.selectedAddressType == AddressType.other &&
+        (value == null || value.isEmpty)) {
+      return 'This field is required';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      children: [
-        if (widget.hasError) _errorWidget(context),
-        if (!widget.hasError) _loadingWidget(),
-        Divider(),
-        VerticalSpace(16),
-        TextFormField(
-          decoration: InputDecoration(
-            hintText: "Flat, House no., Building, Company, Apartment",
-          ),
-        ),
-        VerticalSpace(16),
-        TextFormField(
-          decoration: InputDecoration(
-            hintText: "Landmark (optional)",
-          ),
-        ),
-        VerticalSpace(16),
-        Text("Save as", style: Theme.of(context).textTheme.labelMedium),
-        VerticalSpace(8),
-        Row(
-          children: [
-            _AddressTypeChip(
-              name: "Home",
-              selectedAddressType: _selectedAddressType,
-              onSelected: (isSelected) {
-                if (isSelected) {
-                  setState(() {
-                    _selectedAddressType = AddressType.home;
-                  });
-                }
-              },
-              addressType: AddressType.home,
-            ),
-            HorizontalSpace(10),
-            _AddressTypeChip(
-              name: "Ohter",
-              selectedAddressType: _selectedAddressType,
-              onSelected: (isSelected) {
-                if (isSelected) {
-                  setState(() {
-                    _selectedAddressType = AddressType.other;
-                  });
-                }
-              },
-              addressType: AddressType.other,
-            ),
-          ],
-        ),
-        if (_selectedAddressType == AddressType.other) ...[
+    return Form(
+      key: widget.formKey,
+      child: ListView(
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        children: [
+          if (widget.hasError) _errorWidget(context),
+          if (!widget.hasError) _loadingWidget(),
+          Divider(),
           VerticalSpace(16),
           TextFormField(
-            controller: _otherController,
+            controller: widget.houseNumberController,
             decoration: InputDecoration(
-              hintText: "Eg, Reo's home, Mom's place, etc.",
+              hintText: "Flat, House no., Building, Company, Apartment",
             ),
+            validator: _validateHouseNumber,
+          ),
+          VerticalSpace(16),
+          TextFormField(
+            controller: widget.landmarkController,
+            decoration: InputDecoration(
+              hintText: "Landmark (optional)",
+            ),
+          ),
+          VerticalSpace(16),
+          Text("Save as", style: Theme.of(context).textTheme.labelMedium),
+          VerticalSpace(8),
+          Row(
+            children: [
+              _AddressTypeChip(
+                name: "Home",
+                selectedAddressType: widget.selectedAddressType,
+                onSelected: (isSelected) {
+                  if (isSelected) {
+                    setState(() {
+                      widget.onAddressTypeSelected(AddressType.home);
+                    });
+                  }
+                },
+                addressType: AddressType.home,
+              ),
+              HorizontalSpace(10),
+              _AddressTypeChip(
+                name: "Other",
+                selectedAddressType: widget.selectedAddressType,
+                onSelected: (isSelected) {
+                  if (isSelected) {
+                    setState(() {
+                      widget.onAddressTypeSelected(AddressType.other);
+                    });
+                  }
+                },
+                addressType: AddressType.other,
+              ),
+            ],
+          ),
+          if (widget.selectedAddressType == AddressType.other) ...[
+            VerticalSpace(16),
+            TextFormField(
+              controller: widget.otherController,
+              decoration: InputDecoration(
+                hintText: "Eg, Reo's home, Mom's place, etc.",
+              ),
+              validator: _validateOther,
+            ),
+          ],
+          VerticalSpace(16),
+          ListTile(
+            leading: Icon(
+              Icons.person_2_outlined,
+              size: 22,
+            ),
+            title: Text(
+              "${widget.nameController.text}, ${widget.phoneController.text}",
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.black,
+                  ),
+            ),
+            trailing: TextButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: Colors.white,
+                  context: context,
+                  builder: (context) {
+                    return EditRecieverSheet(
+                      name: widget.nameController.text,
+                      phone: widget.phoneController.text,
+                      onSave: (name, phone) {
+                        setState(() {
+                          widget.nameController.text = name;
+                          widget.phoneController.text = phone;
+                        });
+                      },
+                    );
+                  },
+                );
+              },
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+              ),
+              child: Text("Change",
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 14,
+                  )),
+            ),
+            contentPadding: EdgeInsets.only(left: 10),
           ),
         ],
-        VerticalSpace(16),
-        ListTile(
-          leading: Icon(
-            Icons.person_2_outlined,
-            size: 22,
-          ),
-          title: Text(
-            "${_nameController.text}, ${_phoneController.text}",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.black,
-                ),
-          ),
-          trailing: TextButton(
-            onPressed: () {
-              showModalBottomSheet(
-                isScrollControlled: true,
-                backgroundColor: Colors.white,
-                context: context,
-                builder: (context) {
-                  return EditRecieverSheet(
-                    name: _nameController.text,
-                    phone: _phoneController.text,
-                    onSave: (name, phone) {
-                      setState(() {
-                        _nameController.text = name;
-                        _phoneController.text = phone;
-                      });
-                    },
-                  );
-                },
-              );
-            },
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-            ),
-            child: Text("Change",
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 14,
-                )),
-          ),
-          contentPadding: EdgeInsets.only(left: 10),
-        ),
-      ],
+      ),
     );
   }
 
@@ -171,7 +205,7 @@ class _NewAddressFormState extends State<NewAddressForm> {
     return Skeletonizer(
       enabled: widget.address == null,
       ignoreContainers: true,
-      child: _CurrentAddrss(
+      child: _CurrentAdderss(
         address: widget.address ??
             GMapAddress(
               formattedAddress:
@@ -221,8 +255,8 @@ class _AddressTypeChip extends StatelessWidget {
   }
 }
 
-class _CurrentAddrss extends StatelessWidget {
-  const _CurrentAddrss({
+class _CurrentAdderss extends StatelessWidget {
+  const _CurrentAdderss({
     required this.address,
   });
   final GMapAddress address;

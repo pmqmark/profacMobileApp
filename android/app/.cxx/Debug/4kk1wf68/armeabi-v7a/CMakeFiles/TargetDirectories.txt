@@ -1,0 +1,2 @@
+C:/Users/nived/app/profac/android/app/.cxx/Debug/4kk1wf68/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/nived/app/profac/android/app/.cxx/Debug/4kk1wf68/armeabi-v7a/CMakeFiles/rebuild_cache.dir

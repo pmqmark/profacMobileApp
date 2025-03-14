@@ -8,7 +8,7 @@ import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/domain/categories/i_category_repo.dart';
 import 'package:profac/domain/categories/model/category_group_model.dart';
 import 'package:profac/domain/failure/failure.dart';
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 import 'package:profac/main.dart';
 
 part 'catrogies_group_event.dart';
@@ -23,7 +23,7 @@ class CategoriesGroupBloc
   CategoriesGroupBloc(this._categoryRepo, this._jwtTokensRepo)
       : super(_Initial()) {
     on<_GetCategoryGroups>((event, emit) async {
-      log('get category groups event detected');
+      log('get category groups event detected',name: "CategoriesGroupBloc");
       emit(const _Loading());
       final categoryGroups = await _categoryRepo.getCategoryGroups();
       await categoryGroups.fold((failure) async {

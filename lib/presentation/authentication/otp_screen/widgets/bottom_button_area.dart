@@ -9,11 +9,11 @@ class BottomButtonArea extends StatelessWidget {
   const BottomButtonArea({
     super.key,
     required this.otpController,
-    required this.mobileNumber,
+    required this.email,
   });
 
   final TextEditingController otpController;
-  final int mobileNumber;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class BottomButtonArea extends StatelessWidget {
                     }
                     BlocProvider.of<AuthenticationBloc>(context).add(
                       AuthenticationEvent.verifyOTP(
-                          otp: otpController.text, mobileNumber: mobileNumber),
+                          otp: otpController.text, email: email),
                     );
                   },
                   icon: Icon(

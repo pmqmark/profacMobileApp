@@ -18,51 +18,57 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int phoneNumber) sendOTP,
-    required TResult Function(String otp, int mobileNumber) verifyOTP,
+    required TResult Function() reset,
+    required TResult Function(String email) sendOTP,
+    required TResult Function(String otp, String email) verifyOTP,
     required TResult Function() logout,
+    required TResult Function() googleSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int phoneNumber)? sendOTP,
-    TResult? Function(String otp, int mobileNumber)? verifyOTP,
+    TResult? Function()? reset,
+    TResult? Function(String email)? sendOTP,
+    TResult? Function(String otp, String email)? verifyOTP,
     TResult? Function()? logout,
+    TResult? Function()? googleSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int phoneNumber)? sendOTP,
-    TResult Function(String otp, int mobileNumber)? verifyOTP,
+    TResult Function()? reset,
+    TResult Function(String email)? sendOTP,
+    TResult Function(String otp, String email)? verifyOTP,
     TResult Function()? logout,
+    TResult Function()? googleSignIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SendOTP value) sendOTP,
     required TResult Function(_VerifyOTP value) verifyOTP,
     required TResult Function(_Logout value) logout,
+    required TResult Function(_GoogleSignIn value) googleSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SendOTP value)? sendOTP,
     TResult? Function(_VerifyOTP value)? verifyOTP,
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_GoogleSignIn value)? googleSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SendOTP value)? sendOTP,
     TResult Function(_VerifyOTP value)? verifyOTP,
     TResult Function(_Logout value)? logout,
+    TResult Function(_GoogleSignIn value)? googleSignIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,18 +96,18 @@ class _$AuthenticationEventCopyWithImpl<$Res, $Val extends AuthenticationEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthenticationEvent
@@ -110,18 +116,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'AuthenticationEvent.started()';
+    return 'AuthenticationEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -130,36 +136,39 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int phoneNumber) sendOTP,
-    required TResult Function(String otp, int mobileNumber) verifyOTP,
+    required TResult Function() reset,
+    required TResult Function(String email) sendOTP,
+    required TResult Function(String otp, String email) verifyOTP,
     required TResult Function() logout,
+    required TResult Function() googleSignIn,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int phoneNumber)? sendOTP,
-    TResult? Function(String otp, int mobileNumber)? verifyOTP,
+    TResult? Function()? reset,
+    TResult? Function(String email)? sendOTP,
+    TResult? Function(String otp, String email)? verifyOTP,
     TResult? Function()? logout,
+    TResult? Function()? googleSignIn,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int phoneNumber)? sendOTP,
-    TResult Function(String otp, int mobileNumber)? verifyOTP,
+    TResult Function()? reset,
+    TResult Function(String email)? sendOTP,
+    TResult Function(String otp, String email)? verifyOTP,
     TResult Function()? logout,
+    TResult Function()? googleSignIn,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -167,43 +176,46 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SendOTP value) sendOTP,
     required TResult Function(_VerifyOTP value) verifyOTP,
     required TResult Function(_Logout value) logout,
+    required TResult Function(_GoogleSignIn value) googleSignIn,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SendOTP value)? sendOTP,
     TResult? Function(_VerifyOTP value)? verifyOTP,
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_GoogleSignIn value)? googleSignIn,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SendOTP value)? sendOTP,
     TResult Function(_VerifyOTP value)? verifyOTP,
     TResult Function(_Logout value)? logout,
+    TResult Function(_GoogleSignIn value)? googleSignIn,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements AuthenticationEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements AuthenticationEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -212,7 +224,7 @@ abstract class _$$SendOTPImplCopyWith<$Res> {
           _$SendOTPImpl value, $Res Function(_$SendOTPImpl) then) =
       __$$SendOTPImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int phoneNumber});
+  $Res call({String email});
 }
 
 /// @nodoc
@@ -228,13 +240,13 @@ class __$$SendOTPImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = null,
+    Object? email = null,
   }) {
     return _then(_$SendOTPImpl(
-      null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -242,14 +254,14 @@ class __$$SendOTPImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SendOTPImpl implements _SendOTP {
-  const _$SendOTPImpl(this.phoneNumber);
+  const _$SendOTPImpl(this.email);
 
   @override
-  final int phoneNumber;
+  final String email;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.sendOTP(phoneNumber: $phoneNumber)';
+    return 'AuthenticationEvent.sendOTP(email: $email)';
   }
 
   @override
@@ -257,12 +269,11 @@ class _$SendOTPImpl implements _SendOTP {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendOTPImpl &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, email);
 
   /// Create a copy of AuthenticationEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -275,36 +286,39 @@ class _$SendOTPImpl implements _SendOTP {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int phoneNumber) sendOTP,
-    required TResult Function(String otp, int mobileNumber) verifyOTP,
+    required TResult Function() reset,
+    required TResult Function(String email) sendOTP,
+    required TResult Function(String otp, String email) verifyOTP,
     required TResult Function() logout,
+    required TResult Function() googleSignIn,
   }) {
-    return sendOTP(phoneNumber);
+    return sendOTP(email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int phoneNumber)? sendOTP,
-    TResult? Function(String otp, int mobileNumber)? verifyOTP,
+    TResult? Function()? reset,
+    TResult? Function(String email)? sendOTP,
+    TResult? Function(String otp, String email)? verifyOTP,
     TResult? Function()? logout,
+    TResult? Function()? googleSignIn,
   }) {
-    return sendOTP?.call(phoneNumber);
+    return sendOTP?.call(email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int phoneNumber)? sendOTP,
-    TResult Function(String otp, int mobileNumber)? verifyOTP,
+    TResult Function()? reset,
+    TResult Function(String email)? sendOTP,
+    TResult Function(String otp, String email)? verifyOTP,
     TResult Function()? logout,
+    TResult Function()? googleSignIn,
     required TResult orElse(),
   }) {
     if (sendOTP != null) {
-      return sendOTP(phoneNumber);
+      return sendOTP(email);
     }
     return orElse();
   }
@@ -312,10 +326,11 @@ class _$SendOTPImpl implements _SendOTP {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SendOTP value) sendOTP,
     required TResult Function(_VerifyOTP value) verifyOTP,
     required TResult Function(_Logout value) logout,
+    required TResult Function(_GoogleSignIn value) googleSignIn,
   }) {
     return sendOTP(this);
   }
@@ -323,10 +338,11 @@ class _$SendOTPImpl implements _SendOTP {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SendOTP value)? sendOTP,
     TResult? Function(_VerifyOTP value)? verifyOTP,
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_GoogleSignIn value)? googleSignIn,
   }) {
     return sendOTP?.call(this);
   }
@@ -334,10 +350,11 @@ class _$SendOTPImpl implements _SendOTP {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SendOTP value)? sendOTP,
     TResult Function(_VerifyOTP value)? verifyOTP,
     TResult Function(_Logout value)? logout,
+    TResult Function(_GoogleSignIn value)? googleSignIn,
     required TResult orElse(),
   }) {
     if (sendOTP != null) {
@@ -348,9 +365,9 @@ class _$SendOTPImpl implements _SendOTP {
 }
 
 abstract class _SendOTP implements AuthenticationEvent {
-  const factory _SendOTP(final int phoneNumber) = _$SendOTPImpl;
+  const factory _SendOTP(final String email) = _$SendOTPImpl;
 
-  int get phoneNumber;
+  String get email;
 
   /// Create a copy of AuthenticationEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -365,7 +382,7 @@ abstract class _$$VerifyOTPImplCopyWith<$Res> {
           _$VerifyOTPImpl value, $Res Function(_$VerifyOTPImpl) then) =
       __$$VerifyOTPImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String otp, int mobileNumber});
+  $Res call({String otp, String email});
 }
 
 /// @nodoc
@@ -382,17 +399,17 @@ class __$$VerifyOTPImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? otp = null,
-    Object? mobileNumber = null,
+    Object? email = null,
   }) {
     return _then(_$VerifyOTPImpl(
       otp: null == otp
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as String,
-      mobileNumber: null == mobileNumber
-          ? _value.mobileNumber
-          : mobileNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -400,16 +417,16 @@ class __$$VerifyOTPImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$VerifyOTPImpl implements _VerifyOTP {
-  const _$VerifyOTPImpl({required this.otp, required this.mobileNumber});
+  const _$VerifyOTPImpl({required this.otp, required this.email});
 
   @override
   final String otp;
   @override
-  final int mobileNumber;
+  final String email;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.verifyOTP(otp: $otp, mobileNumber: $mobileNumber)';
+    return 'AuthenticationEvent.verifyOTP(otp: $otp, email: $email)';
   }
 
   @override
@@ -418,12 +435,11 @@ class _$VerifyOTPImpl implements _VerifyOTP {
         (other.runtimeType == runtimeType &&
             other is _$VerifyOTPImpl &&
             (identical(other.otp, otp) || other.otp == otp) &&
-            (identical(other.mobileNumber, mobileNumber) ||
-                other.mobileNumber == mobileNumber));
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, otp, mobileNumber);
+  int get hashCode => Object.hash(runtimeType, otp, email);
 
   /// Create a copy of AuthenticationEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -436,36 +452,39 @@ class _$VerifyOTPImpl implements _VerifyOTP {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int phoneNumber) sendOTP,
-    required TResult Function(String otp, int mobileNumber) verifyOTP,
+    required TResult Function() reset,
+    required TResult Function(String email) sendOTP,
+    required TResult Function(String otp, String email) verifyOTP,
     required TResult Function() logout,
+    required TResult Function() googleSignIn,
   }) {
-    return verifyOTP(otp, mobileNumber);
+    return verifyOTP(otp, email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int phoneNumber)? sendOTP,
-    TResult? Function(String otp, int mobileNumber)? verifyOTP,
+    TResult? Function()? reset,
+    TResult? Function(String email)? sendOTP,
+    TResult? Function(String otp, String email)? verifyOTP,
     TResult? Function()? logout,
+    TResult? Function()? googleSignIn,
   }) {
-    return verifyOTP?.call(otp, mobileNumber);
+    return verifyOTP?.call(otp, email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int phoneNumber)? sendOTP,
-    TResult Function(String otp, int mobileNumber)? verifyOTP,
+    TResult Function()? reset,
+    TResult Function(String email)? sendOTP,
+    TResult Function(String otp, String email)? verifyOTP,
     TResult Function()? logout,
+    TResult Function()? googleSignIn,
     required TResult orElse(),
   }) {
     if (verifyOTP != null) {
-      return verifyOTP(otp, mobileNumber);
+      return verifyOTP(otp, email);
     }
     return orElse();
   }
@@ -473,10 +492,11 @@ class _$VerifyOTPImpl implements _VerifyOTP {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SendOTP value) sendOTP,
     required TResult Function(_VerifyOTP value) verifyOTP,
     required TResult Function(_Logout value) logout,
+    required TResult Function(_GoogleSignIn value) googleSignIn,
   }) {
     return verifyOTP(this);
   }
@@ -484,10 +504,11 @@ class _$VerifyOTPImpl implements _VerifyOTP {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SendOTP value)? sendOTP,
     TResult? Function(_VerifyOTP value)? verifyOTP,
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_GoogleSignIn value)? googleSignIn,
   }) {
     return verifyOTP?.call(this);
   }
@@ -495,10 +516,11 @@ class _$VerifyOTPImpl implements _VerifyOTP {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SendOTP value)? sendOTP,
     TResult Function(_VerifyOTP value)? verifyOTP,
     TResult Function(_Logout value)? logout,
+    TResult Function(_GoogleSignIn value)? googleSignIn,
     required TResult orElse(),
   }) {
     if (verifyOTP != null) {
@@ -511,10 +533,10 @@ class _$VerifyOTPImpl implements _VerifyOTP {
 abstract class _VerifyOTP implements AuthenticationEvent {
   const factory _VerifyOTP(
       {required final String otp,
-      required final int mobileNumber}) = _$VerifyOTPImpl;
+      required final String email}) = _$VerifyOTPImpl;
 
   String get otp;
-  int get mobileNumber;
+  String get email;
 
   /// Create a copy of AuthenticationEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -564,10 +586,11 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int phoneNumber) sendOTP,
-    required TResult Function(String otp, int mobileNumber) verifyOTP,
+    required TResult Function() reset,
+    required TResult Function(String email) sendOTP,
+    required TResult Function(String otp, String email) verifyOTP,
     required TResult Function() logout,
+    required TResult Function() googleSignIn,
   }) {
     return logout();
   }
@@ -575,10 +598,11 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int phoneNumber)? sendOTP,
-    TResult? Function(String otp, int mobileNumber)? verifyOTP,
+    TResult? Function()? reset,
+    TResult? Function(String email)? sendOTP,
+    TResult? Function(String otp, String email)? verifyOTP,
     TResult? Function()? logout,
+    TResult? Function()? googleSignIn,
   }) {
     return logout?.call();
   }
@@ -586,10 +610,11 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int phoneNumber)? sendOTP,
-    TResult Function(String otp, int mobileNumber)? verifyOTP,
+    TResult Function()? reset,
+    TResult Function(String email)? sendOTP,
+    TResult Function(String otp, String email)? verifyOTP,
     TResult Function()? logout,
+    TResult Function()? googleSignIn,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -601,10 +626,11 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SendOTP value) sendOTP,
     required TResult Function(_VerifyOTP value) verifyOTP,
     required TResult Function(_Logout value) logout,
+    required TResult Function(_GoogleSignIn value) googleSignIn,
   }) {
     return logout(this);
   }
@@ -612,10 +638,11 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SendOTP value)? sendOTP,
     TResult? Function(_VerifyOTP value)? verifyOTP,
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_GoogleSignIn value)? googleSignIn,
   }) {
     return logout?.call(this);
   }
@@ -623,10 +650,11 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SendOTP value)? sendOTP,
     TResult Function(_VerifyOTP value)? verifyOTP,
     TResult Function(_Logout value)? logout,
+    TResult Function(_GoogleSignIn value)? googleSignIn,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -641,66 +669,196 @@ abstract class _Logout implements AuthenticationEvent {
 }
 
 /// @nodoc
+abstract class _$$GoogleSignInImplCopyWith<$Res> {
+  factory _$$GoogleSignInImplCopyWith(
+          _$GoogleSignInImpl value, $Res Function(_$GoogleSignInImpl) then) =
+      __$$GoogleSignInImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoogleSignInImplCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$GoogleSignInImpl>
+    implements _$$GoogleSignInImplCopyWith<$Res> {
+  __$$GoogleSignInImplCopyWithImpl(
+      _$GoogleSignInImpl _value, $Res Function(_$GoogleSignInImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GoogleSignInImpl implements _GoogleSignIn {
+  const _$GoogleSignInImpl();
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.googleSignIn()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GoogleSignInImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String email) sendOTP,
+    required TResult Function(String otp, String email) verifyOTP,
+    required TResult Function() logout,
+    required TResult Function() googleSignIn,
+  }) {
+    return googleSignIn();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
+    TResult? Function(String email)? sendOTP,
+    TResult? Function(String otp, String email)? verifyOTP,
+    TResult? Function()? logout,
+    TResult? Function()? googleSignIn,
+  }) {
+    return googleSignIn?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String email)? sendOTP,
+    TResult Function(String otp, String email)? verifyOTP,
+    TResult Function()? logout,
+    TResult Function()? googleSignIn,
+    required TResult orElse(),
+  }) {
+    if (googleSignIn != null) {
+      return googleSignIn();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendOTP value) sendOTP,
+    required TResult Function(_VerifyOTP value) verifyOTP,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_GoogleSignIn value) googleSignIn,
+  }) {
+    return googleSignIn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendOTP value)? sendOTP,
+    TResult? Function(_VerifyOTP value)? verifyOTP,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_GoogleSignIn value)? googleSignIn,
+  }) {
+    return googleSignIn?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendOTP value)? sendOTP,
+    TResult Function(_VerifyOTP value)? verifyOTP,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_GoogleSignIn value)? googleSignIn,
+    required TResult orElse(),
+  }) {
+    if (googleSignIn != null) {
+      return googleSignIn(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GoogleSignIn implements AuthenticationEvent {
+  const factory _GoogleSignIn() = _$GoogleSignInImpl;
+}
+
+/// @nodoc
 mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -770,10 +928,12 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) {
     return initial();
   }
@@ -783,10 +943,11 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) {
     return initial?.call();
   }
@@ -796,10 +957,11 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -812,11 +974,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) {
     return initial(this);
   }
@@ -825,11 +988,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) {
     return initial?.call(this);
   }
@@ -838,11 +1002,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -857,18 +1022,18 @@ abstract class _Initial implements AuthenticationState {
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$AuthLoadingImplCopyWith<$Res> {
+  factory _$$AuthLoadingImplCopyWith(
+          _$AuthLoadingImpl value, $Res Function(_$AuthLoadingImpl) then) =
+      __$$AuthLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$AuthLoadingImplCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res, _$AuthLoadingImpl>
+    implements _$$AuthLoadingImplCopyWith<$Res> {
+  __$$AuthLoadingImplCopyWithImpl(
+      _$AuthLoadingImpl _value, $Res Function(_$AuthLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthenticationState
@@ -877,8 +1042,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$AuthLoadingImpl implements AuthLoading {
+  const _$AuthLoadingImpl();
 
   @override
   String toString() {
@@ -888,7 +1053,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$AuthLoadingImpl);
   }
 
   @override
@@ -899,10 +1064,12 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) {
     return loading();
   }
@@ -912,10 +1079,11 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) {
     return loading?.call();
   }
@@ -925,10 +1093,11 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -941,11 +1110,12 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) {
     return loading(this);
   }
@@ -954,11 +1124,12 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) {
     return loading?.call(this);
   }
@@ -967,11 +1138,12 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -981,8 +1153,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthenticationState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class AuthLoading implements AuthenticationState {
+  const factory AuthLoading() = _$AuthLoadingImpl;
 }
 
 /// @nodoc
@@ -991,7 +1163,7 @@ abstract class _$$OtpSentImplCopyWith<$Res> {
           _$OtpSentImpl value, $Res Function(_$OtpSentImpl) then) =
       __$$OtpSentImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int mobileNumber});
+  $Res call({String email});
 }
 
 /// @nodoc
@@ -1007,13 +1179,13 @@ class __$$OtpSentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mobileNumber = null,
+    Object? email = null,
   }) {
     return _then(_$OtpSentImpl(
-      null == mobileNumber
-          ? _value.mobileNumber
-          : mobileNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1021,14 +1193,14 @@ class __$$OtpSentImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OtpSentImpl implements _OtpSent {
-  const _$OtpSentImpl(this.mobileNumber);
+  const _$OtpSentImpl(this.email);
 
   @override
-  final int mobileNumber;
+  final String email;
 
   @override
   String toString() {
-    return 'AuthenticationState.otpSent(mobileNumber: $mobileNumber)';
+    return 'AuthenticationState.otpSent(email: $email)';
   }
 
   @override
@@ -1036,12 +1208,11 @@ class _$OtpSentImpl implements _OtpSent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtpSentImpl &&
-            (identical(other.mobileNumber, mobileNumber) ||
-                other.mobileNumber == mobileNumber));
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mobileNumber);
+  int get hashCode => Object.hash(runtimeType, email);
 
   /// Create a copy of AuthenticationState
   /// with the given fields replaced by the non-null parameter values.
@@ -1056,12 +1227,14 @@ class _$OtpSentImpl implements _OtpSent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) {
-    return otpSent(mobileNumber);
+    return otpSent(email);
   }
 
   @override
@@ -1069,12 +1242,13 @@ class _$OtpSentImpl implements _OtpSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) {
-    return otpSent?.call(mobileNumber);
+    return otpSent?.call(email);
   }
 
   @override
@@ -1082,14 +1256,15 @@ class _$OtpSentImpl implements _OtpSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) {
     if (otpSent != null) {
-      return otpSent(mobileNumber);
+      return otpSent(email);
     }
     return orElse();
   }
@@ -1098,11 +1273,12 @@ class _$OtpSentImpl implements _OtpSent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) {
     return otpSent(this);
   }
@@ -1111,11 +1287,12 @@ class _$OtpSentImpl implements _OtpSent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) {
     return otpSent?.call(this);
   }
@@ -1124,11 +1301,12 @@ class _$OtpSentImpl implements _OtpSent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) {
     if (otpSent != null) {
@@ -1139,9 +1317,9 @@ class _$OtpSentImpl implements _OtpSent {
 }
 
 abstract class _OtpSent implements AuthenticationState {
-  const factory _OtpSent(final int mobileNumber) = _$OtpSentImpl;
+  const factory _OtpSent(final String email) = _$OtpSentImpl;
 
-  int get mobileNumber;
+  String get email;
 
   /// Create a copy of AuthenticationState
   /// with the given fields replaced by the non-null parameter values.
@@ -1156,7 +1334,7 @@ abstract class _$$OtpVerifiedImplCopyWith<$Res> {
           _$OtpVerifiedImpl value, $Res Function(_$OtpVerifiedImpl) then) =
       __$$OtpVerifiedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthenticationType type});
+  $Res call({AuthenticationType type, String? name});
 }
 
 /// @nodoc
@@ -1173,12 +1351,17 @@ class __$$OtpVerifiedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = null,
+    Object? name = freezed,
   }) {
     return _then(_$OtpVerifiedImpl(
-      null == type
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as AuthenticationType,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1186,14 +1369,16 @@ class __$$OtpVerifiedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OtpVerifiedImpl implements _OtpVerified {
-  const _$OtpVerifiedImpl(this.type);
+  const _$OtpVerifiedImpl({required this.type, this.name});
 
   @override
   final AuthenticationType type;
+  @override
+  final String? name;
 
   @override
   String toString() {
-    return 'AuthenticationState.otpVerified(type: $type)';
+    return 'AuthenticationState.otpVerified(type: $type, name: $name)';
   }
 
   @override
@@ -1201,11 +1386,12 @@ class _$OtpVerifiedImpl implements _OtpVerified {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtpVerifiedImpl &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type);
+  int get hashCode => Object.hash(runtimeType, type, name);
 
   /// Create a copy of AuthenticationState
   /// with the given fields replaced by the non-null parameter values.
@@ -1220,12 +1406,14 @@ class _$OtpVerifiedImpl implements _OtpVerified {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) {
-    return otpVerified(type);
+    return otpVerified(type, name);
   }
 
   @override
@@ -1233,12 +1421,13 @@ class _$OtpVerifiedImpl implements _OtpVerified {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) {
-    return otpVerified?.call(type);
+    return otpVerified?.call(type, name);
   }
 
   @override
@@ -1246,14 +1435,15 @@ class _$OtpVerifiedImpl implements _OtpVerified {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) {
     if (otpVerified != null) {
-      return otpVerified(type);
+      return otpVerified(type, name);
     }
     return orElse();
   }
@@ -1262,11 +1452,12 @@ class _$OtpVerifiedImpl implements _OtpVerified {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) {
     return otpVerified(this);
   }
@@ -1275,11 +1466,12 @@ class _$OtpVerifiedImpl implements _OtpVerified {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) {
     return otpVerified?.call(this);
   }
@@ -1288,11 +1480,12 @@ class _$OtpVerifiedImpl implements _OtpVerified {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) {
     if (otpVerified != null) {
@@ -1303,9 +1496,12 @@ class _$OtpVerifiedImpl implements _OtpVerified {
 }
 
 abstract class _OtpVerified implements AuthenticationState {
-  const factory _OtpVerified(final AuthenticationType type) = _$OtpVerifiedImpl;
+  const factory _OtpVerified(
+      {required final AuthenticationType type,
+      final String? name}) = _$OtpVerifiedImpl;
 
   AuthenticationType get type;
+  String? get name;
 
   /// Create a copy of AuthenticationState
   /// with the given fields replaced by the non-null parameter values.
@@ -1396,10 +1592,12 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) {
     return error(failure);
   }
@@ -1409,10 +1607,11 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) {
     return error?.call(failure);
   }
@@ -1422,10 +1621,11 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1438,11 +1638,12 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) {
     return error(this);
   }
@@ -1451,11 +1652,12 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) {
     return error?.call(this);
   }
@@ -1464,11 +1666,12 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1573,10 +1776,12 @@ class _$VerificationErrorImpl implements _VerificationError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int mobileNumber) otpSent,
-    required TResult Function(AuthenticationType type) otpVerified,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
     required TResult Function(MainFailure failure) error,
     required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
   }) {
     return verificationError(failure);
   }
@@ -1586,10 +1791,11 @@ class _$VerificationErrorImpl implements _VerificationError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int mobileNumber)? otpSent,
-    TResult? Function(AuthenticationType type)? otpVerified,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
     TResult? Function(MainFailure failure)? error,
     TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
   }) {
     return verificationError?.call(failure);
   }
@@ -1599,10 +1805,11 @@ class _$VerificationErrorImpl implements _VerificationError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int mobileNumber)? otpSent,
-    TResult Function(AuthenticationType type)? otpVerified,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
     TResult Function(MainFailure failure)? error,
     TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
     required TResult orElse(),
   }) {
     if (verificationError != null) {
@@ -1615,11 +1822,12 @@ class _$VerificationErrorImpl implements _VerificationError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(AuthLoading value) loading,
     required TResult Function(_OtpSent value) otpSent,
     required TResult Function(_OtpVerified value) otpVerified,
     required TResult Function(_Error value) error,
     required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
   }) {
     return verificationError(this);
   }
@@ -1628,11 +1836,12 @@ class _$VerificationErrorImpl implements _VerificationError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(AuthLoading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
     TResult? Function(_OtpVerified value)? otpVerified,
     TResult? Function(_Error value)? error,
     TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
   }) {
     return verificationError?.call(this);
   }
@@ -1641,11 +1850,12 @@ class _$VerificationErrorImpl implements _VerificationError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(AuthLoading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
     TResult Function(_OtpVerified value)? otpVerified,
     TResult Function(_Error value)? error,
     TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
     required TResult orElse(),
   }) {
     if (verificationError != null) {
@@ -1666,4 +1876,140 @@ abstract class _VerificationError implements AuthenticationState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VerificationErrorImplCopyWith<_$VerificationErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LogingOutImplCopyWith<$Res> {
+  factory _$$LogingOutImplCopyWith(
+          _$LogingOutImpl value, $Res Function(_$LogingOutImpl) then) =
+      __$$LogingOutImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogingOutImplCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res, _$LogingOutImpl>
+    implements _$$LogingOutImplCopyWith<$Res> {
+  __$$LogingOutImplCopyWithImpl(
+      _$LogingOutImpl _value, $Res Function(_$LogingOutImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LogingOutImpl implements _LogingOut {
+  const _$LogingOutImpl();
+
+  @override
+  String toString() {
+    return 'AuthenticationState.logingOut()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogingOutImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String email) otpSent,
+    required TResult Function(AuthenticationType type, String? name)
+        otpVerified,
+    required TResult Function(MainFailure failure) error,
+    required TResult Function(MainFailure failure) verificationError,
+    required TResult Function() logingOut,
+  }) {
+    return logingOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String email)? otpSent,
+    TResult? Function(AuthenticationType type, String? name)? otpVerified,
+    TResult? Function(MainFailure failure)? error,
+    TResult? Function(MainFailure failure)? verificationError,
+    TResult? Function()? logingOut,
+  }) {
+    return logingOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String email)? otpSent,
+    TResult Function(AuthenticationType type, String? name)? otpVerified,
+    TResult Function(MainFailure failure)? error,
+    TResult Function(MainFailure failure)? verificationError,
+    TResult Function()? logingOut,
+    required TResult orElse(),
+  }) {
+    if (logingOut != null) {
+      return logingOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(AuthLoading value) loading,
+    required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_OtpVerified value) otpVerified,
+    required TResult Function(_Error value) error,
+    required TResult Function(_VerificationError value) verificationError,
+    required TResult Function(_LogingOut value) logingOut,
+  }) {
+    return logingOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(AuthLoading value)? loading,
+    TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_OtpVerified value)? otpVerified,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_VerificationError value)? verificationError,
+    TResult? Function(_LogingOut value)? logingOut,
+  }) {
+    return logingOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(AuthLoading value)? loading,
+    TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_OtpVerified value)? otpVerified,
+    TResult Function(_Error value)? error,
+    TResult Function(_VerificationError value)? verificationError,
+    TResult Function(_LogingOut value)? logingOut,
+    required TResult orElse(),
+  }) {
+    if (logingOut != null) {
+      return logingOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogingOut implements AuthenticationState {
+  const factory _LogingOut() = _$LogingOutImpl;
 }

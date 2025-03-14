@@ -6,14 +6,21 @@ import 'package:profac/presentation/authentication/auth_success_screen/auth_succ
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class UserInfoScreen extends StatefulWidget {
-  const UserInfoScreen({super.key});
-
+  const UserInfoScreen({super.key, this.name});
+  final String? name;
   @override
   State<UserInfoScreen> createState() => _UserInfoScreenState();
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _mobileNumberController = TextEditingController();
+  @override
+  void initState() {
+    _nameController.text = widget.name ?? '';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,24 +36,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               VerticalSpace(5),
-              Text(
-                'Please let us know your name',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(fontWeight: FontWeight.w400),
-              ),
-              VerticalSpace(10),
-              TextFormField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  hintText: 'Type your name here',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  fillColor: Colors.grey[100],
-                ),
-              ),
+              ..._buildForm(context),
               Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,6 +70,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                                   serverFailure: (_) => 'Server error',
                                   noInternetConnection: (_) =>
                                       'No internet connection',
+                                  conflict: (value) => 'Number already exists',
                                   orElse: () => 'Something went wrong',
                                 ),
                               ),
@@ -93,13 +84,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       return state.maybeWhen(
                         loading: () {
                           return ElevatedButton(
-                            onPressed: () {
-                              BlocProvider.of<ProfileBloc>(context).add(
-                                ProfileEvent.updateProfile(
-                                  name: _nameController.text,
-                                ),
-                              );
-                            },
+                            onPressed: () {},
                             style: ElevatedButton.styleFrom(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 30),
@@ -119,8 +104,39 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         orElse: () {
                           return ElevatedButton.icon(
                             onPressed: () {
+                              if (_nameController.text.length < 3) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Name should be atleast 3 characters long'),
+                                  ),
+                                );
+                                return;
+                              }
+                              if (_mobileNumberController.text.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Please enter the required information'),
+                                  ),
+                                );
+                                return;
+                              }
+
+                              final phoneNumber = _mobileNumberController.text;
+                              final phoneNumberRegExp = RegExp(r'^[1-9]\d{9}$');
+                              if (!phoneNumberRegExp.hasMatch(phoneNumber)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Please enter a valid 10-digit mobile number without any special characters.'),
+                                  ),
+                                );
+                                return;
+                              }
                               BlocProvider.of<ProfileBloc>(context).add(
-                                ProfileEvent.updateProfile(
+                                ProfileEvent.updateProfileFields(
+                                  phoneNumber: phoneNumber,
                                   name: _nameController.text,
                                 ),
                               );
@@ -156,5 +172,41 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
         ),
       ),
     );
+  }
+
+  List<Widget> _buildForm(BuildContext context) {
+    return [
+      Text(
+        'Please let us know your information',
+        style: Theme.of(context)
+            .textTheme
+            .titleMedium
+            ?.copyWith(fontWeight: FontWeight.w400),
+      ),
+      VerticalSpace(10),
+      TextFormField(
+        controller: _nameController,
+        keyboardType: TextInputType.name,
+        decoration: InputDecoration(
+          hintText: 'Full name',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          fillColor: Colors.grey[100],
+        ),
+      ),
+      VerticalSpace(14),
+      TextFormField(
+        controller: _mobileNumberController,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          hintText: 'Mobile Number',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          fillColor: Colors.grey[100],
+        ),
+      ),
+    ];
   }
 }

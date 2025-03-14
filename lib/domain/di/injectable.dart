@@ -1,7 +1,7 @@
 import 'package:profac/domain/di/injectable.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 import 'package:profac/domain/request/request.dart';
 
 final getIt = GetIt.instance;
@@ -9,7 +9,7 @@ final getIt = GetIt.instance;
 Future<void> configureInjuction() async {
   getIt.init(environment: Environment.prod);
   getIt.registerLazySingleton(() => Request());
-  getIt.registerLazySingleton(() => JwtTokens());
+  getIt.registerLazySingleton(() => TokensNKeys());
 }
 
 //command for build runner use pooling watcher

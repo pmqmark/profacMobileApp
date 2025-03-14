@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:profac/domain/di/injectable.dart';
-import 'package:profac/domain/jwt_tokens/jwt_tokens.dart';
+import 'package:profac/domain/tokens_n_keys/tokens_n_keys.dart';
 import 'package:profac/domain/localstorage/i_localstorage_repo.dart';
 import 'package:profac/domain/request/request.dart';
 
@@ -17,7 +17,7 @@ class LocalstorageRepo extends ILocalstorageRepo {
           );
       final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
       storage.deleteAll();
-      final tokens = getIt<JwtTokens>();
+      final tokens = getIt<TokensNKeys>();
       log("Refresh Token: ${tokens.refreshToken}");
       log("Access Token: ${tokens.accessToken}");
       await storage.write(key: "access_token", value: tokens.accessToken);
@@ -37,20 +37,20 @@ class LocalstorageRepo extends ILocalstorageRepo {
           );
       final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
 
-      //final accessToken = await storage.read(key: "access_token");
-      final accessToken =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IyZjRiZWY4ODRiNTY5NDY3ZWRlYzkiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MDM3NjI3MSwiZXhwIjoxNzQwNDYyNjcxfQ.Y5mXQDF9CN7mOKR5APgRcc94KgcRciYMiNbCQ-O6m98";
-      //final refreshToken = await storage.read(key: "refresh_token");
-      final refreshToken =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IyZjRiZWY4ODRiNTY5NDY3ZWRlYzkiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MDM3NjI3MSwiZXhwIjoxNzQwOTgxMDcxfQ.Q2oAz8RFRLHsBoyjrDMq2AYQw8L7qFgmNgKah0MUPT8";
-      //final userId = await storage.read(key: "user_id");
-      final userId = "67b2f4bef884b569467edec9";
+      final accessToken = await storage.read(key: "access_token");
+      //final accessToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU4M2VhN2M5MTE4NzM3YjdlNjI1NDYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDE1NzM4ODksImV4cCI6MTc0MTY2MDI4OX0.Zn5RI8QkJM1ViPoz54iniBlyQuMg-lagTH9I2f4o9sE";
+      final refreshToken = await storage.read(key: "refresh_token");
+      //final refreshToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU4M2VhN2M5MTE4NzM3YjdlNjI1NDYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDE1NzM4ODksImV4cCI6MTc0MjE3ODY4OX0.RwRPUcKhokDnmbr93QmM1IASuQg046_xtKaNs-FWtnA";
+      final userId = await storage.read(key: "user_id");
+      //final userId = "67b2f4bef884b569467edec9";
 
       log("Refresh Token: $refreshToken");
       log("Access Token: $accessToken");
       log('User id:$userId');
       if (refreshToken != null && accessToken != null && userId != null) {
-        getIt<JwtTokens>().saveTokens(
+        getIt<TokensNKeys>().saveTokens(
             accessToken: accessToken,
             refreshToken: refreshToken,
             userId: userId);
