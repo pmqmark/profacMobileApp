@@ -45,13 +45,20 @@ class CartItemsBloc extends Bloc<CartItemsEvent, CartItemsState> {
         }
       });
     });
+
     on<_UpdateCartItem>((event, emit) {
       final cartItem = event.cartItem;
       log('update cart event');
       final currentcart = state.cartItems;
       final updatedCart = manageQuantity(currentcart, cartItem);
-      emit(state.copyWith(cartItems: updatedCart, flag: !state.flag));
+
+      // Sync changes with the cart list
+      final updatedCartList = syncCartWithCartItems(state.cart, cartItem);
+
+      emit(state.copyWith(
+          cartItems: updatedCart, cart: updatedCartList, flag: !state.flag));
     });
+
     on<_AddCartItem>((event, emit) async {
       final cartItem = event.cartItem;
       emit(state.copyWith(cartItemAdding: true));
@@ -74,6 +81,10 @@ class CartItemsBloc extends Bloc<CartItemsEvent, CartItemsState> {
         log('current cart f: $currentcart');
         final updatedCart = manageQuantity(currentcart, cartItem);
         log('updated cart: $updatedCart');
+
+        // Sync changes with the cart list
+        final updatedCartList = syncCartWithCartItems(state.cart, cartItem);
+
         BlocProvider.of<BookingAmountBloc>(navigatorKey.currentContext!).add(
             BookingAmountEvent.fetchTotalAmount(AmountBodyModel(
                 categoryId: cartItem.categoryId, couponCode: '', tip: 0)));
@@ -81,12 +92,14 @@ class CartItemsBloc extends Bloc<CartItemsEvent, CartItemsState> {
           state.copyWith(
             cartItemAdding: false,
             cartItems: updatedCart,
+            cart: updatedCartList,
             flag: !state.flag,
           ),
         );
       });
     });
   }
+
   Map<String, Map<String, Map<String, int>>> manageQuantity(
       Map<String, Map<String, Map<String, int>>> currentcart,
       CartItemModel cartItem) {
@@ -131,5 +144,63 @@ class CartItemsBloc extends Bloc<CartItemsEvent, CartItemsState> {
     }
 
     return result;
+  }
+
+  // New method to synchronize cart list with cartItems map
+  List<CartModel> syncCartWithCartItems(
+      List<CartModel> currentCart, CartItemModel cartItem) {
+    // Create a deep copy of the cart to avoid modifying the original
+    final updatedCart = List<CartModel>.from(currentCart
+        .map((cartModel) {
+          // Find the category
+          if (cartModel.categoryId == cartItem.categoryId) {
+            // Copy the subservices with potential modifications
+            final updatedSubServices = cartModel.subServiceModels
+                .map((subService) {
+                  // Find the subservice
+                  if (subService.id == cartItem.subserviceId) {
+                    // Copy the options with potential modifications
+                    final updatedOptions =
+                        subService.optionModels.where((option) {
+                      // Keep all options except the one being removed (quantity = 0)
+                      return !(option.id == cartItem.optionId &&
+                          cartItem.quantity == 0);
+                    }).toList();
+
+                    // Return the subservice with updated options if there are options left
+                    if (updatedOptions.isNotEmpty) {
+                      return SubServiceCartModel(
+                        id: subService.id,
+                        name: subService.name,
+                        optionModels: updatedOptions,
+                      );
+                    }
+                    // Return null if no options left, to be filtered out later
+                    return null;
+                  }
+                  // Return unchanged subservice
+                  return subService;
+                })
+                .whereType<SubServiceCartModel>()
+                .toList(); // Filter out nulls
+
+            // Return the category with updated subservices if there are subservices left
+            if (updatedSubServices.isNotEmpty) {
+              return CartModel(
+                categoryId: cartModel.categoryId,
+                categoryName: cartModel.categoryName,
+                subServiceModels: updatedSubServices,
+              );
+            }
+            // Return null if no subservices left, to be filtered out later
+            return null;
+          }
+          // Return unchanged category
+          return cartModel;
+        })
+        .whereType<CartModel>()
+        .toList()); // Filter out nulls
+
+    return updatedCart;
   }
 }
