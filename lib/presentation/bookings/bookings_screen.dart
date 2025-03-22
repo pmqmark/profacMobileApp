@@ -30,14 +30,17 @@ class BookingsScreen extends StatelessWidget {
               ),
               VerticalSpace(16),
               ListView.separated(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return BookingItemCard();
-                  },
-                  separatorBuilder: (context, index) => VerticalSpace(16),
-                  itemCount: 2),
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return BookingItemCard(
+                    status: BookingStatus.values[index % 3],
+                  );
+                },
+                separatorBuilder: (context, index) => VerticalSpace(16),
+                itemCount: 3,
+              ),
             ],
           );
         },

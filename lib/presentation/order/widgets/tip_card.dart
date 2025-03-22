@@ -1,13 +1,18 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/checkout/booking_amount/booking_amount_bloc.dart';
+import 'package:profac/domain/checkout/models/amount_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/order/order_summary_screen.dart';
 
 class TipCard extends StatelessWidget {
   const TipCard({
     super.key,
+    required this.amountBodyModel,
   });
-
+  final AmountBodyModel amountBodyModel;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -24,31 +29,22 @@ class TipCard extends StatelessWidget {
               title: "Payment method",
             ),
             VerticalSpace(14),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(
-                4,
-                (index) {
-                  return Container(
-                    width: 64,
-                    padding: EdgeInsets.symmetric(vertical: 6.h),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor.withAlpha(100),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      "₹25",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14.sp,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  );
-                },
-              ),
+            BlocBuilder<BookingAmountBloc, BookingAmountState>(
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(
+                    4,
+                    (index) {
+                      return TipChip(
+                        amount: (index + 1) * 25,
+                        model: amountBodyModel,
+                        isSelected: state.tip == (index + 1) * 25,
+                      );
+                    },
+                  ),
+                );
+              },
             ),
             VerticalSpace(16),
             Text(
@@ -60,6 +56,59 @@ class TipCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class TipChip extends StatelessWidget {
+  const TipChip({
+    super.key,
+    required this.amount,
+    required this.model,
+    this.isSelected = false,
+  });
+  final int amount;
+  final AmountBodyModel model;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        if (!isSelected) {
+          context.read<BookingAmountBloc>().add(
+                BookingAmountEvent.fetchTotalAmount(
+                    model.copyWith(tip: amount)),
+              );
+        } else {
+          context.read<BookingAmountBloc>().add(
+                BookingAmountEvent.fetchTotalAmount(model.copyWith(tip: 0)),
+              );
+        }
+      },
+      child: Container(
+        width: 64,
+        padding: EdgeInsets.symmetric(vertical: 6.h),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: isSelected
+                ? Theme.of(context).primaryColor
+                : Theme.of(context).primaryColor.withAlpha(100),
+          ),
+          color: isSelected
+              ? Theme.of(context).primaryColor.withAlpha(30)
+              : Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Text(
+          "₹${amount}",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 14.sp,
+          ),
+          textAlign: TextAlign.center,
         ),
       ),
     );

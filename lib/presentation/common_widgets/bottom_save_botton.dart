@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomSaveButton extends StatelessWidget {
   const BottomSaveButton(
-      {super.key, required this.onPressed, required this.text});
+      {super.key, required this.onPressed, required this.text, this.color});
   final VoidCallback onPressed;
   final String text;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,7 +18,7 @@ class BottomSaveButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: color ?? Theme.of(context).primaryColor,
           padding: EdgeInsets.zero,
         ),
         child: Text(

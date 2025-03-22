@@ -1,12 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/presentation/bookings/detailed_booking_screen.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/order/order_summary_screen.dart';
 
+enum BookingStatus { ordered, completed, cancelled }
+
 class BookingItemCard extends StatelessWidget {
-  const BookingItemCard({
+  BookingItemCard({
     super.key,
-  });
+    this.status = BookingStatus.completed,
+  }) {
+    statusText = status == BookingStatus.ordered
+        ? "Ordered"
+        : status == BookingStatus.completed
+            ? "Service Fullfilled"
+            : "Cancelled";
+    statusColor = status == BookingStatus.ordered
+        ? Colors.grey[100]!
+        : status == BookingStatus.completed
+            ? Color(0xFFE2F6E2)
+            : Color(0xffF6E2E2);
+    statusTextColor = status == BookingStatus.ordered
+        ? Colors.black
+        : status == BookingStatus.completed
+            ? Color(0xFF2E7D32)
+            : Color(0xffC62828);
+  }
+  final BookingStatus status;
+  String statusText = '';
+  Color statusTextColor = Colors.black;
+  Color statusColor = Colors.grey[100]!;
   List<Widget> subServices() {
     return List.generate(
       2,
@@ -48,7 +72,7 @@ class BookingItemCard extends StatelessWidget {
           children: [
             DecoratedBox(
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: statusColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SizedBox(
@@ -56,9 +80,9 @@ class BookingItemCard extends StatelessWidget {
                 height: 34,
                 child: Center(
                   child: Text(
-                    "Ordered",
+                    statusText,
                     style: TextStyle(
-                      color: Colors.black,
+                      color: statusTextColor,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -133,19 +157,63 @@ class BookingItemCard extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => OrderSummaryScreen(),
+                      builder: (context) => DetailedBookingScreen(),
                     ),
                   );
                 },
                 child: Text(
-                  "Cancel",
+                  "View More",
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 16.sp,
                   ),
                 ),
               ),
-            )
+            ),
+            if (status == BookingStatus.ordered)
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: BorderSide(color: Colors.black12),
+                    ),
+                    backgroundColor: Colors.white,
+                    padding: EdgeInsets.zero,
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Cancel",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ),
+              ),
+            if (status == BookingStatus.completed)
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: BorderSide(color: Colors.black12),
+                    ),
+                    backgroundColor: Colors.white,
+                    padding: EdgeInsets.zero,
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Add Review",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

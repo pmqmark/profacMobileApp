@@ -5,7 +5,6 @@ import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/success_check.dart';
 import 'package:profac/presentation/home/find_location_screen.dart';
-import 'package:profac/presentation/home/home.dart';
 
 class AuthSuccessScreen extends StatefulWidget {
   const AuthSuccessScreen({super.key});

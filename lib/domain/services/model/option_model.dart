@@ -6,6 +6,8 @@ class OptionModel {
   final bool isArchived;
   final int v;
   final int duration;
+  final String subServiceId;
+  final String categoryId;
   OptionModel({
     this.discount,
     required this.id,
@@ -14,6 +16,8 @@ class OptionModel {
     required this.isArchived,
     required this.v,
     required this.duration,
+    required this.subServiceId,
+    required this.categoryId,
   });
 
   factory OptionModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +31,8 @@ class OptionModel {
       isArchived: json['isArchived'] ?? false,
       v: json['__v'] ?? 0,
       duration: json['duration'] ?? 0,
+      subServiceId: json['subServiceId'] ?? '',
+      categoryId: json['categoryId'] ?? '',
     );
   }
 }

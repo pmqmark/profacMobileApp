@@ -8,6 +8,11 @@ import 'package:profac/application/cart_items/cart_items_bloc.dart';
 
 import 'package:profac/application/categories_group/catrogies_group_bloc.dart';
 import 'package:profac/application/category_detailed/category_detailed_bloc.dart';
+import 'package:profac/application/checkout/booking_amount/booking_amount_bloc.dart';
+import 'package:profac/application/checkout/booking_available/booking_available_bloc.dart';
+import 'package:profac/application/checkout/booking_slots/booking_slots_bloc.dart';
+import 'package:profac/application/checkout/checkout_order/checkout_order_bloc.dart';
+import 'package:profac/application/checkout/coupons/coupons_bloc.dart';
 import 'package:profac/application/detailed_service/detailed_service_bloc.dart';
 import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/application/search_location/search_location_bloc.dart';
@@ -20,7 +25,10 @@ import 'package:profac/presentation/address/manage_address_screen.dart';
 import 'package:profac/presentation/address/search_location.dart';
 import 'package:profac/presentation/address/select_loction.dart';
 import 'package:profac/presentation/authentication/login_screen/login_screen.dart';
+import 'package:profac/presentation/bookings/add_review_screen.dart';
 import 'package:profac/presentation/bookings/bookings_screen.dart';
+import 'package:profac/presentation/bookings/detailed_booking_screen.dart';
+import 'package:profac/presentation/cart/cart_view_more_screen.dart';
 import 'package:profac/presentation/home/find_location_screen.dart';
 import 'package:profac/presentation/home/home.dart';
 import 'package:profac/presentation/mainmenu/mainmenu_screen.dart';
@@ -28,6 +36,8 @@ import 'package:profac/presentation/order/order_summary_screen.dart';
 import 'package:profac/presentation/order/widgets/time_slot_choosing_sheet.dart';
 import 'package:profac/presentation/search_service/search_service_screen.dart';
 import 'package:profac/presentation/service/services_list_screen.dart';
+import 'package:profac/presentation/settings/privacy_and_data_screen.dart';
+import 'package:profac/presentation/settings/settings_screen.dart';
 import 'package:profac/presentation/splash_screen/splash_screen.dart';
 import 'package:profac/presentation/theme/theme_data.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -67,6 +77,11 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (_) => getIt<SubServiceReviewsBloc>()),
             BlocProvider(create: (_) => getIt<BannerBloc>()),
             BlocProvider(create: (_) => getIt<ServiceAvailableBloc>()),
+            BlocProvider(create: (_) => getIt<CouponsBloc>()),
+            BlocProvider(create: (_) => getIt<BookingAmountBloc>()),
+            BlocProvider(create: (_) => getIt<BookingSlotsBloc>()),
+            BlocProvider(create: (_) => getIt<BookingAvailableBloc>()),
+            BlocProvider(create: (_) => getIt<CheckoutOrderBloc>()),
           ],
           child: MaterialApp(
             title: 'Profac',
@@ -84,8 +99,6 @@ class MyApp extends StatelessWidget {
               '/home': (context) => HomeScreen(),
               '/login': (context) => LoginScreen(),
               '/mainmenu': (context) => MainmenuScreen(),
-              '/order_summary': (context) => OrderSummaryScreen(),
-              '/time_slot_choosing': (context) => TimeSlotChoosingSheet(),
               '/search_location': (context) => SearchLocationBottomSheet(),
               '/select_location': (context) => SelectLoction(),
               '/find_location': (context) => FindLocationScreen(),

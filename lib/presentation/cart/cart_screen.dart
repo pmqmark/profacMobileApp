@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:profac/application/cart_items/cart_items_bloc.dart';
 import 'package:profac/presentation/cart/widgets/cart_item_card.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<CartItemsBloc>(context).add(CartItemsEvent.getCart());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +40,33 @@ class CartScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView.separated(
-            itemBuilder: (context, index) {
-              return CartItemCard();
-            },
-            separatorBuilder: (context, index) {
-              return VerticalSpace(16);
-            },
-            itemCount: 20),
+      body: BlocBuilder<CartItemsBloc, CartItemsState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state.failure != null) {
+            return Center(
+              child: Text(state.failure!.toString()),
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.all(16),
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                return CartItemCard(
+                  cartModel: state.cart[index],
+                );
+              },
+              separatorBuilder: (context, index) {
+                return VerticalSpace(16);
+              },
+              itemCount: state.cart.length,
+            ),
+          );
+        },
       ),
     );
   }

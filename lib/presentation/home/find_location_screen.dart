@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/address/address_bloc.dart';
+import 'package:profac/application/cart_items/cart_items_bloc.dart';
 import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/application/search_location/search_location_bloc.dart';
 import 'package:profac/domain/address/model/address_modal.dart';
@@ -89,6 +90,9 @@ class _FindLocationScreenState extends State<FindLocationScreen>
                   locationState.maybeMap(
                     orElse: () {},
                     loadedAddress: (latlong) {
+                      BlocProvider.of<CartItemsBloc>(context).add(
+                        CartItemsEvent.getCart(),
+                      );
                       Future.delayed(const Duration(seconds: 1)).then((value) {
                         Navigator.of(context).pushReplacementNamed('/home');
                       });

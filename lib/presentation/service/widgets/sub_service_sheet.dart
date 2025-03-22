@@ -5,15 +5,13 @@ import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/service/widgets/options_list_view.dart';
 
 class SubServiceSheet extends StatelessWidget {
-  const SubServiceSheet(
+  const  SubServiceSheet(
       {super.key,
       required this.options,
       required this.subServiceName,
-      required this.subServiceId,
-      required this.categoryId});
+      required this.subServiceId,});
   final String subServiceName;
   final String subServiceId;
-  final String categoryId;
   final List<OptionModel> options;
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,7 @@ class SubServiceSheet extends StatelessWidget {
               child: OptionsListView(
                   options: options,
                   subServiceId: subServiceId,
-                  categoryId: categoryId),
+),
             ),
             Spacer(),
             BottomSaveButton(

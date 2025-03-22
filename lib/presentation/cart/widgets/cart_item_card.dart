@@ -1,35 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/domain/cart/model/cart_reponse_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/order/order_summary_screen.dart';
 
-class CartItemCard extends StatelessWidget {
+class CartItemCard extends StatefulWidget {
   const CartItemCard({
     super.key,
+    required this.cartModel,
   });
+  final CartModel cartModel;
+
+  @override
+  State<CartItemCard> createState() => _CartItemCardState();
+}
+
+class _CartItemCardState extends State<CartItemCard> {
+  int optionsCount = 0;
+  double totalAmount = 0.0;
+  @override
+  initState() {
+    super.initState();
+    widget.cartModel.subServiceModels.forEach((element) {
+      optionsCount += element.optionModels.length;
+      element.optionModels.forEach((element) {
+        totalAmount += element.price * element.quantity;
+      });
+    });
+  }
+
   List<Widget> subServices() {
     return List.generate(
-      2,
+      widget.cartModel.subServiceModels.length,
       (index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2),
-          child: Row(
-            children: [
-              Icon(
-                Icons.circle,
-                color: Colors.grey[300],
-                size: 7,
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, i) {
+            final option =
+                widget.cartModel.subServiceModels[index].optionModels[i];
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Colors.grey[300],
+                    size: 7,
+                  ),
+                  HorizontalSpace(8),
+                  Text(
+                    "${option.name} X ${option.quantity}",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.sp,
+                    ),
+                  )
+                ],
               ),
-              HorizontalSpace(8),
-              Text(
-                "Intensive cleaning (2 bathrooms) X 1",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.sp,
-                ),
-              )
-            ],
-          ),
+            );
+          },
+          itemCount:
+              widget.cartModel.subServiceModels[index].optionModels.length,
         );
       },
     );
@@ -71,7 +103,7 @@ class CartItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Bathroom & Kitchen Cleaning",
+                        widget.cartModel.categoryName,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontSize: 20.sp,
                             ),
@@ -82,12 +114,12 @@ class CartItemCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("1 Service",
+                          Text("$optionsCount services",
                               style: Theme.of(context).textTheme.titleMedium),
                           HorizontalSpace(16),
                           Icon(Icons.circle, size: 7),
                           HorizontalSpace(16),
-                          Text("₹500",
+                          Text("₹$totalAmount",
                               style: Theme.of(context).textTheme.titleMedium),
                         ],
                       )
@@ -128,7 +160,10 @@ class CartItemCard extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => OrderSummaryScreen(),
+                          builder: (context) => OrderSummaryScreen(
+                            categoryId: widget.cartModel.categoryId,
+                            amount: totalAmount,
+                          ),
                         ),
                       );
                     },

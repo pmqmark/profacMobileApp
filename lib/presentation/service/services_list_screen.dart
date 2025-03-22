@@ -132,7 +132,6 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
             return ServiceCategoryListItem(
               key: _serviceKeys[service.id],
               serviceModel: service,
-              categoryId: categoryModel.id,
             );
           },
         ),

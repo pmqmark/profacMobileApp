@@ -239,7 +239,6 @@ class _ServieSearchListItem extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return ServiceScreen(
-            categoryId: categoryId,
             subServiceId: subServiceModel.id,
           );
         }));

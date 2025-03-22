@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/checkout/booking_amount/booking_amount_bloc.dart';
+import 'package:profac/application/checkout/coupons/coupons_bloc.dart';
+import 'package:profac/domain/checkout/models/amount_model.dart';
+import 'package:profac/domain/checkout/models/coupon_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class CouponTile extends StatelessWidget {
   const CouponTile({
     super.key,
     this.isApplied = false,
+    required this.couponModel,
+    required this.amountBodyModel,
   });
   final bool isApplied;
+  final CouponModel couponModel;
+  final AmountBodyModel amountBodyModel;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -28,7 +37,7 @@ class CouponTile extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text(
-                '50%',
+                '${couponModel.discountValue}%',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: isApplied
                           ? Colors.white
@@ -64,7 +73,7 @@ class CouponTile extends StatelessWidget {
                 dense: true,
                 horizontalTitleGap: 4,
                 title: Text(
-                  "Welcome50",
+                  couponModel.code,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 contentPadding: EdgeInsets.symmetric(
@@ -88,7 +97,7 @@ class CouponTile extends StatelessWidget {
                     ),
                     VerticalSpace(8),
                     Text(
-                      "Use code Welcome50 & get 50% of on all orders above ₹2,500.",
+                      "Use code ${couponModel.code} & get ${couponModel.discountValue}% upto ${couponModel.maxDiscountAmount} of on all orders above ₹${couponModel.minOrderAmount}",
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -96,6 +105,22 @@ class CouponTile extends StatelessWidget {
                   ],
                 ),
                 trailing: GestureDetector(
+                  onTap: () {
+                    isApplied
+                        ? context.read<CouponsBloc>().add(
+                              CouponsEvent.removeCoupon(),
+                            )
+                        : context.read<CouponsBloc>().add(
+                              CouponsEvent.selectCoupon(couponModel),
+                            );
+                    final newAmount = amountBodyModel.copyWith(
+                      couponCode: isApplied ? null : couponModel.code,
+                    );
+                    context.read<BookingAmountBloc>().add(
+                          BookingAmountEvent.fetchTotalAmount(newAmount),
+                        );
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     isApplied ? "Remove" : "Apply",
                     style: TextStyle(

@@ -20,6 +20,15 @@ import 'package:profac/application/categories_group/catrogies_group_bloc.dart'
     as _i825;
 import 'package:profac/application/category_detailed/category_detailed_bloc.dart'
     as _i727;
+import 'package:profac/application/checkout/booking_amount/booking_amount_bloc.dart'
+    as _i368;
+import 'package:profac/application/checkout/booking_available/booking_available_bloc.dart'
+    as _i34;
+import 'package:profac/application/checkout/booking_slots/booking_slots_bloc.dart'
+    as _i93;
+import 'package:profac/application/checkout/checkout_order/checkout_order_bloc.dart'
+    as _i38;
+import 'package:profac/application/checkout/coupons/coupons_bloc.dart' as _i572;
 import 'package:profac/application/detailed_service/detailed_service_bloc.dart'
     as _i181;
 import 'package:profac/application/profile/profile_bloc.dart' as _i795;
@@ -39,6 +48,7 @@ import 'package:profac/domain/authentication/i_authentication_repo.dart'
 import 'package:profac/domain/banners/i_banners_repo.dart' as _i915;
 import 'package:profac/domain/cart/i_cart_repo.dart' as _i129;
 import 'package:profac/domain/categories/i_category_repo.dart' as _i273;
+import 'package:profac/domain/checkout/i_checkout_repo.dart' as _i886;
 import 'package:profac/domain/localstorage/i_localstorage_repo.dart' as _i139;
 import 'package:profac/domain/profile/i_profile_repo.dart' as _i442;
 import 'package:profac/domain/services/i_service_repo.dart' as _i125;
@@ -49,6 +59,7 @@ import 'package:profac/infrastructure/authentication/authentication_repo.dart'
 import 'package:profac/infrastructure/banners/banners_repo.dart' as _i597;
 import 'package:profac/infrastructure/cart/cart_repo.dart' as _i597;
 import 'package:profac/infrastructure/categorirs/categories_repo.dart' as _i941;
+import 'package:profac/infrastructure/checkout/checkout_repo.dart' as _i718;
 import 'package:profac/infrastructure/jwt_tokens/jwt_tokens_repo.dart' as _i994;
 import 'package:profac/infrastructure/localstorage/localstorage_repo.dart'
     as _i594;
@@ -66,7 +77,6 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i259.CartItemsBloc>(() => _i259.CartItemsBloc());
     gh.factory<_i237.ServiceAvailableBloc>(() => _i237.ServiceAvailableBloc());
     gh.lazySingleton<_i654.IJwtTokensRepo>(() => _i994.JwtTokensRepo());
     gh.lazySingleton<_i125.IServiceRepo>(() => _i47.ServiceRepo());
@@ -76,6 +86,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i6.IAddressRepo>(() => _i978.AddressRepository());
     gh.factory<_i1062.SearchLocationBloc>(
         () => _i1062.SearchLocationBloc(gh<_i6.IAddressRepo>()));
+    gh.factory<_i34.BookingAvailableBloc>(
+        () => _i34.BookingAvailableBloc(gh<_i6.IAddressRepo>()));
     gh.lazySingleton<_i129.ICartRepo>(() => _i597.CartRepo());
     gh.lazySingleton<_i915.IBannersRepo>(() => _i597.BannersRepo());
     gh.lazySingleton<_i139.ILocalstorageRepo>(() => _i594.LocalstorageRepo());
@@ -91,7 +103,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i915.IBannersRepo>(),
           gh<_i654.IJwtTokensRepo>(),
         ));
+    gh.lazySingleton<_i886.ICheckoutRepo>(() => _i718.CheckoutRep());
     gh.lazySingleton<_i442.IProfileRepo>(() => _i551.ProfileRepo());
+    gh.factory<_i572.CouponsBloc>(
+        () => _i572.CouponsBloc(gh<_i886.ICheckoutRepo>()));
+    gh.factory<_i368.BookingAmountBloc>(
+        () => _i368.BookingAmountBloc(gh<_i886.ICheckoutRepo>()));
     gh.factory<_i825.CategoriesGroupBloc>(() => _i825.CategoriesGroupBloc(
           gh<_i273.ICategoryRepo>(),
           gh<_i654.IJwtTokensRepo>(),
@@ -100,11 +117,17 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i273.ICategoryRepo>(),
           gh<_i654.IJwtTokensRepo>(),
         ));
+    gh.factory<_i93.BookingSlotsBloc>(
+        () => _i93.BookingSlotsBloc(gh<_i886.ICheckoutRepo>()));
+    gh.factory<_i38.CheckoutOrderBloc>(
+        () => _i38.CheckoutOrderBloc(gh<_i886.ICheckoutRepo>()));
     gh.factory<_i795.ProfileBloc>(() => _i795.ProfileBloc(
           gh<_i442.IProfileRepo>(),
           gh<_i139.ILocalstorageRepo>(),
           gh<_i654.IJwtTokensRepo>(),
         ));
+    gh.factory<_i259.CartItemsBloc>(
+        () => _i259.CartItemsBloc(gh<_i129.ICartRepo>()));
     gh.factory<_i181.DetailedServiceBloc>(() => _i181.DetailedServiceBloc(
           gh<_i125.IServiceRepo>(),
           gh<_i654.IJwtTokensRepo>(),

@@ -10,12 +10,10 @@ class CartReponseModel {
 }
 
 class CartModel {
-  final String id;
   final String categoryId;
   final String categoryName;
   final List<SubServiceCartModel> subServiceModels;
   CartModel({
-    required this.id,
     required this.categoryName,
     required this.subServiceModels,
     required this.categoryId,
@@ -23,7 +21,6 @@ class CartModel {
 
   factory CartModel.fromJson(Map<String, dynamic> json) {
     return CartModel(
-      id: json["_id"],
       categoryName: json["categoryId"]["name"],
       categoryId: json["categoryId"]["_id"],
       subServiceModels: List<SubServiceCartModel>.from(
@@ -35,19 +32,16 @@ class CartModel {
 class SubServiceCartModel {
   final String id;
   final String name;
-  final int quantity;
   final List<OptionCartModel> optionModels;
   SubServiceCartModel(
       {required this.id,
       required this.name,
-      required this.quantity,
       required this.optionModels});
 
   factory SubServiceCartModel.fromJson(Map<String, dynamic> json) {
     return SubServiceCartModel(
       id: json["subserviceId"]["_id"],
       name: json["subserviceId"]["name"],
-      quantity: json["quantity"],
       optionModels: List<OptionCartModel>.from(
           json["options"].map((x) => OptionCartModel.fromJson(x))),
     );

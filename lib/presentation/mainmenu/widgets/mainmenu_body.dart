@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,7 +64,7 @@ class MainmenuBody extends StatelessWidget {
               ),
               // StoriesList(),
               CategoriesLists(),
-              VerticalSpace(60)
+              VerticalSpace(0),
             ],
           ),
         );

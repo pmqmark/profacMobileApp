@@ -40,11 +40,9 @@ class CategoryGroupModel {
 
 class CategoryGroupResponse {
   final List<CategoryGroupModel> result;
-  final int total;
 
   CategoryGroupResponse({
     required this.result,
-    required this.total,
   });
 
   factory CategoryGroupResponse.fromJson(Map<String, dynamic> json) {
@@ -53,7 +51,6 @@ class CategoryGroupResponse {
           .map((item) =>
               CategoryGroupModel.fromJson(item as Map<String, dynamic>))
           .toList(),
-      total: json['data']['pagination']['total'] as int,
     );
   }
 }

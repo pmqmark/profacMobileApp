@@ -168,4 +168,31 @@ class AddressRepository extends IAddressRepo {
       return left(const MainFailure.otherFailure());
     }
   }
+
+  @override
+  Future<Either<MainFailure, bool>> checkAvailability(
+      {required String categoryId, required String addressId}) async {
+    try {
+      final response = await getIt<Request>().dio.post(
+        ApiEndpoints.checkAvailability,
+        data: {
+          'categoryId': categoryId,
+          'addressId': addressId,
+        },
+      );
+      if (response.statusCode == 200) {
+        final data = response.data as Map<String, dynamic>;
+        final isAvailable = data['data']['isAvailable'] as bool;
+        return right(isAvailable);
+      } else {
+        return left(const MainFailure.clientFailure());
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return ApiFailureHandler().handleDioError<bool>(e);
+      }
+      log(e.toString(), name: "check availability");
+      return left(const MainFailure.otherFailure());
+    }
+  }
 }

@@ -6,10 +6,9 @@ import 'package:profac/presentation/service/widgets/service_list_item.dart';
 class ServiceCategoryListItem extends StatelessWidget {
   const ServiceCategoryListItem({
     super.key,
-    required this.serviceModel, required this.categoryId,
+    required this.serviceModel,
   });
   final ServiceModel serviceModel;
-  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -48,7 +47,6 @@ class ServiceCategoryListItem extends StatelessWidget {
             itemBuilder: (context, index) {
               return ServiceListItem(
                 subServiceModel: serviceModel.subservices[index],
-                categoryId: categoryId,
               );
             },
             separatorBuilder: (context, index) {

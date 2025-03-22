@@ -11,6 +11,9 @@ abstract class IAddressRepo {
   Future<Either<MainFailure, GMapAddress>> getAddressByLatLng(LatLng latLng);
   Future<Either<MainFailure, GMapAddress>> getCurrentLocation();
   Future<Either<MainFailure, void>> saveAddress(AddressModel address);
-  Future<Either<MainFailure, CheckLatLngModel>> checkServiceLocation(LatLng latLng);
+  Future<Either<MainFailure, CheckLatLngModel>> checkServiceLocation(
+      LatLng latLng);
   Future<Either<MainFailure, LatLng>> getCurrentLatLng();
+  Future<Either<MainFailure, bool>> checkAvailability(
+     {required String categoryId, required String addressId});
 }

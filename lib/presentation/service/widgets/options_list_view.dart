@@ -5,17 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/cart_items/cart_items_bloc.dart';
 import 'package:profac/domain/cart/model/cart_item_model.dart';
 import 'package:profac/domain/services/model/option_model.dart';
+import 'package:profac/infrastructure/cart/cart_repo.dart';
+import 'package:profac/presentation/common_widgets/border_progress_indicator.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class OptionsListView extends StatelessWidget {
   const OptionsListView(
       {super.key,
       required this.options,
-      required this.subServiceId,
-      required this.categoryId});
+      required this.subServiceId,});
   final List<OptionModel> options;
   final String subServiceId;
-  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -41,15 +41,13 @@ class OptionsListView extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: BlocBuilder<CartItemsBloc, CartItemsState>(
                     builder: (context, state) {
-                  final List<CartItemModel> items = state.map(
-                    initial: (_) => [],
-                    hasItemsState1: (value) => value.cartitems,
-                    hasItemsState2: (value) => value.cartitems,
-                  );
-                  final itemIndex = items
-                      .indexWhere((item) => item.optionId == options[index].id);
-
-                  if (itemIndex == -1 || items[itemIndex].quantity == 0) {
+                  final currentItem = CartItemModel(
+                      categoryId: options[index].categoryId,
+                      subserviceId: subServiceId,
+                      optionId: options[index].id,
+                      quantity: 0);
+                  final quantity = CartRepo().getQuantity(context, currentItem);
+                  if (quantity == 0) {
                     return SizedBox(
                       height: 30,
                       child: ElevatedButton(
@@ -59,7 +57,7 @@ class OptionsListView extends StatelessWidget {
                             CartItemModel(
                                 optionId: options[index].id,
                                 quantity: 1,
-                                categoryId: categoryId,
+                                categoryId: options[index].categoryId,
                                 subserviceId: subServiceId),
                           ));
                         },
@@ -79,70 +77,57 @@ class OptionsListView extends StatelessWidget {
                       ),
                     );
                   }
-                  return SizedBox(
-                    width: 80,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                  onTap: () {
-                                    if (itemIndex != -1) {
-                                      final count = items[itemIndex].quantity;
-                                      BlocProvider.of<CartItemsBloc>(context)
-                                          .add(
-                                        CartItemsEvent.updateCartItem(
-                                          items[itemIndex]
-                                              .copyWith(quantity: count - 1),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  child: Icon(Icons.remove, size: 18)),
-                            ),
-                            Expanded(
-                              child: Text(
-                                itemIndex == -1
-                                    ? "0"
-                                    : items[itemIndex].quantity.toString(),
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                textAlign: TextAlign.center,
+                  return BorderProgressIndicator(
+                    isLoading: state.cartItemAdding,
+                    borderRadius: BorderRadius.circular(5.0),
+                    child: SizedBox(
+                      width: 80,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                    onTap: () {
+                                      if (quantity > 0) {
+                                        BlocProvider.of<CartItemsBloc>(context)
+                                            .add(
+                                          CartItemsEvent.addCartItem(
+                                            currentItem.copyWith(
+                                                quantity: quantity - 1),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    child: Icon(Icons.remove, size: 18)),
                               ),
-                            ),
-                            Expanded(
-                              child: GestureDetector(
-                                  onTap: () {
-                                    if (itemIndex == -1) {
+                              Expanded(
+                                child: Text(
+                                  quantity.toString(),
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                child: GestureDetector(
+                                    onTap: () {
                                       BlocProvider.of<CartItemsBloc>(context)
                                           .add(
                                         CartItemsEvent.addCartItem(
-                                          CartItemModel(
-                                              optionId: options[index].id,
-                                              quantity: 1,
-                                              categoryId: categoryId,
-                                              subserviceId: subServiceId),
+                                          currentItem.copyWith(
+                                              quantity: quantity + 1),
                                         ),
                                       );
-                                    } else {
-                                      final count = items[itemIndex].quantity;
-                                      BlocProvider.of<CartItemsBloc>(context)
-                                          .add(
-                                        CartItemsEvent.updateCartItem(
-                                          items[itemIndex]
-                                              .copyWith(quantity: count + 1),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  child: Icon(Icons.add, size: 18)),
-                            )
-                          ],
+                                    },
+                                    child: Icon(Icons.add, size: 18)),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

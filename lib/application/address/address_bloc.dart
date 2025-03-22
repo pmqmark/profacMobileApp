@@ -24,6 +24,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   final IAddressRepo addressRepo;
   AddressBloc(this.addressRepo, this.jwtTokensRepo) : super(_Initial()) {
     on<_ChangeAddress>((event, emit) async {
+      log("change address", name: "AddressBloc");
       emit(const AddressLoading());
       final LatLng latLng =
           LatLng(event.address.coordinates[1], event.address.coordinates[0]);

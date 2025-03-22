@@ -19,8 +19,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class ServiceScreen extends StatefulWidget {
   ServiceScreen(
-      {super.key, required this.categoryId, required this.subServiceId});
-  final String categoryId;
+      {super.key, required this.subServiceId});
   final String subServiceId;
   @override
   State<ServiceScreen> createState() => _ServiceScreenState();
@@ -79,6 +78,8 @@ class _ServiceScreenState extends State<ServiceScreen> {
           OptionModel(
               id: '',
               name: '',
+              subServiceId: '',
+              categoryId: '',
               price: 1000,
               duration: 60,
               isArchived: false,
@@ -152,7 +153,6 @@ class _ServiceScreenState extends State<ServiceScreen> {
         height: 130,
         child: OptionsListView(
             subServiceId: widget.subServiceId,
-            categoryId: widget.categoryId,
             options: optionModels),
       )
     ];

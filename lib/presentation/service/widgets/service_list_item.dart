@@ -5,15 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/cart_items/cart_items_bloc.dart';
 import 'package:profac/domain/cart/model/cart_item_model.dart';
 import 'package:profac/domain/services/model/subservice_model.dart';
+import 'package:profac/infrastructure/cart/cart_repo.dart';
+import 'package:profac/presentation/common_widgets/border_progress_indicator.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:profac/presentation/mainmenu/widgets/mainmenu_body.dart';
 import 'package:profac/presentation/service/service_screen.dart';
 import 'package:profac/presentation/service/widgets/sub_service_sheet.dart';
 
 class ServiceListItem extends StatelessWidget {
   ServiceListItem(
-      {super.key, required this.subServiceModel, required this.categoryId});
+      {super.key, required this.subServiceModel});
   final SubServiceModel subServiceModel;
-  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -69,7 +71,7 @@ class ServiceListItem extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => ServiceScreen(
                           subServiceId: subServiceModel.id,
-                          categoryId: categoryId),
+                          ),
                     ),
                   );
                 },
@@ -128,65 +130,63 @@ class ServiceListItem extends StatelessWidget {
 
   Widget _buildAddItemCountWidget() {
     return BlocBuilder<CartItemsBloc, CartItemsState>(
-        buildWhen: (previous, current) {
-      return true;
-    }, builder: (context, state) {
-      log("message", name: "ServiceListItem");
-      final List<CartItemModel> items = state.map(
-        initial: (_) => [],
-        hasItemsState1: (value) => value.cartitems,
-        hasItemsState2: (value) => value.cartitems,
-      );
-      final itemIndex = items
-          .indexWhere((item) => item.optionId == subServiceModel.options[0].id);
-      if (itemIndex != -1 && subServiceModel.options.length == 1) {
-        return DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: Theme.of(context).primaryColor,
+        builder: (context, state) {
+      final currentItem = CartItemModel(
+          categoryId: subServiceModel.options[0].categoryId,
+          subserviceId: subServiceModel.id,
+          optionId: subServiceModel.options[0].id,
+          quantity: 0);
+      final quantity = CartRepo().getQuantity(context, currentItem);
+      if (quantity > 0 && subServiceModel.options.length == 1) {
+        return BorderProgressIndicator(
+          isLoading: state.cartItemAdding,
+          borderRadius: BorderRadius.circular(10.0),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: Theme.of(context).primaryColor,
+              ),
             ),
-          ),
-          child: SizedBox(
-            width: 90,
-            height: 35,
-            child: Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                      onTap: () {
-                        // decrease item count
-                        final count = items[itemIndex].quantity;
-                        BlocProvider.of<CartItemsBloc>(context).add(
-                          CartItemsEvent.updateCartItem(
-                            items[itemIndex].copyWith(quantity: count - 1),
-                          ),
-                        );
-                      },
-                      child: Icon(Icons.remove, size: 18)),
-                ),
-                Expanded(
-                  child: Text(
-                    items[itemIndex].quantity.toString(),
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    textAlign: TextAlign.center,
+            child: SizedBox(
+              width: 90,
+              height: 35,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                        onTap: () {
+                          if (quantity > 0) {
+                            BlocProvider.of<CartItemsBloc>(context).add(
+                              CartItemsEvent.addCartItem(
+                                currentItem.copyWith(quantity: quantity - 1),
+                              ),
+                            );
+                          }
+                        },
+                        child: Icon(Icons.remove, size: 18)),
                   ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                      onTap: () {
-                        // increase item count
-                        final count = items[itemIndex].quantity;
-                        BlocProvider.of<CartItemsBloc>(context).add(
-                          CartItemsEvent.updateCartItem(
-                            items[itemIndex].copyWith(quantity: count + 1),
-                          ),
-                        );
-                      },
-                      child: Icon(Icons.add, size: 18)),
-                )
-              ],
+                  Expanded(
+                    child: Text(
+                      quantity.toString(),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<CartItemsBloc>(context).add(
+                            CartItemsEvent.addCartItem(
+                              currentItem.copyWith(quantity: quantity + 1),
+                            ),
+                          );
+                        },
+                        child: Icon(Icons.add, size: 18)),
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -201,35 +201,16 @@ class ServiceListItem extends StatelessWidget {
                 context: context,
                 builder: (context) => SubServiceSheet(
                   options: subServiceModel.options,
-                  categoryId: categoryId,
                   subServiceId: subServiceModel.id,
                   subServiceName: subServiceModel.name,
                 ),
               );
             } else {
-              final itemIndex = items.indexWhere(
-                  (item) => item.optionId == subServiceModel.options[0].id);
-              if (itemIndex != -1) {
-                BlocProvider.of<CartItemsBloc>(context).add(
-                  CartItemsEvent.updateCartItem(
-                    items[itemIndex]
-                        .copyWith(quantity: items[itemIndex].quantity + 1),
-                  ),
-                );
-                log('item count increased by 1');
-              } else {
-                BlocProvider.of<CartItemsBloc>(context).add(
-                  CartItemsEvent.addCartItem(
-                    CartItemModel(
-                      optionId: subServiceModel.options[0].id,
-                      categoryId: categoryId,
-                      subserviceId: subServiceModel.id,
-                      quantity: 1,
-                    ),
-                  ),
-                );
-                log('item added to  items with count 1');
-              }
+              BlocProvider.of<CartItemsBloc>(context).add(
+                CartItemsEvent.addCartItem(
+                  currentItem.copyWith(quantity: quantity + 1),
+                ),
+              );
             }
           },
           style: ElevatedButton.styleFrom(
