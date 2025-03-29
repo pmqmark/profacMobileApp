@@ -151,21 +151,23 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
           BlocProvider.of<ProfileBloc>(navigatorKey.currentContext!).state;
       profileState.maybeMap(
         orElse: () {
-          log('profile not loaded', name: "AddressBloc");
+          log('profile not loaded', name: "AddressBloc-_ManageInitialLocation");
         },
         profileLoaded: (state) async {
-          log('profile loaded', name: "AddressBloc");
+          log('profile loaded', name: "AddressBloc-_ManageInitialLocation");
           final currentLatLng = await addressRepo.getCurrentLatLng();
           await currentLatLng.fold(
             (l1) async {
-              log('error detected at l1', name: "AddressBloc");
+              log('error detected at l1',
+                  name: "AddressBloc-_ManageInitialLocation");
               emit(AddressError(l1));
             },
             (r1) async {
               final result = await addressRepo.checkServiceLocation(r1);
               await result.fold(
                 (l2) {
-                  log('error detected at l2', name: "AddressBloc");
+                  log('error detected at l2',
+                      name: "AddressBloc-_ManageInitialLocation");
                   emit(AddressError(l2));
                 },
                 (r2) async {
@@ -173,7 +175,8 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
                   final gaddress = await addressRepo.getAddressByLatLng(latLng);
                   gaddress.fold(
                     (l3) {
-                      log('error detected at l3', name: "AddressBloc");
+                      log('error detected at l3',
+                          name: "AddressBloc-_ManageInitialLocation");
                       emit(AddressError(l3));
                     },
                     (r3) {
@@ -186,6 +189,9 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
           );
         },
       );
+    });
+    on<_Reset>((event, emit) {
+      emit(_Initial());
     });
   }
 }

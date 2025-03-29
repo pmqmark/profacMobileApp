@@ -16,46 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BookingAvailableEvent {
-  String get categoryId => throw _privateConstructorUsedError;
-  String get addressId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(String categoryId, String addressId)
         checkAvailability,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(String categoryId, String addressId)? checkAvailability,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(String categoryId, String addressId)? checkAvailability,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_CheckAvailability value) checkAvailability,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_CheckAvailability value)? checkAvailability,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_CheckAvailability value)? checkAvailability,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of BookingAvailableEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BookingAvailableEventCopyWith<BookingAvailableEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -64,8 +62,6 @@ abstract class $BookingAvailableEventCopyWith<$Res> {
   factory $BookingAvailableEventCopyWith(BookingAvailableEvent value,
           $Res Function(BookingAvailableEvent) then) =
       _$BookingAvailableEventCopyWithImpl<$Res, BookingAvailableEvent>;
-  @useResult
-  $Res call({String categoryId, String addressId});
 }
 
 /// @nodoc
@@ -81,32 +77,119 @@ class _$BookingAvailableEventCopyWithImpl<$Res,
 
   /// Create a copy of BookingAvailableEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? categoryId = null,
-    Object? addressId = null,
-  }) {
-    return _then(_value.copyWith(
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      addressId: null == addressId
-          ? _value.addressId
-          : addressId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$CheckAvailabilityImplCopyWith<$Res>
-    implements $BookingAvailableEventCopyWith<$Res> {
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$BookingAvailableEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookingAvailableEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'BookingAvailableEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String categoryId, String addressId)
+        checkAvailability,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
+    TResult? Function(String categoryId, String addressId)? checkAvailability,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String categoryId, String addressId)? checkAvailability,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_CheckAvailability value) checkAvailability,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_CheckAvailability value)? checkAvailability,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_CheckAvailability value)? checkAvailability,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements BookingAvailableEvent {
+  const factory _Reset() = _$ResetImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckAvailabilityImplCopyWith<$Res> {
   factory _$$CheckAvailabilityImplCopyWith(_$CheckAvailabilityImpl value,
           $Res Function(_$CheckAvailabilityImpl) then) =
       __$$CheckAvailabilityImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String categoryId, String addressId});
 }
@@ -182,6 +265,7 @@ class _$CheckAvailabilityImpl implements _CheckAvailability {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(String categoryId, String addressId)
         checkAvailability,
   }) {
@@ -191,6 +275,7 @@ class _$CheckAvailabilityImpl implements _CheckAvailability {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(String categoryId, String addressId)? checkAvailability,
   }) {
     return checkAvailability?.call(categoryId, addressId);
@@ -199,6 +284,7 @@ class _$CheckAvailabilityImpl implements _CheckAvailability {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(String categoryId, String addressId)? checkAvailability,
     required TResult orElse(),
   }) {
@@ -211,6 +297,7 @@ class _$CheckAvailabilityImpl implements _CheckAvailability {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_CheckAvailability value) checkAvailability,
   }) {
     return checkAvailability(this);
@@ -219,6 +306,7 @@ class _$CheckAvailabilityImpl implements _CheckAvailability {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_CheckAvailability value)? checkAvailability,
   }) {
     return checkAvailability?.call(this);
@@ -227,6 +315,7 @@ class _$CheckAvailabilityImpl implements _CheckAvailability {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_CheckAvailability value)? checkAvailability,
     required TResult orElse(),
   }) {
@@ -242,14 +331,11 @@ abstract class _CheckAvailability implements BookingAvailableEvent {
       {required final String categoryId,
       required final String addressId}) = _$CheckAvailabilityImpl;
 
-  @override
   String get categoryId;
-  @override
   String get addressId;
 
   /// Create a copy of BookingAvailableEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckAvailabilityImplCopyWith<_$CheckAvailabilityImpl> get copyWith =>
       throw _privateConstructorUsedError;

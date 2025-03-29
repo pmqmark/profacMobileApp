@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/category_detailed/category_detailed_bloc.dart';
 import 'package:profac/domain/categories/model/category_model.dart';
+import 'package:profac/domain/services/model/option_model.dart';
+import 'package:profac/domain/services/model/service_mode.dart';
+import 'package:profac/domain/services/model/subservice_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/common_widgets/search_box.dart';
 import 'package:profac/presentation/service/widgets/service_category_list_item.dart';
@@ -30,11 +33,6 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
 
   final ScrollController _scrollController = ScrollController();
   final Map<String, GlobalKey> _serviceKeys = {};
-  final List<String> items = [
-    'Bath fittings',
-    'Kitchen fittings',
-    'Pipe fittings',
-  ];
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryDetailedBloc, CategoryDetailedState>(
@@ -78,7 +76,46 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
       id: "id",
       name: "name",
       media: [],
-      services: [],
+      services: [
+        ServiceModel(
+            id: "id",
+            isPackage: false,
+            name: "name",
+            subservices: List.generate(
+              5,
+              (index) => SubServiceModel(
+                  id: '1',
+                  thumbnailUrl:
+                      'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg',
+                  name: 'Cleaning',
+                  avgRating: 4.5,
+                  ratingCount: null,
+                  isPackage: false,
+                  steps: "",
+                  brands: [],
+                  tips: [],
+                  included: [],
+                  excluded: [],
+                  notes: [],
+                  media: [],
+                  isArchived: false,
+                  v: 0,
+                  options: [
+                    OptionModel(
+                        id: "id",
+                        name: "name",
+                        price: 233,
+                        isArchived: false,
+                        v: 0,
+                        duration: 342,
+                        subServiceId: "",
+                        categoryId: "categoryId",
+                        thumbnailUrl: "thumbnailUrl")
+                  ],
+                  about: [],
+                  faqs: []),
+            )),
+      ],
       isArchived: false,
       avgRating: 0,
       bookCount: 0,
@@ -118,9 +155,9 @@ class _ServicesListScreenState extends State<ServicesListScreen> {
           ],
         ),
         VerticalSpace(14),
-        SearchBox(
-            hintText: "Search for services",
-            controller: TextEditingController()),
+        // SearchBox(
+        //     hintText: "Search for services",
+        //     controller: TextEditingController()),
         VerticalSpace(24),
         ...List.generate(
           categoryModel.services.length * 2,

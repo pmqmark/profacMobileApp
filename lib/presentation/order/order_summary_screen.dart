@@ -52,7 +52,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
     BlocProvider.of<BookingSlotsBloc>(context)
         .add(BookingSlotsEvent.getSlots(widget.categoryId));
     BlocProvider.of<BookingAmountBloc>(context)
-        .add(BookingAmountEvent.initial(widget.amount));
+        .add(BookingAmountEvent.initial(widget.categoryId));
     BlocProvider.of<AddressBloc>(context).state.mapOrNull(
       loadedAddress: (value) {
         bookingAddressNotifier.value = value.address;
@@ -61,6 +61,8 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                 categoryId: widget.categoryId, addressId: value.address.id));
       },
     );
+    BlocProvider.of<BookingAmountBloc>(context)
+        .add(BookingAmountEvent.fetchTotalAmount());
     super.initState();
   }
 
@@ -116,8 +118,8 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                             ),
                             VerticalSpace(16),
                             AddedItemsCard(categoryId: widget.categoryId),
-                            VerticalSpace(16),
-                            FrequentlyAddedCard(),
+                            //VerticalSpace(16),
+                            //FrequentlyAddedCard(),
                             VerticalSpace(16),
                             SavingsCornerCard(
                               amountBodyModel: amountBodyModel,
@@ -210,6 +212,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                         return SavedAddressBottomSheet();
                                       },
                                     );
+                                    return;
                                   }
                                   if (bookingslotNotifier.value == null) {
                                     await showModalBottomSheet(
@@ -231,6 +234,12 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                     couponCode: amountBodyModel.couponCode,
                                     tip: amountBodyModel.tip,
                                     payMethod: "COD",
+                                    receiverName:
+                                        receiverNameController.text.isEmpty
+                                            ? null
+                                            : receiverNameController.text,
+                                    receiverPhone: int.tryParse(
+                                        receiverMobileController.text),
                                   );
                                   BlocProvider.of<CheckoutOrderBloc>(context)
                                       .add(CheckoutOrderEvent.placeOrder(
@@ -276,8 +285,8 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                     child: Text("Amount to pay: ₹100",
                         style: Theme.of(context).textTheme.bodyMedium));
               }
-              if (state.failure == null) {
-                return Text("Amount to pay: ₹${state.amount}",
+              if (state.failure == null && state.amount != null) {
+                return Text("Amount to pay: ₹${state.amount!.totalamount}",
                     style: Theme.of(context).textTheme.bodyMedium);
               }
               return SizedBox();

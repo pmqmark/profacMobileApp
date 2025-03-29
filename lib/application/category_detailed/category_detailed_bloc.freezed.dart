@@ -18,38 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CategoryDetailedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String categoryId) getCategoryDetailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String categoryId)? getCategoryDetailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String categoryId)? getCategoryDetailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetCategoryDetailed value) getCategoryDetailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetCategoryDetailed value)? getCategoryDetailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetCategoryDetailed value)? getCategoryDetailed,
     required TResult orElse(),
   }) =>
@@ -79,18 +79,18 @@ class _$CategoryDetailedEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$CategoryDetailedEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$CategoryDetailedEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CategoryDetailedEvent
@@ -99,18 +99,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'CategoryDetailedEvent.started()';
+    return 'CategoryDetailedEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -119,30 +119,30 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String categoryId) getCategoryDetailed,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String categoryId)? getCategoryDetailed,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String categoryId)? getCategoryDetailed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -150,37 +150,37 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetCategoryDetailed value) getCategoryDetailed,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetCategoryDetailed value)? getCategoryDetailed,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetCategoryDetailed value)? getCategoryDetailed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements CategoryDetailedEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements CategoryDetailedEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -253,7 +253,7 @@ class _$GetCategoryDetailedImpl implements _GetCategoryDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String categoryId) getCategoryDetailed,
   }) {
     return getCategoryDetailed(categoryId);
@@ -262,7 +262,7 @@ class _$GetCategoryDetailedImpl implements _GetCategoryDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String categoryId)? getCategoryDetailed,
   }) {
     return getCategoryDetailed?.call(categoryId);
@@ -271,7 +271,7 @@ class _$GetCategoryDetailedImpl implements _GetCategoryDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String categoryId)? getCategoryDetailed,
     required TResult orElse(),
   }) {
@@ -284,7 +284,7 @@ class _$GetCategoryDetailedImpl implements _GetCategoryDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetCategoryDetailed value) getCategoryDetailed,
   }) {
     return getCategoryDetailed(this);
@@ -293,7 +293,7 @@ class _$GetCategoryDetailedImpl implements _GetCategoryDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetCategoryDetailed value)? getCategoryDetailed,
   }) {
     return getCategoryDetailed?.call(this);
@@ -302,7 +302,7 @@ class _$GetCategoryDetailedImpl implements _GetCategoryDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetCategoryDetailed value)? getCategoryDetailed,
     required TResult orElse(),
   }) {

@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BookingSlotsEvent {
-  String get categoryId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(String categoryId) getSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(String categoryId)? getSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(String categoryId)? getSlots,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetSlots value) getSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetSlots value)? getSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetSlots value)? getSlots,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of BookingSlotsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BookingSlotsEventCopyWith<BookingSlotsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +61,6 @@ abstract class $BookingSlotsEventCopyWith<$Res> {
   factory $BookingSlotsEventCopyWith(
           BookingSlotsEvent value, $Res Function(BookingSlotsEvent) then) =
       _$BookingSlotsEventCopyWithImpl<$Res, BookingSlotsEvent>;
-  @useResult
-  $Res call({String categoryId});
 }
 
 /// @nodoc
@@ -78,27 +75,118 @@ class _$BookingSlotsEventCopyWithImpl<$Res, $Val extends BookingSlotsEvent>
 
   /// Create a copy of BookingSlotsEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? categoryId = null,
-  }) {
-    return _then(_value.copyWith(
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetSlotsImplCopyWith<$Res>
-    implements $BookingSlotsEventCopyWith<$Res> {
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$BookingSlotsEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookingSlotsEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'BookingSlotsEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String categoryId) getSlots,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
+    TResult? Function(String categoryId)? getSlots,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String categoryId)? getSlots,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_GetSlots value) getSlots,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_GetSlots value)? getSlots,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_GetSlots value)? getSlots,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements BookingSlotsEvent {
+  const factory _Reset() = _$ResetImpl;
+}
+
+/// @nodoc
+abstract class _$$GetSlotsImplCopyWith<$Res> {
   factory _$$GetSlotsImplCopyWith(
           _$GetSlotsImpl value, $Res Function(_$GetSlotsImpl) then) =
       __$$GetSlotsImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String categoryId});
 }
@@ -163,6 +251,7 @@ class _$GetSlotsImpl implements _GetSlots {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(String categoryId) getSlots,
   }) {
     return getSlots(categoryId);
@@ -171,6 +260,7 @@ class _$GetSlotsImpl implements _GetSlots {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(String categoryId)? getSlots,
   }) {
     return getSlots?.call(categoryId);
@@ -179,6 +269,7 @@ class _$GetSlotsImpl implements _GetSlots {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(String categoryId)? getSlots,
     required TResult orElse(),
   }) {
@@ -191,6 +282,7 @@ class _$GetSlotsImpl implements _GetSlots {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetSlots value) getSlots,
   }) {
     return getSlots(this);
@@ -199,6 +291,7 @@ class _$GetSlotsImpl implements _GetSlots {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetSlots value)? getSlots,
   }) {
     return getSlots?.call(this);
@@ -207,6 +300,7 @@ class _$GetSlotsImpl implements _GetSlots {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetSlots value)? getSlots,
     required TResult orElse(),
   }) {
@@ -220,12 +314,10 @@ class _$GetSlotsImpl implements _GetSlots {
 abstract class _GetSlots implements BookingSlotsEvent {
   const factory _GetSlots(final String categoryId) = _$GetSlotsImpl;
 
-  @override
   String get categoryId;
 
   /// Create a copy of BookingSlotsEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSlotsImplCopyWith<_$GetSlotsImpl> get copyWith =>
       throw _privateConstructorUsedError;

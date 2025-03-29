@@ -8,7 +8,8 @@ class OptionModel {
   final int duration;
   final String subServiceId;
   final String categoryId;
-  OptionModel({
+  final String thumbnailUrl;
+  OptionModel( {
     this.discount,
     required this.id,
     required this.name,
@@ -18,6 +19,7 @@ class OptionModel {
     required this.duration,
     required this.subServiceId,
     required this.categoryId,
+    required this.thumbnailUrl,
   });
 
   factory OptionModel.fromJson(Map<String, dynamic> json) {
@@ -32,7 +34,9 @@ class OptionModel {
       v: json['__v'] ?? 0,
       duration: json['duration'] ?? 0,
       subServiceId: json['subServiceId'] ?? '',
-      categoryId: json['categoryId'] ?? '',
+      categoryId: json['categoryId'] ?? '', thumbnailUrl: json.containsKey('thumbnail')
+          ? json['thumbnail']["location"] as String
+          : '',
     );
   }
 }

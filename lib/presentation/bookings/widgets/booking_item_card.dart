@@ -1,39 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/application/booking/detailed_booking/detailed_booking_bloc.dart';
+import 'package:profac/domain/booking/model/booking_model.dart';
+import 'package:profac/presentation/bookings/add_review_screen.dart';
 import 'package:profac/presentation/bookings/detailed_booking_screen.dart';
+import 'package:profac/presentation/bookings/widgets/cancel_booking_alert_dialog.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/order/order_summary_screen.dart';
-
-enum BookingStatus { ordered, completed, cancelled }
 
 class BookingItemCard extends StatelessWidget {
-  BookingItemCard({
-    super.key,
-    this.status = BookingStatus.completed,
-  }) {
-    statusText = status == BookingStatus.ordered
-        ? "Ordered"
-        : status == BookingStatus.completed
-            ? "Service Fullfilled"
-            : "Cancelled";
-    statusColor = status == BookingStatus.ordered
-        ? Colors.grey[100]!
-        : status == BookingStatus.completed
+  BookingItemCard({super.key, required this.bookingModel}) {
+    statusText = bookingModel.status == BookingStatus.confirmed
+        ? "Confirmed"
+        : bookingModel.status == BookingStatus.completed
+            ? "Service Fulfilled"
+            : bookingModel.status == BookingStatus.cancelled
+                ? "Cancelled"
+                : "Pending";
+    statusColor = bookingModel.status == BookingStatus.confirmed
+        ? Color(0xFFBCD9FF)
+        : bookingModel.status == BookingStatus.completed
             ? Color(0xFFE2F6E2)
-            : Color(0xffF6E2E2);
-    statusTextColor = status == BookingStatus.ordered
-        ? Colors.black
-        : status == BookingStatus.completed
+            : bookingModel.status == BookingStatus.cancelled
+                ? Color(0xffF6E2E2)
+                : Color(0xFFFFF3E0);
+    statusTextColor = bookingModel.status == BookingStatus.confirmed
+        ? Color(0xFF0D009E)
+        : bookingModel.status == BookingStatus.completed
             ? Color(0xFF2E7D32)
-            : Color(0xffC62828);
+            : bookingModel.status == BookingStatus.cancelled
+                ? Color(0xffC62828)
+                : Color(0xFFFFA000);
   }
-  final BookingStatus status;
+  final BookingModel bookingModel;
   String statusText = '';
   Color statusTextColor = Colors.black;
   Color statusColor = Colors.grey[100]!;
-  List<Widget> subServices() {
+  List<Widget> subServices(List<BookingOption> bookingOptions) {
     return List.generate(
-      2,
+      bookingOptions.length,
       (index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 2),
@@ -46,7 +51,7 @@ class BookingItemCard extends StatelessWidget {
               ),
               HorizontalSpace(8),
               Text(
-                "Intensive cleaning (2 bathrooms) X 1",
+                "${bookingOptions[index].name} X ${bookingOptions[index].quantity}",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.sp,
@@ -115,7 +120,7 @@ class BookingItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Bathroom & Kitchen Cleaning",
+                        bookingModel.categoryName,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontSize: 20.sp,
                             ),
@@ -126,12 +131,13 @@ class BookingItemCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("1 Service",
+                          Text(
+                              "${bookingModel.options.length} Service${bookingModel.options.length > 1 ? 's' : ''}",
                               style: Theme.of(context).textTheme.titleMedium),
                           HorizontalSpace(16),
                           Icon(Icons.circle, size: 7),
                           HorizontalSpace(16),
-                          Text("₹500",
+                          Text("₹${bookingModel.amount}",
                               style: Theme.of(context).textTheme.titleMedium),
                         ],
                       )
@@ -141,7 +147,7 @@ class BookingItemCard extends StatelessWidget {
               ],
             ),
             VerticalSpace(12),
-            ...subServices(),
+            ...subServices(bookingModel.options),
             VerticalSpace(12),
             SizedBox(
               width: double.infinity,
@@ -149,7 +155,7 @@ class BookingItemCard extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: Colors.black12),
+                    side: BorderSide(color: Colors.black87),
                   ),
                   backgroundColor: Colors.white,
                   padding: EdgeInsets.zero,
@@ -157,58 +163,78 @@ class BookingItemCard extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => DetailedBookingScreen(),
+                      builder: (context) => DetailedBookingScreen(
+                        bookingId: bookingModel.bookingId,
+                        title: bookingModel.categoryName,
+                        bookingModel: bookingModel,
+                      ),
                     ),
                   );
                 },
                 child: Text(
                   "View More",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.black,
                     fontSize: 16.sp,
                   ),
                 ),
               ),
             ),
-            if (status == BookingStatus.ordered)
+            if (bookingModel.status == BookingStatus.pending ||
+                bookingModel.status == BookingStatus.confirmed)
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
-                      side: BorderSide(color: Colors.black12),
+                      side: BorderSide(color: Color(0x4fff0000)),
                     ),
                     backgroundColor: Colors.white,
                     padding: EdgeInsets.zero,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => CancelBookingAlertDialog(
+                        bookingId: bookingModel.bookingId,
+                      ),
+                    );
+                  },
                   child: Text(
                     "Cancel",
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.red,
                       fontSize: 16.sp,
                     ),
                   ),
                 ),
               ),
-            if (status == BookingStatus.completed)
+            if (bookingModel.status == BookingStatus.completed)
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
-                      side: BorderSide(color: Colors.black12),
+                      side: BorderSide(color: Color(0xffFFCD50)),
                     ),
                     backgroundColor: Colors.white,
                     padding: EdgeInsets.zero,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AddReviewScreen(
+                          bookingModel: bookingModel,
+                        ),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Add Review",
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Color(0xffE4A70A),
                       fontSize: 16.sp,
                     ),
                   ),

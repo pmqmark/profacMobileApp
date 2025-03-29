@@ -45,6 +45,9 @@ class FrequentlyAddedCard extends StatelessWidget {
                                   height: 84,
                                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Lp0VKMPbytkrnX_OwEJZW-Krq40cDNgChQ&s",
                                   fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return SizedBox();
+                                  },
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(4),

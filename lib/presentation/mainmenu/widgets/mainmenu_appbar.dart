@@ -74,7 +74,7 @@ class MainmenuAppbar extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Badge(
-              isLabelVisible: true,
+              isLabelVisible: false,
               child: Icon(
                 Icons.shopping_cart_outlined,
                 color: Colors.black,

@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ServiceAvailableEvent {
-  bool get isAvailable => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isAvailable) setValue,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isAvailable)? setValue,
+    TResult? Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isAvailable)? setValue,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SetValue value) setValue,
+    required TResult Function(_Reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SetValue value)? setValue,
+    TResult? Function(_Reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SetValue value)? setValue,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of ServiceAvailableEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ServiceAvailableEventCopyWith<ServiceAvailableEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +61,6 @@ abstract class $ServiceAvailableEventCopyWith<$Res> {
   factory $ServiceAvailableEventCopyWith(ServiceAvailableEvent value,
           $Res Function(ServiceAvailableEvent) then) =
       _$ServiceAvailableEventCopyWithImpl<$Res, ServiceAvailableEvent>;
-  @useResult
-  $Res call({bool isAvailable});
 }
 
 /// @nodoc
@@ -79,27 +76,13 @@ class _$ServiceAvailableEventCopyWithImpl<$Res,
 
   /// Create a copy of ServiceAvailableEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isAvailable = null,
-  }) {
-    return _then(_value.copyWith(
-      isAvailable: null == isAvailable
-          ? _value.isAvailable
-          : isAvailable // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$SetValueImplCopyWith<$Res>
-    implements $ServiceAvailableEventCopyWith<$Res> {
+abstract class _$$SetValueImplCopyWith<$Res> {
   factory _$$SetValueImplCopyWith(
           _$SetValueImpl value, $Res Function(_$SetValueImpl) then) =
       __$$SetValueImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({bool isAvailable});
 }
@@ -165,6 +148,7 @@ class _$SetValueImpl implements _SetValue {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isAvailable) setValue,
+    required TResult Function() reset,
   }) {
     return setValue(isAvailable);
   }
@@ -173,6 +157,7 @@ class _$SetValueImpl implements _SetValue {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isAvailable)? setValue,
+    TResult? Function()? reset,
   }) {
     return setValue?.call(isAvailable);
   }
@@ -181,6 +166,7 @@ class _$SetValueImpl implements _SetValue {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isAvailable)? setValue,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (setValue != null) {
@@ -193,6 +179,7 @@ class _$SetValueImpl implements _SetValue {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SetValue value) setValue,
+    required TResult Function(_Reset value) reset,
   }) {
     return setValue(this);
   }
@@ -201,6 +188,7 @@ class _$SetValueImpl implements _SetValue {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SetValue value)? setValue,
+    TResult? Function(_Reset value)? reset,
   }) {
     return setValue?.call(this);
   }
@@ -209,6 +197,7 @@ class _$SetValueImpl implements _SetValue {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SetValue value)? setValue,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (setValue != null) {
@@ -221,15 +210,118 @@ class _$SetValueImpl implements _SetValue {
 abstract class _SetValue implements ServiceAvailableEvent {
   const factory _SetValue(final bool isAvailable) = _$SetValueImpl;
 
-  @override
   bool get isAvailable;
 
   /// Create a copy of ServiceAvailableEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetValueImplCopyWith<_$SetValueImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$ServiceAvailableEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ServiceAvailableEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'ServiceAvailableEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isAvailable) setValue,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isAvailable)? setValue,
+    TResult? Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isAvailable)? setValue,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetValue value) setValue,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetValue value)? setValue,
+    TResult? Function(_Reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetValue value)? setValue,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements ServiceAvailableEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc

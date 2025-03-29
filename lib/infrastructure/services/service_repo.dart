@@ -65,7 +65,7 @@ class ServiceRepo extends IServiceRepo {
   Future<Either<MainFailure, List<ReviewModel>>> getReviews(
       String subServiceId) async {
     try {
-      final response = await getIt<Request>() 
+      final response = await getIt<Request>()
           .dio
           .get('${ApiEndpoints.getReviews}$subServiceId');
       if (response.statusCode == 200) {

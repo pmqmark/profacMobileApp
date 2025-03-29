@@ -22,6 +22,9 @@ class DetailedServiceBloc
   final IJwtTokensRepo _jwtTokensRepo;
   DetailedServiceBloc(this._serviceRepo, this._jwtTokensRepo)
       : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const _Initial());
+    });
     on<_GetSubServiceById>((event, emit) async {
       emit(const DetailedServiceState.loading());
       final result = await _serviceRepo.getSubServiceById(event.subServiceId);

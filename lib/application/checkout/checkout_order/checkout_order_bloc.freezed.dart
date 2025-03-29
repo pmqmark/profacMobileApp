@@ -16,22 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CheckoutOrderEvent {
-  CheckoutOrderModel get model => throw _privateConstructorUsedError;
-  AddressModel get address => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(CheckoutOrderModel model, AddressModel address)
         placeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(CheckoutOrderModel model, AddressModel address)?
         placeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(CheckoutOrderModel model, AddressModel address)?
         placeOrder,
     required TResult orElse(),
@@ -39,25 +40,22 @@ mixin _$CheckoutOrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_PlaceOrder value) placeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_PlaceOrder value)? placeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_PlaceOrder value)? placeOrder,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of CheckoutOrderEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CheckoutOrderEventCopyWith<CheckoutOrderEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,8 +64,6 @@ abstract class $CheckoutOrderEventCopyWith<$Res> {
   factory $CheckoutOrderEventCopyWith(
           CheckoutOrderEvent value, $Res Function(CheckoutOrderEvent) then) =
       _$CheckoutOrderEventCopyWithImpl<$Res, CheckoutOrderEvent>;
-  @useResult
-  $Res call({CheckoutOrderModel model, AddressModel address});
 }
 
 /// @nodoc
@@ -82,32 +78,121 @@ class _$CheckoutOrderEventCopyWithImpl<$Res, $Val extends CheckoutOrderEvent>
 
   /// Create a copy of CheckoutOrderEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? model = null,
-    Object? address = null,
-  }) {
-    return _then(_value.copyWith(
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as CheckoutOrderModel,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as AddressModel,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$PlaceOrderImplCopyWith<$Res>
-    implements $CheckoutOrderEventCopyWith<$Res> {
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$CheckoutOrderEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CheckoutOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'CheckoutOrderEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(CheckoutOrderModel model, AddressModel address)
+        placeOrder,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
+    TResult? Function(CheckoutOrderModel model, AddressModel address)?
+        placeOrder,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(CheckoutOrderModel model, AddressModel address)?
+        placeOrder,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_PlaceOrder value) placeOrder,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_PlaceOrder value)? placeOrder,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_PlaceOrder value)? placeOrder,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements CheckoutOrderEvent {
+  const factory _Reset() = _$ResetImpl;
+}
+
+/// @nodoc
+abstract class _$$PlaceOrderImplCopyWith<$Res> {
   factory _$$PlaceOrderImplCopyWith(
           _$PlaceOrderImpl value, $Res Function(_$PlaceOrderImpl) then) =
       __$$PlaceOrderImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({CheckoutOrderModel model, AddressModel address});
 }
@@ -179,6 +264,7 @@ class _$PlaceOrderImpl implements _PlaceOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(CheckoutOrderModel model, AddressModel address)
         placeOrder,
   }) {
@@ -188,6 +274,7 @@ class _$PlaceOrderImpl implements _PlaceOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(CheckoutOrderModel model, AddressModel address)?
         placeOrder,
   }) {
@@ -197,6 +284,7 @@ class _$PlaceOrderImpl implements _PlaceOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(CheckoutOrderModel model, AddressModel address)?
         placeOrder,
     required TResult orElse(),
@@ -210,6 +298,7 @@ class _$PlaceOrderImpl implements _PlaceOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_PlaceOrder value) placeOrder,
   }) {
     return placeOrder(this);
@@ -218,6 +307,7 @@ class _$PlaceOrderImpl implements _PlaceOrder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_PlaceOrder value)? placeOrder,
   }) {
     return placeOrder?.call(this);
@@ -226,6 +316,7 @@ class _$PlaceOrderImpl implements _PlaceOrder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_PlaceOrder value)? placeOrder,
     required TResult orElse(),
   }) {
@@ -241,14 +332,11 @@ abstract class _PlaceOrder implements CheckoutOrderEvent {
       {required final CheckoutOrderModel model,
       required final AddressModel address}) = _$PlaceOrderImpl;
 
-  @override
   CheckoutOrderModel get model;
-  @override
   AddressModel get address;
 
   /// Create a copy of CheckoutOrderEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlaceOrderImplCopyWith<_$PlaceOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;

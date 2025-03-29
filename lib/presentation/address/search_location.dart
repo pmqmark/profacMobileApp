@@ -60,7 +60,7 @@ class _SearchLocationBottomSheetState extends State<SearchLocationBottomSheet> {
                   ?.copyWith(color: Theme.of(context).primaryColor)),
           onTap: () {
             BlocProvider.of<SearchLocationBloc>(context).add(
-              SearchLocationEvent.started(),
+              SearchLocationEvent.reset(),
             );
             FocusScope.of(context).unfocus();
             Navigator.push(context, MaterialPageRoute(builder: (context) {

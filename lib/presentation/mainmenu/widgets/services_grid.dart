@@ -53,6 +53,7 @@ class ServicesGrid extends StatelessWidget {
           List.generate(
             4,
             (index) => CategoryGroupModel(
+              iconUrl: "",
               name: "Demo name",
               id: "sdfd",
               categories: [],
@@ -102,9 +103,13 @@ class ServicesGrid extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Row(
                     children: [
-                      Icon(
-                        services[index]["icon"] as IconData,
-                        size: 20,
+                      Image.network(
+                        categoryModel[index].iconUrl,
+                        height: 20,
+                        width: 20,
+                        errorBuilder: (context, error, stackTrace) {
+                          return SizedBox();
+                        },
                       ),
                       HorizontalSpace(10),
                       Expanded(

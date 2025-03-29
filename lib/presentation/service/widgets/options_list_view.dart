@@ -10,10 +10,11 @@ import 'package:profac/presentation/common_widgets/border_progress_indicator.dar
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class OptionsListView extends StatelessWidget {
-  const OptionsListView(
-      {super.key,
-      required this.options,
-      required this.subServiceId,});
+  const OptionsListView({
+    super.key,
+    required this.options,
+    required this.subServiceId,
+  });
   final List<OptionModel> options;
   final String subServiceId;
   @override
@@ -34,7 +35,8 @@ class OptionsListView extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfn9hZlr4bE0U7WBnhldu64gTfL8Z0dNuKSA&s"),
+                    options[index].thumbnailUrl,
+                  ),
                 ),
               ),
               child: Align(

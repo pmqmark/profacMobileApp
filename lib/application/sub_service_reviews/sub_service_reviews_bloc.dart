@@ -23,6 +23,9 @@ class SubServiceReviewsBloc
   final IJwtTokensRepo _jwtTokensRepo;
   SubServiceReviewsBloc(this._jwtTokensRepo, this._serviceRepo)
       : super(SubServiceReviewsState.initial()) {
+    on<_Reset>((event, emit) {
+      emit(SubServiceReviewsState.initial());
+    });
     on<_GetReviews>((event, emit) async {
       emit(state.copyWith(isLoading: true));
       final result = await _serviceRepo.getReviews(event.subServiceId);

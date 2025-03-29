@@ -8,7 +8,8 @@ import 'package:profac/presentation/order/widgets/coupon_tile.dart';
 
 class CouponsBottomSheet extends StatefulWidget {
   const CouponsBottomSheet({
-    super.key, required this.amountBodyModel,
+    super.key,
+    required this.amountBodyModel,
   });
   final AmountBodyModel amountBodyModel;
   @override
@@ -83,10 +84,17 @@ class _CouponsBottomSheetState extends State<CouponsBottomSheet> {
                         style: Theme.of(context).textTheme.titleLarge),
                     VerticalSpace(16),
                     ...List.generate(
-                      state.coupons.length * 2,
+                      state.selectedCoupon != null
+                          ? state.coupons.length * 2 - 1
+                          : state.coupons.length * 2,
                       (index) {
                         if (index.isOdd) {
                           return VerticalSpace(16);
+                        }
+                        if (state.selectedCoupon != null &&
+                            state.selectedCoupon!.code ==
+                                state.coupons[(index / 2).floor()].code) {
+                          return SizedBox();
                         }
                         return CouponTile(
                           couponModel: state.coupons[(index / 2).floor()],

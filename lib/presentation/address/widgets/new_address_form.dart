@@ -6,7 +6,7 @@ import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/domain/address/model/g_map_location_address_model.dart';
 import 'package:profac/presentation/address/widgets/edit_reciever_sheet.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/profile/widgets/edit_profile_sheet.dart';
+import 'package:profac/presentation/profile/widgets/edit_profile_screen.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class NewAddressForm extends StatefulWidget {

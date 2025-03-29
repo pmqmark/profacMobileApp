@@ -22,6 +22,9 @@ class CategoriesGroupBloc
   final IJwtTokensRepo _jwtTokensRepo;
   CategoriesGroupBloc(this._categoryRepo, this._jwtTokensRepo)
       : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const _Initial());
+    });
     on<_GetCategoryGroups>((event, emit) async {
       log('get category groups event detected',name: "CategoriesGroupBloc");
       emit(const _Loading());

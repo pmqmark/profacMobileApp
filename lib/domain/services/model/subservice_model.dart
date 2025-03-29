@@ -22,6 +22,7 @@ class SubServiceModel {
   final double avgRating;
   final int? reviewCount;
   final Map<String, int>? ratingCount;
+  final String thumbnailUrl;
   SubServiceModel({
     required this.id,
     required this.isPackage,
@@ -43,59 +44,57 @@ class SubServiceModel {
     required this.avgRating,
     this.reviewCount,
     this.ratingCount,
+    required this.thumbnailUrl,
   });
 
   factory SubServiceModel.fromJson(Map<String, dynamic> json) {
     return SubServiceModel(
-      id: json['_id'] ?? '',
-      isPackage: json['isPackage'] ?? false,
-      name: json['name'] ?? '',
-      options: List<OptionModel>.from(
-          json['options'].map((x) => OptionModel.fromJson(x))),
-      about: json.containsKey('about') && json['about'] != null
-          ? List<AboutProcess>.from(
-              json['about'].map((x) => AboutProcess.fromJson(x)))
-          : [],
-      steps: json['steps'] ?? '',
-      brands: json.containsKey('brands') && json['brands'] != null
-          ? List<String>.from(json['brands'])
-          : [],
-      tips: json.containsKey('tips') && json['tips'] != null
-          ? List<Tip>.from(json['tips'].map((x) => Tip.fromJson(x)))
-          : [],
-      included: json.containsKey('included') && json['included'] != null
-          ? List<Included>.from(
-              json['included'].map((x) => Included.fromJson(x)))
-          : [],
-      excluded: json.containsKey('excluded') && json['excluded'] != null
-          ? List<Excluded>.from(
-              json['excluded'].map((x) => Excluded.fromJson(x)))
-          : [],
-      notes: json.containsKey('notes') && json['notes'] != null
-          ? List<String>.from(json['notes'])
-          : [],
-      faqs: json.containsKey('faqs') && json['faqs'] != null
-          ? List<FAQModel>.from(json['faqs'].map((x) => FAQModel.fromJson(x)))
-          : [],
-      media: json.containsKey('media') && json['media'] != null
-          ? List<Media>.from(json['media'].map((x) => Media.fromJson(x)))
-          : [],
-      isArchived: json['isArchived'] ?? false,
-      createdAt: json.containsKey('createdAt') && json['createdAt'] != null
-          ? DateTime.parse(json['createdAt'])
-          : null,
-      updatedAt: json.containsKey('updatedAt') && json['updatedAt'] != null
-          ? DateTime.parse(json['updatedAt'])
-          : null,
-      v: json['__v'] ?? 0,
-      avgRating: json.containsKey('avgRating') && json['avgRating'] != null
-          ? json['avgRating'].toDouble()
-          : 0,
-      reviewCount: json.containsKey('reviewCount') ? json['reviewCount'] : null,
-      ratingCount: json.containsKey('ratingCount')
-          ? Map<String, int>.from(json['ratingCount'])
-          : null,
-    );
+        id: json['_id'] ?? '',
+        isPackage: json['isPackage'] ?? false,
+        name: json['name'] ?? '',
+        options: List<OptionModel>.from(
+            json['options'].map((x) => OptionModel.fromJson(x))),
+        about: json.containsKey('about') && json['about'] != null
+            ? List<AboutProcess>.from(
+                json['about'].map((x) => AboutProcess.fromJson(x)))
+            : [],
+        steps: json['steps'] ?? '',
+        brands: json.containsKey('brands') && json['brands'] != null
+            ? List<String>.from(json['brands'])
+            : [],
+        tips: json.containsKey('tips') && json['tips'] != null
+            ? List<Tip>.from(json['tips'].map((x) => Tip.fromJson(x)))
+            : [],
+        included: json.containsKey('included') && json['included'] != null
+            ? List<Included>.from(
+                json['included'].map((x) => Included.fromJson(x)))
+            : [],
+        excluded: json.containsKey('excluded') && json['excluded'] != null
+            ? List<Excluded>.from(
+                json['excluded'].map((x) => Excluded.fromJson(x)))
+            : [],
+        notes: json.containsKey('notes') && json['notes'] != null
+            ? List<String>.from(json['notes'])
+            : [],
+        faqs: json.containsKey('faqs') && json['faqs'] != null
+            ? List<FAQModel>.from(json['faqs'].map((x) => FAQModel.fromJson(x)))
+            : [],
+        media: json.containsKey('media') && json['media'] != null
+            ? List<Media>.from(json['media'].map((x) => Media.fromJson(x)))
+            : [],
+        isArchived: json['isArchived'] ?? false,
+        createdAt: json.containsKey('createdAt') && json['createdAt'] != null
+            ? DateTime.parse(json['createdAt'])
+            : null,
+        updatedAt: json.containsKey('updatedAt') && json['updatedAt'] != null
+            ? DateTime.parse(json['updatedAt'])
+            : null,
+        v: json['__v'] ?? 0,
+        avgRating:
+            json.containsKey('avgRating') && json['avgRating'] != null ? double.tryParse(json['avgRating'].toStringAsFixed(1)) ?? 0.0 : 0,
+        reviewCount: json.containsKey('reviewCount') ? json['reviewCount'] : null,
+        ratingCount: json.containsKey('ratingCount') ? Map<String, int>.from(json['ratingCount']) : null,
+        thumbnailUrl: json.containsKey('thumbnail') && json['thumbnail'] != null ? json['thumbnail']['location'] as String : '');
   }
 }
 

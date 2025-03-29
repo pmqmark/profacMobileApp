@@ -22,3 +22,32 @@ class ReviewModel {
     );
   }
 }
+
+class ReviewDataModel {
+  final String user;
+  final String subservice;
+  final String option;
+  final String booking;
+  final double rating;
+  final String comment;
+
+  ReviewDataModel({
+    required this.user,
+    required this.subservice,
+    required this.option,
+    required this.booking,
+    required this.rating,
+    required this.comment,
+  });
+
+Map<String, dynamic> toJson() {
+  return {
+    'user': user,
+    'subservice': subservice,
+    'option': option,
+    'booking': booking,
+    'rating': rating,
+    'comment': comment,
+  };
+}
+}

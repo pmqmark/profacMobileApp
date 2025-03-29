@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DetailedServiceEvent {
-  String get subServiceId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(String subServiceId) getSubServiceById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(String subServiceId)? getSubServiceById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(String subServiceId)? getSubServiceById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetSubServiceById value) getSubServiceById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetSubServiceById value)? getSubServiceById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetSubServiceById value)? getSubServiceById,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of DetailedServiceEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DetailedServiceEventCopyWith<DetailedServiceEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +61,6 @@ abstract class $DetailedServiceEventCopyWith<$Res> {
   factory $DetailedServiceEventCopyWith(DetailedServiceEvent value,
           $Res Function(DetailedServiceEvent) then) =
       _$DetailedServiceEventCopyWithImpl<$Res, DetailedServiceEvent>;
-  @useResult
-  $Res call({String subServiceId});
 }
 
 /// @nodoc
@@ -79,27 +76,118 @@ class _$DetailedServiceEventCopyWithImpl<$Res,
 
   /// Create a copy of DetailedServiceEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subServiceId = null,
-  }) {
-    return _then(_value.copyWith(
-      subServiceId: null == subServiceId
-          ? _value.subServiceId
-          : subServiceId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetSubServiceByIdImplCopyWith<$Res>
-    implements $DetailedServiceEventCopyWith<$Res> {
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$DetailedServiceEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DetailedServiceEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'DetailedServiceEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String subServiceId) getSubServiceById,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
+    TResult? Function(String subServiceId)? getSubServiceById,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String subServiceId)? getSubServiceById,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_GetSubServiceById value) getSubServiceById,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_GetSubServiceById value)? getSubServiceById,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_GetSubServiceById value)? getSubServiceById,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements DetailedServiceEvent {
+  const factory _Reset() = _$ResetImpl;
+}
+
+/// @nodoc
+abstract class _$$GetSubServiceByIdImplCopyWith<$Res> {
   factory _$$GetSubServiceByIdImplCopyWith(_$GetSubServiceByIdImpl value,
           $Res Function(_$GetSubServiceByIdImpl) then) =
       __$$GetSubServiceByIdImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String subServiceId});
 }
@@ -165,6 +253,7 @@ class _$GetSubServiceByIdImpl implements _GetSubServiceById {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reset,
     required TResult Function(String subServiceId) getSubServiceById,
   }) {
     return getSubServiceById(subServiceId);
@@ -173,6 +262,7 @@ class _$GetSubServiceByIdImpl implements _GetSubServiceById {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
     TResult? Function(String subServiceId)? getSubServiceById,
   }) {
     return getSubServiceById?.call(subServiceId);
@@ -181,6 +271,7 @@ class _$GetSubServiceByIdImpl implements _GetSubServiceById {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
     TResult Function(String subServiceId)? getSubServiceById,
     required TResult orElse(),
   }) {
@@ -193,6 +284,7 @@ class _$GetSubServiceByIdImpl implements _GetSubServiceById {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
     required TResult Function(_GetSubServiceById value) getSubServiceById,
   }) {
     return getSubServiceById(this);
@@ -201,6 +293,7 @@ class _$GetSubServiceByIdImpl implements _GetSubServiceById {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_GetSubServiceById value)? getSubServiceById,
   }) {
     return getSubServiceById?.call(this);
@@ -209,6 +302,7 @@ class _$GetSubServiceByIdImpl implements _GetSubServiceById {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
     TResult Function(_GetSubServiceById value)? getSubServiceById,
     required TResult orElse(),
   }) {
@@ -223,12 +317,10 @@ abstract class _GetSubServiceById implements DetailedServiceEvent {
   const factory _GetSubServiceById(final String subServiceId) =
       _$GetSubServiceByIdImpl;
 
-  @override
   String get subServiceId;
 
   /// Create a copy of DetailedServiceEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSubServiceByIdImplCopyWith<_$GetSubServiceByIdImpl> get copyWith =>
       throw _privateConstructorUsedError;

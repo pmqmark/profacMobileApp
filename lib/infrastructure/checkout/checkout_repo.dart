@@ -42,7 +42,7 @@ class CheckoutRep extends ICheckoutRepo {
     try {
       final response = await getIt<Request>()
           .dio
-          .post(ApiEndpoints.fetchTotalAmount, data: amountBodyModel.toJson());
+          .post(ApiEndpoints.fetchFareSplit, data: amountBodyModel.toJson());
       if (response.statusCode == 200) {
         final amount = AmountModel.fromJson(response.data);
         return right(amount);

@@ -11,5 +11,8 @@ class ServiceAvailableBloc extends Bloc<ServiceAvailableEvent, ServiceAvailableS
     on<_SetValue>((event, emit) {
       emit(ServiceAvailableState(isAvailable: event.isAvailable));
     });
+    on<_Reset>((event, emit) {
+      emit(ServiceAvailableState.initial());
+    });
   }
 }

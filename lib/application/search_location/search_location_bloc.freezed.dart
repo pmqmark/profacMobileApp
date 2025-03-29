@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchLocationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) searchLocation,
     required TResult Function(LatLng address) selectLocationLatLng,
     required TResult Function() getCurrentLocation,
@@ -27,7 +27,7 @@ mixin _$SearchLocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? searchLocation,
     TResult? Function(LatLng address)? selectLocationLatLng,
     TResult? Function()? getCurrentLocation,
@@ -36,7 +36,7 @@ mixin _$SearchLocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? searchLocation,
     TResult Function(LatLng address)? selectLocationLatLng,
     TResult Function()? getCurrentLocation,
@@ -46,7 +46,7 @@ mixin _$SearchLocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SearchLocation value) searchLocation,
     required TResult Function(_SelectLocationLatLng value) selectLocationLatLng,
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
@@ -55,7 +55,7 @@ mixin _$SearchLocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SearchLocation value)? searchLocation,
     TResult? Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -64,7 +64,7 @@ mixin _$SearchLocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SearchLocation value)? searchLocation,
     TResult Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -96,18 +96,18 @@ class _$SearchLocationEventCopyWithImpl<$Res, $Val extends SearchLocationEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$SearchLocationEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$SearchLocationEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of SearchLocationEvent
@@ -116,18 +116,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'SearchLocationEvent.started()';
+    return 'SearchLocationEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -136,39 +136,39 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) searchLocation,
     required TResult Function(LatLng address) selectLocationLatLng,
     required TResult Function() getCurrentLocation,
     required TResult Function(GMapAddress address) setLocation,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? searchLocation,
     TResult? Function(LatLng address)? selectLocationLatLng,
     TResult? Function()? getCurrentLocation,
     TResult? Function(GMapAddress address)? setLocation,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? searchLocation,
     TResult Function(LatLng address)? selectLocationLatLng,
     TResult Function()? getCurrentLocation,
     TResult Function(GMapAddress address)? setLocation,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -176,46 +176,46 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SearchLocation value) searchLocation,
     required TResult Function(_SelectLocationLatLng value) selectLocationLatLng,
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
     required TResult Function(_SetLocation value) setLocation,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SearchLocation value)? searchLocation,
     TResult? Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
     TResult? Function(_SetLocation value)? setLocation,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SearchLocation value)? searchLocation,
     TResult Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     TResult Function(_SetLocation value)? setLocation,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements SearchLocationEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements SearchLocationEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -287,7 +287,7 @@ class _$SearchLocationImpl implements _SearchLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) searchLocation,
     required TResult Function(LatLng address) selectLocationLatLng,
     required TResult Function() getCurrentLocation,
@@ -299,7 +299,7 @@ class _$SearchLocationImpl implements _SearchLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? searchLocation,
     TResult? Function(LatLng address)? selectLocationLatLng,
     TResult? Function()? getCurrentLocation,
@@ -311,7 +311,7 @@ class _$SearchLocationImpl implements _SearchLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? searchLocation,
     TResult Function(LatLng address)? selectLocationLatLng,
     TResult Function()? getCurrentLocation,
@@ -327,7 +327,7 @@ class _$SearchLocationImpl implements _SearchLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SearchLocation value) searchLocation,
     required TResult Function(_SelectLocationLatLng value) selectLocationLatLng,
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
@@ -339,7 +339,7 @@ class _$SearchLocationImpl implements _SearchLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SearchLocation value)? searchLocation,
     TResult? Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -351,7 +351,7 @@ class _$SearchLocationImpl implements _SearchLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SearchLocation value)? searchLocation,
     TResult Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -447,7 +447,7 @@ class _$SelectLocationLatLngImpl implements _SelectLocationLatLng {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) searchLocation,
     required TResult Function(LatLng address) selectLocationLatLng,
     required TResult Function() getCurrentLocation,
@@ -459,7 +459,7 @@ class _$SelectLocationLatLngImpl implements _SelectLocationLatLng {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? searchLocation,
     TResult? Function(LatLng address)? selectLocationLatLng,
     TResult? Function()? getCurrentLocation,
@@ -471,7 +471,7 @@ class _$SelectLocationLatLngImpl implements _SelectLocationLatLng {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? searchLocation,
     TResult Function(LatLng address)? selectLocationLatLng,
     TResult Function()? getCurrentLocation,
@@ -487,7 +487,7 @@ class _$SelectLocationLatLngImpl implements _SelectLocationLatLng {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SearchLocation value) searchLocation,
     required TResult Function(_SelectLocationLatLng value) selectLocationLatLng,
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
@@ -499,7 +499,7 @@ class _$SelectLocationLatLngImpl implements _SelectLocationLatLng {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SearchLocation value)? searchLocation,
     TResult? Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -511,7 +511,7 @@ class _$SelectLocationLatLngImpl implements _SelectLocationLatLng {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SearchLocation value)? searchLocation,
     TResult Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -579,7 +579,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) searchLocation,
     required TResult Function(LatLng address) selectLocationLatLng,
     required TResult Function() getCurrentLocation,
@@ -591,7 +591,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? searchLocation,
     TResult? Function(LatLng address)? selectLocationLatLng,
     TResult? Function()? getCurrentLocation,
@@ -603,7 +603,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? searchLocation,
     TResult Function(LatLng address)? selectLocationLatLng,
     TResult Function()? getCurrentLocation,
@@ -619,7 +619,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SearchLocation value) searchLocation,
     required TResult Function(_SelectLocationLatLng value) selectLocationLatLng,
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
@@ -631,7 +631,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SearchLocation value)? searchLocation,
     TResult? Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -643,7 +643,7 @@ class _$GetCurrentLocationImpl implements _GetCurrentLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SearchLocation value)? searchLocation,
     TResult Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -729,7 +729,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) searchLocation,
     required TResult Function(LatLng address) selectLocationLatLng,
     required TResult Function() getCurrentLocation,
@@ -741,7 +741,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? searchLocation,
     TResult? Function(LatLng address)? selectLocationLatLng,
     TResult? Function()? getCurrentLocation,
@@ -753,7 +753,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? searchLocation,
     TResult Function(LatLng address)? selectLocationLatLng,
     TResult Function()? getCurrentLocation,
@@ -769,7 +769,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SearchLocation value) searchLocation,
     required TResult Function(_SelectLocationLatLng value) selectLocationLatLng,
     required TResult Function(_GetCurrentLocation value) getCurrentLocation,
@@ -781,7 +781,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SearchLocation value)? searchLocation,
     TResult? Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
@@ -793,7 +793,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SearchLocation value)? searchLocation,
     TResult Function(_SelectLocationLatLng value)? selectLocationLatLng,
     TResult Function(_GetCurrentLocation value)? getCurrentLocation,

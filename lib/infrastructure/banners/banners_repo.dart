@@ -9,10 +9,11 @@ import 'package:profac/domain/di/injectable.dart';
 import 'package:profac/domain/failure/api_failure_handler.dart';
 import 'package:profac/domain/failure/failure.dart';
 import 'package:profac/domain/request/request.dart';
+
 @LazySingleton(as: IBannersRepo)
 class BannersRepo extends IBannersRepo {
   @override
-  Future<Either<MainFailure, List<BannerModel>>> getBanners() async{
+  Future<Either<MainFailure, List<BannerModel>>> getBanners() async {
     try {
       final response = await getIt<Request>().dio.get(ApiEndpoints.banners);
       if (response.statusCode == 200) {
@@ -22,11 +23,10 @@ class BannersRepo extends IBannersRepo {
       return left(const MainFailure.clientFailure());
     } catch (e) {
       if (e is DioException) {
-        return  ApiFailureHandler().handleDioError<List<BannerModel>>(e);
+        return ApiFailureHandler().handleDioError<List<BannerModel>>(e);
       }
       log(e.toString(), name: "get banners");
       return left(const MainFailure.otherFailure());
     }
   }
-  
 }

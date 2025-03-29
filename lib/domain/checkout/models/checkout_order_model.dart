@@ -5,7 +5,8 @@ class CheckoutOrderModel {
   final int tip;
   final String couponCode;
   final String payMethod;
-
+  String? receiverName;
+  int? receiverPhone;
   CheckoutOrderModel({
     required this.categoryId,
     required this.slotId,
@@ -13,6 +14,8 @@ class CheckoutOrderModel {
     required this.tip,
     required this.couponCode,
     required this.payMethod,
+    this.receiverName,
+    this.receiverPhone,
   });
 
   Map<String, dynamic> toJson() {
@@ -23,6 +26,8 @@ class CheckoutOrderModel {
       "tip": tip,
       "couponCode": couponCode,
       "payMethod": payMethod,
+      if (receiverName != null) "contactName": receiverName,
+      if (receiverPhone != null) "contactPhone": receiverPhone,
     };
   }
 }

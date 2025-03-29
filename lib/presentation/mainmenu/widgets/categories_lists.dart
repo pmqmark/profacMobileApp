@@ -33,10 +33,25 @@ class CategoriesLists extends StatelessWidget {
       child: _buildSuccess(
         List.generate(
           2,
-          (index) => CategoryGroupModel(id: 'id', name: 'nameeee', categories: [
-            CompactCategoryModel(id: "id", name: "nameeeee"),
-            CompactCategoryModel(id: "id", name: "nameeeee"),
-          ]),
+          (index) => CategoryGroupModel(
+            id: 'id',
+            name: 'nameeee',
+            iconUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg',
+            categories: [
+              CompactCategoryModel(
+                  id: "id",
+                  name: "nameeeee",
+                  serviceCount: 2,
+                  iconUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg',
+                  thumbnailUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg'),
+              CompactCategoryModel(
+                  id: "id",
+                  name: "nameeeee",
+                  serviceCount: 3,
+                  iconUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg',
+                  thumbnailUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg'),
+            ],
+          ),
         ),
       ),
     );
@@ -44,15 +59,16 @@ class CategoriesLists extends StatelessWidget {
 
   ListView _buildSuccess(List<CategoryGroupModel> categoryGroupModel) {
     return ListView.separated(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return CategoriesListWidget(
-            title: categoryGroupModel[index].name,
-            categories: categoryGroupModel[index].categories,
-          );
-        },
-        separatorBuilder: (context, index) => VerticalSpace(10),
-        itemCount: categoryGroupModel.length);
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return CategoriesListWidget(
+          title: categoryGroupModel[index].name,
+          categories: categoryGroupModel[index].categories,
+        );
+      },
+      separatorBuilder: (context, index) => VerticalSpace(10),
+      itemCount: categoryGroupModel.length,
+    );
   }
 }

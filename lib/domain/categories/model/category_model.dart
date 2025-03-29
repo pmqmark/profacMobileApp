@@ -78,8 +78,9 @@ class CategoryModel {
             ],
       isArchived: json['isArchived'] ?? false,
       v: json['__v'] ?? 0,
-      avgRating:
-          json.containsKey('avgRating') ? json['avgRating'].toDouble() : 0.0,
+      avgRating: json.containsKey('avgRating')
+          ? double.parse((json['avgRating'].toDouble()).toStringAsFixed(1))
+          : 0.0,
       bookCount: json.containsKey('bookCount') ? json["bookCount"] : 0,
     );
   }

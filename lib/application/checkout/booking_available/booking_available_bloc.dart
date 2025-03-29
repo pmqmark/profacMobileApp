@@ -15,6 +15,9 @@ class BookingAvailableBloc
     extends Bloc<BookingAvailableEvent, BookingAvailableState> {
   final IAddressRepo addressRepo;
   BookingAvailableBloc(this.addressRepo) : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const _Initial());
+    });
     on<_CheckAvailability>((event, emit) async {
       log("checkAvailability event", name: "BookingAvailableBloc");
       emit(const BookingAvailableState.loading());

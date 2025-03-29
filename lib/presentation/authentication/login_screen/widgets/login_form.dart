@@ -32,7 +32,7 @@ class LoginForm extends StatelessWidget {
             duration: const Duration(milliseconds: 500),
             opacity: isExpanded ? 0 : 1,
             child: Image.asset(
-              'assets/profac_logo.png',
+              'assets/profac Logo.png',
               fit: BoxFit.fitHeight,
               height: 38.h,
             ),

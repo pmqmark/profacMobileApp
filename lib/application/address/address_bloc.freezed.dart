@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddressEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
@@ -28,7 +28,7 @@ mixin _$AddressEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
@@ -38,7 +38,7 @@ mixin _$AddressEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -49,7 +49,7 @@ mixin _$AddressEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -60,7 +60,7 @@ mixin _$AddressEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
@@ -70,7 +70,7 @@ mixin _$AddressEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,
@@ -103,18 +103,18 @@ class _$AddressEventCopyWithImpl<$Res, $Val extends AddressEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AddressEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$AddressEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AddressEvent
@@ -123,18 +123,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'AddressEvent.started()';
+    return 'AddressEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -143,33 +143,33 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
     required TResult Function() manageInitialLocation,
     required TResult Function(AddressModel address) changeAddress,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
     TResult? Function()? manageInitialLocation,
     TResult? Function(AddressModel address)? changeAddress,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -177,8 +177,8 @@ class _$StartedImpl implements _Started {
     TResult Function(AddressModel address)? changeAddress,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -186,7 +186,7 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -194,26 +194,26 @@ class _$StartedImpl implements _Started {
         manageInitialLocation,
     required TResult Function(_ChangeAddress value) changeAddress,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
     TResult? Function(_ManageInitialLocation value)? manageInitialLocation,
     TResult? Function(_ChangeAddress value)? changeAddress,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,
@@ -221,15 +221,15 @@ class _$StartedImpl implements _Started {
     TResult Function(_ChangeAddress value)? changeAddress,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements AddressEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements AddressEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -300,7 +300,7 @@ class _$SetAddressImpl implements _SetAddress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
@@ -313,7 +313,7 @@ class _$SetAddressImpl implements _SetAddress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
@@ -326,7 +326,7 @@ class _$SetAddressImpl implements _SetAddress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -343,7 +343,7 @@ class _$SetAddressImpl implements _SetAddress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -357,7 +357,7 @@ class _$SetAddressImpl implements _SetAddress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
@@ -370,7 +370,7 @@ class _$SetAddressImpl implements _SetAddress {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,
@@ -466,7 +466,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
@@ -479,7 +479,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
@@ -492,7 +492,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -509,7 +509,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -523,7 +523,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
@@ -536,7 +536,7 @@ class _$SetLocationImpl implements _SetLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,
@@ -631,7 +631,7 @@ class _$SaveAddressImpl implements _SaveAddress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
@@ -644,7 +644,7 @@ class _$SaveAddressImpl implements _SaveAddress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
@@ -657,7 +657,7 @@ class _$SaveAddressImpl implements _SaveAddress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -674,7 +674,7 @@ class _$SaveAddressImpl implements _SaveAddress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -688,7 +688,7 @@ class _$SaveAddressImpl implements _SaveAddress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
@@ -701,7 +701,7 @@ class _$SaveAddressImpl implements _SaveAddress {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,
@@ -771,7 +771,7 @@ class _$ManageInitialLocationImpl implements _ManageInitialLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
@@ -784,7 +784,7 @@ class _$ManageInitialLocationImpl implements _ManageInitialLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
@@ -797,7 +797,7 @@ class _$ManageInitialLocationImpl implements _ManageInitialLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -814,7 +814,7 @@ class _$ManageInitialLocationImpl implements _ManageInitialLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -828,7 +828,7 @@ class _$ManageInitialLocationImpl implements _ManageInitialLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
@@ -841,7 +841,7 @@ class _$ManageInitialLocationImpl implements _ManageInitialLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,
@@ -928,7 +928,7 @@ class _$ChangeAddressImpl implements _ChangeAddress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(AddressModel address) setAddress,
     required TResult Function(GMapAddress location) setLocation,
     required TResult Function(AddressModel address) saveAddress,
@@ -941,7 +941,7 @@ class _$ChangeAddressImpl implements _ChangeAddress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(AddressModel address)? setAddress,
     TResult? Function(GMapAddress location)? setLocation,
     TResult? Function(AddressModel address)? saveAddress,
@@ -954,7 +954,7 @@ class _$ChangeAddressImpl implements _ChangeAddress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(AddressModel address)? setAddress,
     TResult Function(GMapAddress location)? setLocation,
     TResult Function(AddressModel address)? saveAddress,
@@ -971,7 +971,7 @@ class _$ChangeAddressImpl implements _ChangeAddress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_SetAddress value) setAddress,
     required TResult Function(_SetLocation value) setLocation,
     required TResult Function(_SaveAddress value) saveAddress,
@@ -985,7 +985,7 @@ class _$ChangeAddressImpl implements _ChangeAddress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_SetAddress value)? setAddress,
     TResult? Function(_SetLocation value)? setLocation,
     TResult? Function(_SaveAddress value)? saveAddress,
@@ -998,7 +998,7 @@ class _$ChangeAddressImpl implements _ChangeAddress {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_SetAddress value)? setAddress,
     TResult Function(_SetLocation value)? setLocation,
     TResult Function(_SaveAddress value)? saveAddress,

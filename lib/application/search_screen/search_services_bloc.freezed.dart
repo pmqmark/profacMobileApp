@@ -18,39 +18,47 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchServicesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) search,
+    required TResult Function() popularAndRecentSearches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? search,
+    TResult? Function()? popularAndRecentSearches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? search,
+    TResult Function()? popularAndRecentSearches,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_Search value) search,
+    required TResult Function(_popularAndRecentSearches value)
+        popularAndRecentSearches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_Search value)? search,
+    TResult? Function(_popularAndRecentSearches value)?
+        popularAndRecentSearches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_Search value)? search,
+    TResult Function(_popularAndRecentSearches value)? popularAndRecentSearches,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,18 +86,18 @@ class _$SearchServicesEventCopyWithImpl<$Res, $Val extends SearchServicesEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$SearchServicesEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$SearchServicesEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of SearchServicesEvent
@@ -98,18 +106,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'SearchServicesEvent.started()';
+    return 'SearchServicesEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -118,30 +126,33 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) search,
+    required TResult Function() popularAndRecentSearches,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? search,
+    TResult? Function()? popularAndRecentSearches,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? search,
+    TResult Function()? popularAndRecentSearches,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -149,37 +160,42 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_Search value) search,
+    required TResult Function(_popularAndRecentSearches value)
+        popularAndRecentSearches,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_Search value)? search,
+    TResult? Function(_popularAndRecentSearches value)?
+        popularAndRecentSearches,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_Search value)? search,
+    TResult Function(_popularAndRecentSearches value)? popularAndRecentSearches,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements SearchServicesEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements SearchServicesEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -250,8 +266,9 @@ class _$SearchImpl implements _Search {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String query) search,
+    required TResult Function() popularAndRecentSearches,
   }) {
     return search(query);
   }
@@ -259,8 +276,9 @@ class _$SearchImpl implements _Search {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(String query)? search,
+    TResult? Function()? popularAndRecentSearches,
   }) {
     return search?.call(query);
   }
@@ -268,8 +286,9 @@ class _$SearchImpl implements _Search {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String query)? search,
+    TResult Function()? popularAndRecentSearches,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -281,8 +300,10 @@ class _$SearchImpl implements _Search {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_Search value) search,
+    required TResult Function(_popularAndRecentSearches value)
+        popularAndRecentSearches,
   }) {
     return search(this);
   }
@@ -290,8 +311,10 @@ class _$SearchImpl implements _Search {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_Search value)? search,
+    TResult? Function(_popularAndRecentSearches value)?
+        popularAndRecentSearches,
   }) {
     return search?.call(this);
   }
@@ -299,8 +322,9 @@ class _$SearchImpl implements _Search {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_Search value)? search,
+    TResult Function(_popularAndRecentSearches value)? popularAndRecentSearches,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -323,29 +347,173 @@ abstract class _Search implements SearchServicesEvent {
 }
 
 /// @nodoc
+abstract class _$$popularAndRecentSearchesImplCopyWith<$Res> {
+  factory _$$popularAndRecentSearchesImplCopyWith(
+          _$popularAndRecentSearchesImpl value,
+          $Res Function(_$popularAndRecentSearchesImpl) then) =
+      __$$popularAndRecentSearchesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$popularAndRecentSearchesImplCopyWithImpl<$Res>
+    extends _$SearchServicesEventCopyWithImpl<$Res,
+        _$popularAndRecentSearchesImpl>
+    implements _$$popularAndRecentSearchesImplCopyWith<$Res> {
+  __$$popularAndRecentSearchesImplCopyWithImpl(
+      _$popularAndRecentSearchesImpl _value,
+      $Res Function(_$popularAndRecentSearchesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchServicesEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$popularAndRecentSearchesImpl implements _popularAndRecentSearches {
+  const _$popularAndRecentSearchesImpl();
+
+  @override
+  String toString() {
+    return 'SearchServicesEvent.popularAndRecentSearches()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$popularAndRecentSearchesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String query) search,
+    required TResult Function() popularAndRecentSearches,
+  }) {
+    return popularAndRecentSearches();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? reset,
+    TResult? Function(String query)? search,
+    TResult? Function()? popularAndRecentSearches,
+  }) {
+    return popularAndRecentSearches?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String query)? search,
+    TResult Function()? popularAndRecentSearches,
+    required TResult orElse(),
+  }) {
+    if (popularAndRecentSearches != null) {
+      return popularAndRecentSearches();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Search value) search,
+    required TResult Function(_popularAndRecentSearches value)
+        popularAndRecentSearches,
+  }) {
+    return popularAndRecentSearches(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_popularAndRecentSearches value)?
+        popularAndRecentSearches,
+  }) {
+    return popularAndRecentSearches?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Search value)? search,
+    TResult Function(_popularAndRecentSearches value)? popularAndRecentSearches,
+    required TResult orElse(),
+  }) {
+    if (popularAndRecentSearches != null) {
+      return popularAndRecentSearches(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _popularAndRecentSearches implements SearchServicesEvent {
+  const factory _popularAndRecentSearches() = _$popularAndRecentSearchesImpl;
+}
+
+/// @nodoc
 mixin _$SearchServicesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SubServiceModel> subServices) loaded,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)
+        loaded,
     required TResult Function(MainFailure failure) error,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)
+        recentAndPopularLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SubServiceModel> subServices)? loaded,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult? Function(MainFailure failure)? error,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SubServiceModel> subServices)? loaded,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult Function(MainFailure failure)? error,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -355,6 +523,8 @@ mixin _$SearchServicesState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_RecentAndPopularLoaded value)
+        recentAndPopularLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -363,6 +533,7 @@ mixin _$SearchServicesState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -371,6 +542,7 @@ mixin _$SearchServicesState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -440,8 +612,17 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SubServiceModel> subServices) loaded,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)
+        loaded,
     required TResult Function(MainFailure failure) error,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)
+        recentAndPopularLoaded,
   }) {
     return initial();
   }
@@ -451,8 +632,17 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SubServiceModel> subServices)? loaded,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult? Function(MainFailure failure)? error,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
   }) {
     return initial?.call();
   }
@@ -462,8 +652,17 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SubServiceModel> subServices)? loaded,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult Function(MainFailure failure)? error,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -479,6 +678,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_RecentAndPopularLoaded value)
+        recentAndPopularLoaded,
   }) {
     return initial(this);
   }
@@ -490,6 +691,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
   }) {
     return initial?.call(this);
   }
@@ -501,6 +703,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -557,8 +760,17 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SubServiceModel> subServices) loaded,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)
+        loaded,
     required TResult Function(MainFailure failure) error,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)
+        recentAndPopularLoaded,
   }) {
     return loading();
   }
@@ -568,8 +780,17 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SubServiceModel> subServices)? loaded,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult? Function(MainFailure failure)? error,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
   }) {
     return loading?.call();
   }
@@ -579,8 +800,17 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SubServiceModel> subServices)? loaded,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult Function(MainFailure failure)? error,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -596,6 +826,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_RecentAndPopularLoaded value)
+        recentAndPopularLoaded,
   }) {
     return loading(this);
   }
@@ -607,6 +839,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
   }) {
     return loading?.call(this);
   }
@@ -618,6 +851,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -637,7 +871,8 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<SubServiceModel> subServices});
+  $Res call(
+      {List<Either<SearchSubServiceModel, SearchCategoryModel>> searchResults});
 }
 
 /// @nodoc
@@ -653,13 +888,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subServices = null,
+    Object? searchResults = null,
   }) {
     return _then(_$LoadedImpl(
-      null == subServices
-          ? _value._subServices
-          : subServices // ignore: cast_nullable_to_non_nullable
-              as List<SubServiceModel>,
+      null == searchResults
+          ? _value._searchResults
+          : searchResults // ignore: cast_nullable_to_non_nullable
+              as List<Either<SearchSubServiceModel, SearchCategoryModel>>,
     ));
   }
 }
@@ -667,20 +902,22 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<SubServiceModel> subServices)
-      : _subServices = subServices;
+  const _$LoadedImpl(
+      final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+          searchResults)
+      : _searchResults = searchResults;
 
-  final List<SubServiceModel> _subServices;
+  final List<Either<SearchSubServiceModel, SearchCategoryModel>> _searchResults;
   @override
-  List<SubServiceModel> get subServices {
-    if (_subServices is EqualUnmodifiableListView) return _subServices;
+  List<Either<SearchSubServiceModel, SearchCategoryModel>> get searchResults {
+    if (_searchResults is EqualUnmodifiableListView) return _searchResults;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subServices);
+    return EqualUnmodifiableListView(_searchResults);
   }
 
   @override
   String toString() {
-    return 'SearchServicesState.loaded(subServices: $subServices)';
+    return 'SearchServicesState.loaded(searchResults: $searchResults)';
   }
 
   @override
@@ -689,12 +926,12 @@ class _$LoadedImpl implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             const DeepCollectionEquality()
-                .equals(other._subServices, _subServices));
+                .equals(other._searchResults, _searchResults));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_subServices));
+      runtimeType, const DeepCollectionEquality().hash(_searchResults));
 
   /// Create a copy of SearchServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -709,10 +946,19 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SubServiceModel> subServices) loaded,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)
+        loaded,
     required TResult Function(MainFailure failure) error,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)
+        recentAndPopularLoaded,
   }) {
-    return loaded(subServices);
+    return loaded(searchResults);
   }
 
   @override
@@ -720,10 +966,19 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SubServiceModel> subServices)? loaded,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult? Function(MainFailure failure)? error,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
   }) {
-    return loaded?.call(subServices);
+    return loaded?.call(searchResults);
   }
 
   @override
@@ -731,12 +986,21 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SubServiceModel> subServices)? loaded,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult Function(MainFailure failure)? error,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(subServices);
+      return loaded(searchResults);
     }
     return orElse();
   }
@@ -748,6 +1012,8 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_RecentAndPopularLoaded value)
+        recentAndPopularLoaded,
   }) {
     return loaded(this);
   }
@@ -759,6 +1025,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
   }) {
     return loaded?.call(this);
   }
@@ -770,6 +1037,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -780,9 +1048,11 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements SearchServicesState {
-  const factory _Loaded(final List<SubServiceModel> subServices) = _$LoadedImpl;
+  const factory _Loaded(
+      final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+          searchResults) = _$LoadedImpl;
 
-  List<SubServiceModel> get subServices;
+  List<Either<SearchSubServiceModel, SearchCategoryModel>> get searchResults;
 
   /// Create a copy of SearchServicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -873,8 +1143,17 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SubServiceModel> subServices) loaded,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)
+        loaded,
     required TResult Function(MainFailure failure) error,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)
+        recentAndPopularLoaded,
   }) {
     return error(failure);
   }
@@ -884,8 +1163,17 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SubServiceModel> subServices)? loaded,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult? Function(MainFailure failure)? error,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
   }) {
     return error?.call(failure);
   }
@@ -895,8 +1183,17 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SubServiceModel> subServices)? loaded,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
     TResult Function(MainFailure failure)? error,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -912,6 +1209,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_RecentAndPopularLoaded value)
+        recentAndPopularLoaded,
   }) {
     return error(this);
   }
@@ -923,6 +1222,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
   }) {
     return error?.call(this);
   }
@@ -934,6 +1234,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -953,4 +1254,230 @@ abstract class _Error implements SearchServicesState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RecentAndPopularLoadedImplCopyWith<$Res> {
+  factory _$$RecentAndPopularLoadedImplCopyWith(
+          _$RecentAndPopularLoadedImpl value,
+          $Res Function(_$RecentAndPopularLoadedImpl) then) =
+      __$$RecentAndPopularLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {List<Either<SearchSubServiceModel, SearchCategoryModel>> popularSearches,
+      List<Either<SearchSubServiceModel, SearchCategoryModel>> recentSearches});
+}
+
+/// @nodoc
+class __$$RecentAndPopularLoadedImplCopyWithImpl<$Res>
+    extends _$SearchServicesStateCopyWithImpl<$Res,
+        _$RecentAndPopularLoadedImpl>
+    implements _$$RecentAndPopularLoadedImplCopyWith<$Res> {
+  __$$RecentAndPopularLoadedImplCopyWithImpl(
+      _$RecentAndPopularLoadedImpl _value,
+      $Res Function(_$RecentAndPopularLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchServicesState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? popularSearches = null,
+    Object? recentSearches = null,
+  }) {
+    return _then(_$RecentAndPopularLoadedImpl(
+      popularSearches: null == popularSearches
+          ? _value._popularSearches
+          : popularSearches // ignore: cast_nullable_to_non_nullable
+              as List<Either<SearchSubServiceModel, SearchCategoryModel>>,
+      recentSearches: null == recentSearches
+          ? _value._recentSearches
+          : recentSearches // ignore: cast_nullable_to_non_nullable
+              as List<Either<SearchSubServiceModel, SearchCategoryModel>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RecentAndPopularLoadedImpl implements _RecentAndPopularLoaded {
+  const _$RecentAndPopularLoadedImpl(
+      {required final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+          popularSearches,
+      required final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+          recentSearches})
+      : _popularSearches = popularSearches,
+        _recentSearches = recentSearches;
+
+  final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+      _popularSearches;
+  @override
+  List<Either<SearchSubServiceModel, SearchCategoryModel>> get popularSearches {
+    if (_popularSearches is EqualUnmodifiableListView) return _popularSearches;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_popularSearches);
+  }
+
+  final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+      _recentSearches;
+  @override
+  List<Either<SearchSubServiceModel, SearchCategoryModel>> get recentSearches {
+    if (_recentSearches is EqualUnmodifiableListView) return _recentSearches;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recentSearches);
+  }
+
+  @override
+  String toString() {
+    return 'SearchServicesState.recentAndPopularLoaded(popularSearches: $popularSearches, recentSearches: $recentSearches)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RecentAndPopularLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._popularSearches, _popularSearches) &&
+            const DeepCollectionEquality()
+                .equals(other._recentSearches, _recentSearches));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_popularSearches),
+      const DeepCollectionEquality().hash(_recentSearches));
+
+  /// Create a copy of SearchServicesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RecentAndPopularLoadedImplCopyWith<_$RecentAndPopularLoadedImpl>
+      get copyWith => __$$RecentAndPopularLoadedImplCopyWithImpl<
+          _$RecentAndPopularLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)
+        loaded,
+    required TResult Function(MainFailure failure) error,
+    required TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)
+        recentAndPopularLoaded,
+  }) {
+    return recentAndPopularLoaded(popularSearches, recentSearches);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
+    TResult? Function(MainFailure failure)? error,
+    TResult? Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
+  }) {
+    return recentAndPopularLoaded?.call(popularSearches, recentSearches);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                searchResults)?
+        loaded,
+    TResult Function(MainFailure failure)? error,
+    TResult Function(
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                popularSearches,
+            List<Either<SearchSubServiceModel, SearchCategoryModel>>
+                recentSearches)?
+        recentAndPopularLoaded,
+    required TResult orElse(),
+  }) {
+    if (recentAndPopularLoaded != null) {
+      return recentAndPopularLoaded(popularSearches, recentSearches);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_RecentAndPopularLoaded value)
+        recentAndPopularLoaded,
+  }) {
+    return recentAndPopularLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
+  }) {
+    return recentAndPopularLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_RecentAndPopularLoaded value)? recentAndPopularLoaded,
+    required TResult orElse(),
+  }) {
+    if (recentAndPopularLoaded != null) {
+      return recentAndPopularLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RecentAndPopularLoaded implements SearchServicesState {
+  const factory _RecentAndPopularLoaded(
+      {required final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+          popularSearches,
+      required final List<Either<SearchSubServiceModel, SearchCategoryModel>>
+          recentSearches}) = _$RecentAndPopularLoadedImpl;
+
+  List<Either<SearchSubServiceModel, SearchCategoryModel>> get popularSearches;
+  List<Either<SearchSubServiceModel, SearchCategoryModel>> get recentSearches;
+
+  /// Create a copy of SearchServicesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RecentAndPopularLoadedImplCopyWith<_$RecentAndPopularLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

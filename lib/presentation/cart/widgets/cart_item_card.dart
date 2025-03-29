@@ -140,7 +140,7 @@ class _CartItemCardState extends State<CartItemCard> {
                     ),
                     onPressed: () {},
                     child: Text(
-                      "View more",
+                      "Add more",
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontSize: 16.sp,

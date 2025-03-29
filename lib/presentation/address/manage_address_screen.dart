@@ -132,8 +132,8 @@ class _ManageAddressScreenState extends State<ManageAddressScreen> {
                           if (selectedAddressIndex != null) {
                             final selectedAddress =
                                 addressList[selectedAddressIndex!];
-                            BlocProvider.of<AddressBloc>(context)
-                                .add(AddressEvent.setAddress(selectedAddress));
+                            BlocProvider.of<AddressBloc>(context).add(
+                                AddressEvent.changeAddress(selectedAddress));
                           }
                           Navigator.of(context)
                               .pushNamedAndRemoveUntil('/home', (_) => false);

@@ -15,7 +15,10 @@ part 'booking_slots_bloc.freezed.dart';
 class BookingSlotsBloc extends Bloc<BookingSlotsEvent, BookingSlotsState> {
   final ICheckoutRepo _checkoutRepo;
   BookingSlotsBloc(this._checkoutRepo) : super(BookingSlotsState.initial()) {
-    on<BookingSlotsEvent>((event, emit) async {
+    on<_Reset>((event, emit) {
+      emit(BookingSlotsState.initial());
+    });
+    on<_GetSlots>((event, emit) async {
       emit(BookingSlotsState(
         bookingSlots: state.bookingSlots,
         isLoading: true,

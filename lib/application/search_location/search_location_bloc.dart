@@ -18,7 +18,7 @@ class SearchLocationBloc
   IAddressRepo addressRepo;
   SearchLocationBloc(this.addressRepo) : super(_Initial()) {
     // resets the state to initial state
-    on<_Started>((event, emit) {
+    on<_Reset>((event, emit) {
       emit(_Initial());
     });
     // search location by query using gmap api
@@ -58,7 +58,7 @@ class SearchLocationBloc
   }
   @override
   Future<void> close() async {
-    add(const SearchLocationEvent.started());
+    add(const SearchLocationEvent.reset());
     await super.close();
   }
 }

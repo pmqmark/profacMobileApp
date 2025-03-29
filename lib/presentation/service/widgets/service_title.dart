@@ -70,7 +70,9 @@ class ServiceTitle extends StatelessWidget {
           ],
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/cart');
+          },
           style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
@@ -79,7 +81,7 @@ class ServiceTitle extends StatelessWidget {
                 ),
               ),
           child: Text(
-            'Book now',
+            'Go to Cart',
             style:
                 TextStyle(color: Theme.of(context).primaryColor, fontSize: 12),
           ),

@@ -11,7 +11,6 @@ class SplashScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<SplashScreenBloc>(context)
           .add(const SplashScreenEvent.checkIfAuthenticated());
-      
     });
     return Scaffold(
       body: BlocConsumer<SplashScreenBloc, SplashScreenState>(
@@ -30,7 +29,7 @@ class SplashScreen extends StatelessWidget {
         builder: (context, state) {
           return Center(
             child: Image.asset(
-              'assets/profac_logo.png',
+              'assets/profac Logo.png',
               width: 150,
               fit: BoxFit.contain,
             ),

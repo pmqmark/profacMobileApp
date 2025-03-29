@@ -113,11 +113,10 @@ class CouponTile extends StatelessWidget {
                         : context.read<CouponsBloc>().add(
                               CouponsEvent.selectCoupon(couponModel),
                             );
-                    final newAmount = amountBodyModel.copyWith(
-                      couponCode: isApplied ? null : couponModel.code,
-                    );
                     context.read<BookingAmountBloc>().add(
-                          BookingAmountEvent.fetchTotalAmount(newAmount),
+                          BookingAmountEvent.fetchTotalAmount(
+                            
+                          ),
                         );
                     Navigator.pop(context);
                   },

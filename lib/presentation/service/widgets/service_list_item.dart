@@ -13,8 +13,7 @@ import 'package:profac/presentation/service/service_screen.dart';
 import 'package:profac/presentation/service/widgets/sub_service_sheet.dart';
 
 class ServiceListItem extends StatelessWidget {
-  ServiceListItem(
-      {super.key, required this.subServiceModel});
+  ServiceListItem({super.key, required this.subServiceModel});
   final SubServiceModel subServiceModel;
   @override
   Widget build(BuildContext context) {
@@ -24,6 +23,7 @@ class ServiceListItem extends StatelessWidget {
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               VerticalSpace(15),
               Text(
@@ -65,13 +65,18 @@ class ServiceListItem extends StatelessWidget {
                   ],
                 )
               ],
+              if (subServiceModel.options.length > 1) ...[
+                VerticalSpace(5),
+                Text('${subServiceModel.options.length} options',
+                    style: Theme.of(context).textTheme.labelSmall),
+              ],
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ServiceScreen(
-                          subServiceId: subServiceModel.id,
-                          ),
+                        subServiceId: subServiceModel.id,
+                      ),
                     ),
                   );
                 },
@@ -92,15 +97,15 @@ class ServiceListItem extends StatelessWidget {
         HorizontalSpace(35),
         Column(
           children: [
-            VerticalSpace(subServiceModel.media.isNotEmpty ? 40 : 10),
+            VerticalSpace(subServiceModel.thumbnailUrl.isEmpty ? 40 : 40),
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                if (subServiceModel.media.isNotEmpty)
+                if (subServiceModel.thumbnailUrl.isNotEmpty)
                   Transform.translate(
                     offset: Offset(0, -20),
                     child: Image.network(
-                      subServiceModel.media[0].location,
+                      subServiceModel.thumbnailUrl,
                       width: 90,
                       height: 60,
                       fit: BoxFit.cover,
@@ -119,9 +124,6 @@ class ServiceListItem extends StatelessWidget {
               ],
             ),
             VerticalSpace(5),
-            if (subServiceModel.options.length > 1)
-              Text('${subServiceModel.options.length} options',
-                  style: Theme.of(context).textTheme.labelSmall),
           ],
         )
       ],

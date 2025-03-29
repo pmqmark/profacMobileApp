@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function() loadProfile,
     required TResult Function(String? name, String? phoneNumber, String? email)
         updateProfileFields,
@@ -27,7 +27,7 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function()? loadProfile,
     TResult? Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -36,7 +36,7 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function()? loadProfile,
     TResult Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -46,7 +46,7 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_LoadProfile value) loadProfile,
     required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -54,7 +54,7 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_LoadProfile value)? loadProfile,
     TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -62,7 +62,7 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_LoadProfile value)? loadProfile,
     TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -93,18 +93,18 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ProfileEvent
@@ -113,18 +113,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'ProfileEvent.started()';
+    return 'ProfileEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -133,39 +133,39 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function() loadProfile,
     required TResult Function(String? name, String? phoneNumber, String? email)
         updateProfileFields,
     required TResult Function(ProfileModel profile) updateProfile,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function()? loadProfile,
     TResult? Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
     TResult? Function(ProfileModel profile)? updateProfile,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function()? loadProfile,
     TResult Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
     TResult Function(ProfileModel profile)? updateProfile,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -173,43 +173,43 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_LoadProfile value) loadProfile,
     required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_LoadProfile value)? loadProfile,
     TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_LoadProfile value)? loadProfile,
     TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ProfileEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements ProfileEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -253,7 +253,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function() loadProfile,
     required TResult Function(String? name, String? phoneNumber, String? email)
         updateProfileFields,
@@ -265,7 +265,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function()? loadProfile,
     TResult? Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -277,7 +277,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function()? loadProfile,
     TResult Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -293,7 +293,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_LoadProfile value) loadProfile,
     required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -304,7 +304,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_LoadProfile value)? loadProfile,
     TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -315,7 +315,7 @@ class _$LoadProfileImpl implements _LoadProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_LoadProfile value)? loadProfile,
     TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -418,7 +418,7 @@ class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function() loadProfile,
     required TResult Function(String? name, String? phoneNumber, String? email)
         updateProfileFields,
@@ -430,7 +430,7 @@ class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function()? loadProfile,
     TResult? Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -442,7 +442,7 @@ class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function()? loadProfile,
     TResult Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -458,7 +458,7 @@ class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_LoadProfile value) loadProfile,
     required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -469,7 +469,7 @@ class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_LoadProfile value)? loadProfile,
     TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -480,7 +480,7 @@ class _$UpdateProfileFieldsImpl implements _UpdateProfileFields {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_LoadProfile value)? loadProfile,
     TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -578,7 +578,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function() loadProfile,
     required TResult Function(String? name, String? phoneNumber, String? email)
         updateProfileFields,
@@ -590,7 +590,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function()? loadProfile,
     TResult? Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -602,7 +602,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function()? loadProfile,
     TResult Function(String? name, String? phoneNumber, String? email)?
         updateProfileFields,
@@ -618,7 +618,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_LoadProfile value) loadProfile,
     required TResult Function(_UpdateProfileFields value) updateProfileFields,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -629,7 +629,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_LoadProfile value)? loadProfile,
     TResult? Function(_UpdateProfileFields value)? updateProfileFields,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -640,7 +640,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_LoadProfile value)? loadProfile,
     TResult Function(_UpdateProfileFields value)? updateProfileFields,
     TResult Function(_UpdateProfile value)? updateProfile,

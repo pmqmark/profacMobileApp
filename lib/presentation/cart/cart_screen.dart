@@ -52,6 +52,54 @@ class _CartScreenState extends State<CartScreen> {
               child: Text(state.failure!.toString()),
             );
           }
+          if (state.cart.isEmpty) {
+            return SizedBox.expand(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  CircleAvatar(
+                    radius: 68,
+                    backgroundColor: Color(0x17379F53),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/cart/cart.png',
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  VerticalSpace(25),
+                  Text(
+                    'Your cart is empty!',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          'Continue Shopping',
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: Colors.white,
+                                  ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
           return Padding(
             padding: const EdgeInsets.all(16),
             child: ListView.separated(

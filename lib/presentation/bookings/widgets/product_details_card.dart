@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:profac/domain/booking/model/booking_model.dart';
+import 'package:profac/domain/booking/model/detailed_booking_model.dart';
+import 'package:profac/presentation/bookings/add_review_screen.dart';
+import 'package:profac/presentation/bookings/widgets/cancel_booking_alert_dialog.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class ProductDetailsCard extends StatelessWidget {
   const ProductDetailsCard({
     super.key,
+    required this.bookingSlot,
+    required this.totalAmount,
+    required this.address,
+    required this.bookingId,
+    required this.status, required this.bookingModel,
   });
-
+  final BookingModel bookingModel;
+  final BookingSlot bookingSlot;
+  final double totalAmount;
+  final BookingAddress address;
+  final String bookingId;
+  final BookingStatus status;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -30,7 +45,7 @@ class ProductDetailsCard extends StatelessWidget {
                 HorizontalSpace(10),
                 Expanded(
                   child: Text(
-                    "Total Amount: ₹1560",
+                    "Total Amount: ₹$totalAmount",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w500, color: Color(0xFF475467)),
                   ),
@@ -54,7 +69,7 @@ class ProductDetailsCard extends StatelessWidget {
                 HorizontalSpace(12),
                 Expanded(
                   child: Text(
-                    "Ponekkara, Edapally, Kochi, Ernakulam, Kerala, 682024",
+                    "${address.shortName}, ${address.formattedAddress}",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w500, color: Color(0xFF475467)),
                   ),
@@ -71,45 +86,92 @@ class ProductDetailsCard extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Icons.list_alt_rounded,
+                  Icons.watch_later_outlined,
                   color: Colors.black54,
                   size: 20,
                 ),
                 HorizontalSpace(10),
                 Expanded(
                   child: Text(
-                    "Total Amount: ₹1560",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500, color: Color(0xFF475467)),
+                    "${bookingSlot.date.day} "
+                    "${DateFormat('MMM').format(bookingSlot.date)} "
+                    "${bookingSlot.date.year} ${bookingSlot.time} ",
                   ),
                 ),
                 HorizontalSpace(15)
               ],
             ),
             VerticalSpace(15),
-            SizedBox(
-              width: 150,
-              height: 35,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  side: BorderSide(
-                    color: Colors.grey[300]!,
-                  ),
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                child: Text(
-                  "Cancel order",
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Color.fromARGB(255, 192, 29, 48),
-                      ),
-                ),
-              ),
-            )
+            if (status == BookingStatus.pending ||
+                status == BookingStatus.confirmed)
+              _cancelOrderButton(context),
+            if (status == BookingStatus.completed) _addReviewButton(context)
           ],
+        ),
+      ),
+    );
+  }
+
+  SizedBox _addReviewButton(BuildContext context) {
+    return SizedBox(
+      width: 150,
+      height: 35,
+      child: TextButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => AddReviewScreen(
+                bookingModel: bookingModel ,
+              ),
+            ),
+          );
+        },
+        style: TextButton.styleFrom(
+          side: BorderSide(
+            color: Colors.grey[300]!,
+          ),
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+        child: Text(
+          "Add feedback",
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: Color(0xffE4A70A),
+              ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox _cancelOrderButton(BuildContext context) {
+    return SizedBox(
+      width: 150,
+      height: 35,
+      child: TextButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => CancelBookingAlertDialog(
+              bookingId: bookingId,
+            ),
+          );
+        },
+        style: TextButton.styleFrom(
+          side: BorderSide(
+            color: Colors.grey[300]!,
+          ),
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+        child: Text(
+          "Cancel order",
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: Color.fromARGB(255, 192, 29, 48),
+              ),
         ),
       ),
     );

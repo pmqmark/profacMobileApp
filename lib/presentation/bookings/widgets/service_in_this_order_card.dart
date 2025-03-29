@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:profac/domain/booking/model/booking_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 
 class ServiceInThisOrderCard extends StatelessWidget {
   const ServiceInThisOrderCard({
     super.key,
+    required this.categoryName,
+    required this.options,
   });
-
+  final String categoryName;
+  final List<BookingOption> options;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -20,7 +24,7 @@ class ServiceInThisOrderCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Service in this order",
+            Text("Services in this order",
                 style: Theme.of(context).textTheme.titleLarge),
             VerticalSpace(16),
             Row(
@@ -42,7 +46,7 @@ class ServiceInThisOrderCard extends StatelessWidget {
                 HorizontalSpace(16),
                 Flexible(
                   child: Text(
-                    "Bathroom & Kitchen Cleaning",
+                    categoryName,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontSize: 20.sp,
                         ),
@@ -53,7 +57,7 @@ class ServiceInThisOrderCard extends StatelessWidget {
             ),
             VerticalSpace(12),
             ...List.generate(
-              2,
+              options.length,
               (index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
@@ -66,7 +70,7 @@ class ServiceInThisOrderCard extends StatelessWidget {
                       ),
                       HorizontalSpace(8),
                       Text(
-                        "Intensive cleaning (2 bathrooms) X 1",
+                        "${options[index].name} x ${options[index].quantity}",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.sp,

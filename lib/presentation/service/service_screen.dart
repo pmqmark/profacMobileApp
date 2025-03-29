@@ -2,11 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:profac/application/cart_items/cart_items_bloc.dart';
 import 'package:profac/application/detailed_service/detailed_service_bloc.dart';
 import 'package:profac/application/sub_service_reviews/sub_service_reviews_bloc.dart';
+import 'package:profac/domain/cart/model/cart_item_model.dart';
 import 'package:profac/domain/services/model/option_model.dart';
 import 'package:profac/domain/services/model/review_model.dart';
 import 'package:profac/domain/services/model/subservice_model.dart';
+import 'package:profac/infrastructure/cart/cart_repo.dart';
+import 'package:profac/presentation/common_widgets/border_progress_indicator.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
 import 'package:profac/presentation/service/widgets/faqs.dart';
 import 'package:profac/presentation/service/widgets/options_list_view.dart';
@@ -18,8 +22,7 @@ import 'package:rating_summary/rating_summary.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ServiceScreen extends StatefulWidget {
-  ServiceScreen(
-      {super.key, required this.subServiceId});
+  ServiceScreen({super.key, required this.subServiceId});
   final String subServiceId;
   @override
   State<ServiceScreen> createState() => _ServiceScreenState();
@@ -61,6 +64,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
     //dummy subServiceModel
     final dummySubServiceModel = SubServiceModel(
         id: '1',
+        thumbnailUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg',
         name: 'Cleaning',
         avgRating: 4.5,
         ratingCount: null,
@@ -77,6 +81,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
         options: [
           OptionModel(
               id: '',
+              thumbnailUrl: 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg',
               name: '',
               subServiceId: '',
               categoryId: '',
@@ -114,7 +119,10 @@ class _ServiceScreenState extends State<ServiceScreen> {
         price: subServiceModel.options[0].price,
         rating: subServiceModel.avgRating,
       ),
-      VerticalSpace(12),
+      VerticalSpace(6),
+      if (subServiceModel.options.length == 1)
+        _addToCartButton(context, subServiceModel),
+      VerticalSpace(6),
       SizedBox(
         height: 152,
         width: double.infinity,
@@ -123,7 +131,8 @@ class _ServiceScreenState extends State<ServiceScreen> {
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
               image: NetworkImage(
-                  'https://i0.wp.com/www.additudemag.com/wp-content/uploads/2023/07/Cleaning-House-When-You-Dont-Want-to_1920x1080.jpg'),
+                  subServiceModel.thumbnailUrl,
+              ),  
               fit: BoxFit.cover,
             ),
           ),
@@ -139,6 +148,111 @@ class _ServiceScreenState extends State<ServiceScreen> {
     ];
   }
 
+  Widget _addToCartButton(
+      BuildContext context, SubServiceModel subServiceModel) {
+    return BlocBuilder<CartItemsBloc, CartItemsState>(
+      builder: (context, state) {
+        final currentItem = CartItemModel(
+            categoryId: subServiceModel.options[0].categoryId,
+            subserviceId: subServiceModel.id,
+            optionId: subServiceModel.options[0].id,
+            quantity: 0);
+        final quantity = CartRepo().getQuantity(context, currentItem);
+        if (quantity == 0) {
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 90,
+                height: 35,
+                child: ElevatedButton(
+                  onPressed: () {
+                    BlocProvider.of<CartItemsBloc>(context).add(
+                        CartItemsEvent.addCartItem(
+                            currentItem.copyWith(quantity: quantity + 1)));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: Text(
+                    'Add to cart',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 90,
+              height: 35,
+              child: BorderProgressIndicator(
+                isLoading: state.cartItemAdding,
+                borderRadius: BorderRadius.circular(10.0),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  child: SizedBox(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                              onTap: () {
+                                if (quantity > 0) {
+                                  BlocProvider.of<CartItemsBloc>(context).add(
+                                    CartItemsEvent.addCartItem(
+                                      currentItem.copyWith(
+                                          quantity: quantity - 1),
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Icon(Icons.remove, size: 18)),
+                        ),
+                        Expanded(
+                          child: Text(
+                            quantity.toString(),
+                            style: Theme.of(context).textTheme.bodyMedium,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                              onTap: () {
+                                BlocProvider.of<CartItemsBloc>(context).add(
+                                  CartItemsEvent.addCartItem(
+                                    currentItem.copyWith(
+                                        quantity: quantity + 1),
+                                  ),
+                                );
+                              },
+                              child: Icon(Icons.add, size: 18)),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   List<Widget> optionsSection(
     context,
     List<OptionModel> optionModels,
@@ -152,8 +266,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
       SizedBox(
         height: 130,
         child: OptionsListView(
-            subServiceId: widget.subServiceId,
-            options: optionModels),
+            subServiceId: widget.subServiceId, options: optionModels),
       )
     ];
   }

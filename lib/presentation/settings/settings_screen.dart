@@ -16,28 +16,34 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.privacy_tip_outlined,
-                    size: 17,
-                    color: Colors.black54,
-                  ),
-                  HorizontalSpace(10),
-                  Text(
-                    'Privacy & Data',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed('/privacy_and_data');
+            },
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.privacy_tip_outlined,
+                      size: 17,
+                      color: Colors.black54,
                     ),
-                  ),
-                ],
+                    HorizontalSpace(10),
+                    Text(
+                      'Privacy & Data',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           )

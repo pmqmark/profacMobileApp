@@ -4,21 +4,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/application/authentication/authentication_bloc.dart';
 import 'package:profac/application/profile/profile_bloc.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
-import 'package:profac/presentation/profile/widgets/edit_profile_sheet.dart';
+import 'package:profac/presentation/profile/widgets/edit_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
   List<Map<String, dynamic>> myPlansList = [
-    {'icon': Icons.assignment_outlined, 'text': 'My Plans'},
-    {'icon': Icons.account_balance_wallet_outlined, 'text': 'Wallet'},
+    // {'icon': Icons.assignment_outlined, 'text': 'My Plans'},
+    // {'icon': Icons.account_balance_wallet_outlined, 'text': 'Wallet'},
     {
       'icon': Icons.location_on_outlined,
       'text': 'Manage Address',
       'route': '/manage_address'
     },
-    {'icon': Icons.payment_outlined, 'text': 'Payment methods'},
-    {'icon': Icons.settings_outlined, 'text': 'Settings'},
-    {'icon': Icons.info_outline, 'text': 'About'},
+    // {'icon': Icons.payment_outlined, 'text': 'Payment methods'},
+    {'icon': Icons.settings_outlined, 'text': 'Settings', 'route': '/settings'},
+    {'icon': Icons.info_outline, 'text': 'About', 'route': '/about_us'},
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,11 +50,7 @@ class ProfileScreen extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => EditProfileScreen(
-                                        name: state.model.name,
-                                        phoneNumber: state.model.mobile,
-                                        email: state.model.email,
-                                      )));
+                                  builder: (context) => EditProfileScreen()));
                             },
                             icon: Icon(
                               Icons.edit_outlined,
@@ -74,7 +70,9 @@ class ProfileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/bookings');
+                    },
                     icon: Icon(Icons.featured_play_list_outlined,
                         color: Colors.black87),
                     label: Text(
@@ -93,7 +91,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   HorizontalSpace(10),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/help_support');
+                    },
                     icon: Icon(Icons.info_outline, color: Colors.black87),
                     label: Text(
                       'Help & Support',
@@ -146,8 +146,34 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    BlocProvider.of<AuthenticationBloc>(context)
-                        .add(AuthenticationEvent.logout());
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            backgroundColor: Colors.white,
+                            title: Text('Logout'),
+                            content: Text('Are you sure you want to logout?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('Cancel',
+                                    style: TextStyle(color: Colors.black87)),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  BlocProvider.of<AuthenticationBloc>(context)
+                                      .add(AuthenticationEvent.logout());
+                                },
+                                child: Text('Logout',
+                                    style: TextStyle(
+                                        color: const Color.fromARGB(
+                                            255, 156, 37, 29))),
+                              ),
+                            ],
+                          );
+                        });
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

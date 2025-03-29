@@ -173,6 +173,7 @@ class AddressRepository extends IAddressRepo {
   Future<Either<MainFailure, bool>> checkAvailability(
       {required String categoryId, required String addressId}) async {
     try {
+      log('check availability categoryId: $categoryId, addressId: $addressId');
       final response = await getIt<Request>().dio.post(
         ApiEndpoints.checkAvailability,
         data: {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,6 +33,7 @@ class TipCard extends StatelessWidget {
             VerticalSpace(14),
             BlocBuilder<BookingAmountBloc, BookingAmountState>(
               builder: (context, state) {
+                log("TipCard state: ${state.tip}", name: "TipCard");
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
@@ -79,12 +82,11 @@ class TipChip extends StatelessWidget {
       onTap: () {
         if (!isSelected) {
           context.read<BookingAmountBloc>().add(
-                BookingAmountEvent.fetchTotalAmount(
-                    model.copyWith(tip: amount)),
+                BookingAmountEvent.updateTip(amount),
               );
         } else {
           context.read<BookingAmountBloc>().add(
-                BookingAmountEvent.fetchTotalAmount(model.copyWith(tip: 0)),
+                BookingAmountEvent.updateTip(0),
               );
         }
       },

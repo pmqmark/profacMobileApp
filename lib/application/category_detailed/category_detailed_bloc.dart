@@ -21,6 +21,9 @@ class CategoryDetailedBloc
   final IJwtTokensRepo _jwtTokensRepo;
   CategoryDetailedBloc(this._categoryRepo, this._jwtTokensRepo)
       : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const _Initial());
+    });
     on<_GetCategoryDetailed>((event, emit) async {
       emit(_Loading());
       final response = await _categoryRepo.getCategoruById(event.categoryId);

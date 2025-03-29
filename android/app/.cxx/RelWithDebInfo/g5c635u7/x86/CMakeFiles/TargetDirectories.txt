@@ -1,0 +1,2 @@
+C:/Users/nived/app/profac/android/app/.cxx/RelWithDebInfo/g5c635u7/x86/CMakeFiles/edit_cache.dir
+C:/Users/nived/app/profac/android/app/.cxx/RelWithDebInfo/g5c635u7/x86/CMakeFiles/rebuild_cache.dir

@@ -46,6 +46,9 @@ class ServiceOptionsFloatingButton extends StatelessWidget {
                           width: 60,
                           fit: BoxFit.cover,
                           height: 40,
+                          errorBuilder: (context, error, stackTrace) {
+                            return SizedBox();
+                          },
                         ),
                       ),
                     ],

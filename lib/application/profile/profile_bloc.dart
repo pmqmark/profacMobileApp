@@ -21,6 +21,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final IJwtTokensRepo _jwtTokensRepo;
   ProfileBloc(this._profileRepo, this._localstorageRepo, this._jwtTokensRepo)
       : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const ProfileState.initial());
+    });
     on<_LoadProfile>((event, emit) async {
       emit(const ProfileState.loading());
       final profile = await _profileRepo.getProfile();

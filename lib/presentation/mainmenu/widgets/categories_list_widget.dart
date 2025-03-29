@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:profac/application/category_detailed/category_detailed_bloc.dart';
 import 'package:profac/domain/categories/model/category_group_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:profac/presentation/mainmenu/see_all_categories_screen.dart';
 import 'package:profac/presentation/service/services_list_screen.dart';
 
 class CategoriesListWidget extends StatelessWidget {
@@ -29,7 +30,14 @@ class CategoriesListWidget extends StatelessWidget {
             Spacer(),
             TextButton(
               onPressed: () {
-                // Handle tap action
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SeeAllCategoriesScreen(
+                      categories: categories,
+                      title: title,
+                    ),
+                  ),
+                );
               },
               style: Theme.of(context).textButtonTheme.style!.copyWith(
                     padding: WidgetStateProperty.all(
@@ -49,7 +57,7 @@ class CategoriesListWidget extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              categories.length+1,
+              categories.length + 1,
               (index) {
                 if (index == 0) {
                   return HorizontalSpace(24);
@@ -68,16 +76,18 @@ class CategoriesListWidget extends StatelessWidget {
                         ),
                       );
                     },
-
                     child: Container(
                       width: 199,
                       padding: EdgeInsets.only(right: 40),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular( 12.r),
+                        borderRadius: BorderRadius.circular(12.r),
                         image: DecorationImage(
                           image: NetworkImage(
-                              'https://maid-zen.com/wp-content/uploads/2021/03/maid-zen-cta-image.jpg'),
+                            category.thumbnailUrl,
+                            
+                          ),
                           fit: BoxFit.cover,
+                          
                         ),
                       ),
                       child: Align(

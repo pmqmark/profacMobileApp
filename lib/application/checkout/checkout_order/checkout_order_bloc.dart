@@ -14,6 +14,9 @@ part 'checkout_order_bloc.freezed.dart';
 class CheckoutOrderBloc extends Bloc<CheckoutOrderEvent, CheckoutOrderState> {
   final ICheckoutRepo _checkoutRepo;
   CheckoutOrderBloc(this._checkoutRepo) : super(_Initial()) {
+    on<_Reset>((event, emit) {
+      emit(const _Initial());
+    });
     on<_PlaceOrder>((event, emit) async {
       emit(CheckoutOrderLoading());
       final result = await _checkoutRepo.bookService(event.model);

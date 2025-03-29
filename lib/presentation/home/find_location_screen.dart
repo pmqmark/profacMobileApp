@@ -123,6 +123,7 @@ class _FindLocationScreenState extends State<FindLocationScreen>
                 },
                 builder: (context, locationState) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
+                    
                     if (profileState is ProfileLoaded &&
                         (locationState is LoadedAddress ||
                             locationState is LoadedLocation)) {
