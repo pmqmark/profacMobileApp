@@ -28,7 +28,7 @@ class TipCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             OrderTitle(
-              title: "Payment method",
+              title: "Tip",
             ),
             VerticalSpace(14),
             BlocBuilder<BookingAmountBloc, BookingAmountState>(

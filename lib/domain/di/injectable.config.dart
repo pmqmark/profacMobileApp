@@ -166,12 +166,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i259.CartItemsBloc>(
         () => _i259.CartItemsBloc(gh<_i129.ICartRepo>()));
+    gh.factory<_i188.AddReviewBloc>(
+        () => _i188.AddReviewBloc(gh<_i754.IBookingRepo>()));
     gh.factory<_i76.BookingsBloc>(
         () => _i76.BookingsBloc(gh<_i754.IBookingRepo>()));
     gh.factory<_i914.DetailedBookingBloc>(
         () => _i914.DetailedBookingBloc(gh<_i754.IBookingRepo>()));
-    gh.factory<_i188.AddReviewBloc>(
-        () => _i188.AddReviewBloc(gh<_i754.IBookingRepo>()));
     gh.factory<_i225.HelpAndSupportBloc>(
         () => _i225.HelpAndSupportBloc(gh<_i561.IHelpAndSupportRepo>()));
     gh.factory<_i181.DetailedServiceBloc>(() => _i181.DetailedServiceBloc(

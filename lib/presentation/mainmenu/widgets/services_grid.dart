@@ -3,30 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profac/application/categories_group/catrogies_group_bloc.dart';
 import 'package:profac/domain/categories/model/category_group_model.dart';
 import 'package:profac/presentation/common_widgets/constant_widgets.dart';
+import 'package:profac/presentation/mainmenu/see_all_categories_screen.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ServicesGrid extends StatelessWidget {
-  ServicesGrid({
+  const ServicesGrid({
     super.key,
   });
-  final services = [
-    {
-      "icon": Icons.build_outlined,
-      "title": "Appliance repair & service",
-    },
-    {
-      "title": "Salon for women",
-      "icon": Icons.face_retouching_natural_sharp,
-    },
-    {
-      "title": "Bathroom & Kitchen Cleaning",
-      "icon": Icons.cleaning_services,
-    },
-    {
-      "title": "Electritions and Plumbers",
-      "icon": Icons.electrical_services,
-    },
-  ];
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -81,6 +65,14 @@ class ServicesGrid extends StatelessWidget {
           return InkWell(
             onTap: () {
               // Handle tap action
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SeeAllCategoriesScreen(
+                    categories: categoryModel[index].categories,
+                    title: categoryModel[index].name,
+                  ),
+                ),
+              );
             },
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(12),

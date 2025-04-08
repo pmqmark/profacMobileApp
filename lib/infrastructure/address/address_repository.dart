@@ -47,13 +47,16 @@ class AddressRepository extends IAddressRepo {
       final response = await Dio().get(
         'https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng.latitude},${latLng.longitude}&key=$googleMapsApiKey',
       );
+      log(response.data.toString(), name: "get address by lat long");
       if (response.statusCode == 200) {
         final address = GMapLocationAddressLatLngModel.fromJson(response.data);
         if (address.result == null) {
+          log("address result is null");
           return left(const MainFailure.clientFailure());
         }
         return right(address.result!);
       } else {
+        log("address result is not defined");
         return left(const MainFailure.clientFailure());
       }
     } on DioException catch (e) {

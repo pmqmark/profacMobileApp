@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,6 +29,7 @@ import 'package:profac/application/splash_screen/splash_screen_bloc.dart';
 import 'package:profac/application/sub_service_reviews/sub_service_reviews_bloc.dart';
 import 'package:profac/application/verification/verification_bloc.dart';
 import 'package:profac/domain/di/injectable.dart';
+import 'package:profac/infrastructure/fcm/fcm_service.dart';
 import 'package:profac/presentation/address/manage_address_screen.dart';
 import 'package:profac/presentation/address/search_location.dart';
 import 'package:profac/presentation/address/select_loction.dart';
@@ -51,12 +53,20 @@ import 'package:profac/presentation/theme/theme_data.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  print("Handling a background message: ${message.messageId}");
+}
+
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjuction();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await FCMService().initNotifications();
   runApp(const MyApp());
 }
 

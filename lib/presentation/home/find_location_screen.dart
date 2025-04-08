@@ -28,14 +28,9 @@ class _FindLocationScreenState extends State<FindLocationScreen>
   @override
   void initState() {
     log("FindLocationScreen initState");
-    BlocProvider.of<ProfileBloc>(context).state.maybeMap(
-          orElse: () {
-            BlocProvider.of<ProfileBloc>(context).add(
-              const ProfileEvent.loadProfile(),
-            );
-          },
-          profileLoaded: (state) {},
-        );
+    BlocProvider.of<ProfileBloc>(context).add(
+      const ProfileEvent.loadProfile(),
+    );
     super.initState();
     _controller = AnimationController(
       vsync: this,
@@ -61,6 +56,7 @@ class _FindLocationScreenState extends State<FindLocationScreen>
             listener: (context, profileState) {
               profileState.maybeMap(
                 orElse: () {},
+                initial: (value) {},
                 error: (failure) {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
@@ -123,7 +119,6 @@ class _FindLocationScreenState extends State<FindLocationScreen>
                 },
                 builder: (context, locationState) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
-                    
                     if (profileState is ProfileLoaded &&
                         (locationState is LoadedAddress ||
                             locationState is LoadedLocation)) {

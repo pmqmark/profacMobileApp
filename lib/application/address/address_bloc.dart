@@ -149,7 +149,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
       emit(AddressLoading());
       final profileState =
           BlocProvider.of<ProfileBloc>(navigatorKey.currentContext!).state;
-      profileState.maybeMap(
+     await profileState.maybeMap(
         orElse: () {
           log('profile not loaded', name: "AddressBloc-_ManageInitialLocation");
         },

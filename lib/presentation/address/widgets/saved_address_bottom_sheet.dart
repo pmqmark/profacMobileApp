@@ -73,83 +73,85 @@ class _SavedAddressBottomSheetState extends State<SavedAddressBottomSheet> {
             ),
           ),
           Divider(),
-          BlocBuilder<ProfileBloc, ProfileState>(
-            builder: (context, state) {
-              return state.maybeMap(
-                orElse: () {
-                  return VerticalSpace(10);
-                },
-                profileLoaded: (state) {
-                  final addressList = state.model.addressList;
-                  return SizedBox(
-                    height: 130 * addressList.length.toDouble(),
-                    child: ListView.builder(
-                      itemCount: addressList.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          visualDensity: VisualDensity.compact,
-                          titleAlignment: ListTileTitleAlignment.top,
-                          contentPadding: EdgeInsets.zero,
-                          horizontalTitleGap: 10,
-                          title: Text(
-                            "${addressList[index].name[0]}${addressList[index].name.substring(1)}",
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              VerticalSpace(5),
-                              Text(
-                                  "${addressList[index].shortName}, ${addressList[index].formattedAddress}"),
-                              VerticalSpace(4),
-                              Text(
-                                  "${addressList[index].name}, ${addressList[index].mobile}"),
-                            ],
-                          ),
-                          leading: Radio<int>(
-                            value: index,
-                            groupValue: selectedAddressIndex,
-                            onChanged: (int? value) {
-                              setState(
-                                () {
-                                  selectedAddressIndex = value;
-                                },
-                              );
-                            },
+          Expanded(
+            child: BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  orElse: () {
+                    return VerticalSpace(10);
+                  },
+                  profileLoaded: (state) {
+                    final addressList = state.model.addressList;
+                    return SizedBox(
+                      height: 130 * addressList.length.toDouble(),
+                      child: ListView.builder(
+                        itemCount: addressList.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
                             visualDensity: VisualDensity.compact,
-                            fillColor: WidgetStatePropertyAll(Colors.black),
-                          ),
-                          trailing: SizedBox(
-                            height: 25,
-                            width: 45,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                padding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
-                                  side: BorderSide(
+                            titleAlignment: ListTileTitleAlignment.top,
+                            contentPadding: EdgeInsets.zero,
+                            horizontalTitleGap: 10,
+                            title: Text(
+                              "${addressList[index].name[0]}${addressList[index].name.substring(1)}",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                VerticalSpace(5),
+                                Text(
+                                    "${addressList[index].shortName}, ${addressList[index].formattedAddress}"),
+                                VerticalSpace(4),
+                                Text(
+                                    "${addressList[index].name}, ${addressList[index].mobile}"),
+                              ],
+                            ),
+                            leading: Radio<int>(
+                              value: index,
+                              groupValue: selectedAddressIndex,
+                              onChanged: (int? value) {
+                                setState(
+                                  () {
+                                    selectedAddressIndex = value;
+                                  },
+                                );
+                              },
+                              visualDensity: VisualDensity.compact,
+                              fillColor: WidgetStatePropertyAll(Colors.black),
+                            ),
+                            trailing: SizedBox(
+                              height: 25,
+                              width: 45,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    side: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                ),
+                                child: Text(
+                                  "Edit",
+                                  style: TextStyle(
                                     color: Theme.of(context).primaryColor,
+                                    fontSize: 14,
                                   ),
                                 ),
                               ),
-                              child: Text(
-                                "Edit",
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 14,
-                                ),
-                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
-              );
-            },
+                          );
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10),

@@ -15,6 +15,7 @@ class MainmenuScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             expandedHeight: 80.h,
+            automaticallyImplyLeading: false,
             floating: true,
             pinned: false,
             snap: true,
